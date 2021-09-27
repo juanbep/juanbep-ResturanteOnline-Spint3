@@ -1,0 +1,417 @@
+--Creacion de base de datos Usuario
+CREATE DATABASE "userBD"
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Colombia.1252'
+    LC_CTYPE = 'Spanish_Colombia.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+--Creacion de tabla usuario
+CREATE TABLE IF NOT EXISTS users
+(
+	USERNAME varchar(60) PRIMARY KEY,
+	ID varchar(60) NOT NULL,
+	NAME varchar(60) NOT NULL,
+	LASTNAME varchar(60) NOT NULL,
+	PASSWORD varchar(60) NOT NULL,
+	CITY varchar(60) NOT NULL,
+	ADDRESS varchar(60) NOT NULL,
+	PHONE varchar(60) NOT NULL,
+	TYPE varchar(60) NOT NULL);
+
+--Insercion de datos usuario
+INSERT INTO public.users(
+	username, id, name, lastname, password, city, address, phone, type)
+	VALUES ('magutierrez', '10', 'Michel', 'Vallejo', '123', 'Popayan', 'calle 5 #10-20', '310356588', 'admin');
+INSERT INTO public.users(
+	username, id, name, lastname, password, city, address, phone, type)
+	VALUES ('mfgranoble', '20', 'Mannuel', 'Granoble', '456', 'Popayan', 'calle 10N #70-20', '311547110', 'user');
+INSERT INTO public.users(
+	username, id, name, lastname, password, city, address, phone, type)
+	VALUES ('axquijano', '30', 'Ximena', 'Quijano', '789', 'Popayan', 'cra 12 #5-15', '3216987454', 'admin');
+INSERT INTO public.users(
+	username, id, name, lastname, password, city, address, phone, type)
+	VALUES ('nruizm', '40', 'Nathalia', 'Ruiz', '101', 'Popayan', 'cra 5 #5-20', '313654987', 'user');
+INSERT INTO public.users(
+	username, id, name, lastname, password, city, address, phone, type)
+	VALUES ('mariatrijillca', '50', 'Maria', 'Trujillo', '110', 'Popayan', 'cra 10N #5-20', '3154896324', 'user');
+
+--Creacion base de datos restaurante
+CREATE DATABASE "restauranteBD"
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Colombia.1252'
+    LC_CTYPE = 'Spanish_Colombia.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+--Creacion de tabla restaurante
+CREATE TABLE IF NOT EXISTS restaurante (
+
+	nit varchar(60) PRIMARY KEY,
+	name varchar(60) NOT NULL,
+	address varchar(60) NOT NULL,
+	mobile varchar(60) NOT NULL,
+	email varchar(60) NOT NULL,
+	city varchar(60) NOT NULL,
+	userNameAdmin varchar(60) NOT NULL);
+
+--Insercion de datos restaurante
+INSERT INTO public.restaurante(
+	nit, name, address, mobile, email, city, usernameadmin)
+	VALUES ('100', 'La Cosecha' , 'Cra 5A # 5-20', '8225469','lacosecha@gmail.com', 'Popayan', 'axquijano');
+INSERT INTO public.restaurante(
+	nit, name, address, mobile, email, city, usernameadmin)
+	VALUES ('200', 'La Española' , 'Cra 6A # 12-35', '8548965','laespañola@gmail.com', 'Popayan', 'magutierrez');
+INSERT INTO public.restaurante(
+	nit, name, address, mobile, email, city, usernameadmin)
+	VALUES ('300', 'Don Churrasco' , 'Calle 10 # 20-25', '8233333','donchurrasco@gmail.com', 'Popayan', 'magutierrez');
+INSERT INTO public.restaurante(
+	nit, name, address, mobile, email, city, usernameadmin)
+	VALUES ('400', 'Pedro Parrilla' , 'Cra 7 # 15-65', '8236985','pedroparrilla@gmail.com', 'Popayan', 'axquijano');
+INSERT INTO public.restaurante(
+	nit, name, address, mobile, email, city, usernameadmin)
+	VALUES ('500', 'Dominos' , 'Cra 17N # 20-35', '8231111','dominos@gmail.com', 'Popayan', 'axquijano');
+--Creacion base de datos plato
+CREATE DATABASE "platoBD"
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Colombia.1252'
+    LC_CTYPE = 'Spanish_Colombia.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+--Creacion de tabla Plato
+CREATE TABLE IF NOT EXISTS plato
+(
+	id varchar(60) PRIMARY KEY,
+	name varchar(60) not null,
+	precio varchar(60) not null,
+	categoria varchar(60) not null,
+	descripcion varchar(200) not null,
+	tipoplato varchar(60) not null
+);
+
+--Insercion de datos Plato
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('600','Chunchullo Asado' , '9400', 'Entradas', '500 gramos de chunchullo, manejados en termino completo', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('610','Langostinos a la mariposa' , '38000', 'Entradas', '1000 gramos de langostinos, sazonado con todo tipos de verduras', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('620','Langostinos grantinados' , '38000', 'Entradas', '1000 gramos de langostinos, sazonado con todo tipos de verduras, mas salsas de la casa', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('630','Punta de anca' , '31500', 'Platos fuertes', '1500 gramos de punta de anca, termino completo', 'Especial');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('640','Costilla Ahumada' , '31900', 'Platos fuertes', '900 gramos de costilla ahumada, sazonada con finas hiervas', 'Especial');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('650','Churrasco Argentino' , '31500', 'Platos fuertes', '900 gramos de carne de res, pollo, choriso, sazonada con finas hiervas', 'Especial');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('660','Lomo de cerdo a la parrilla' , '29500', 'Platos fuertes', '1200 gramos de carne sazonada con finas hiervas', 'Especial');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('670','Pollo a la parrilla' , '23500', 'Platos fuertes', '800 gramos de pollo sazonada con finas hiervas', 'Especial');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('680','Chuso de res' , '16900', 'Platos fuertes', '500 gramos de carne de res sazonada con finas hiervas', 'Especial');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('690','Chuso de res y cerdo' , '16900', 'Platos fuertes', '700 gramos de carne de res y de cerdo sazonada con finas hiervas', 'Especial');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('700','Chuso de res y pollo' , '16900', 'Platos fuertes', '700 gramos de carne de res y de pollo sazonada con finas hiervas', 'Especial');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('710','Chuso mixto' , '1700', 'Platos fuertes', '700 gramos de diferentes carnes sazonada con finas hiervas', 'Especial');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('720','Brevas con queso' , '9500', 'Postres', '250 gramos de brevas mas 200 gramos de queso', 'Especial');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('730','Casata de maracuya' , '9500', 'Postres', 'Mezcla de maracuya con leche condensada y otros productos', 'Especial');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('740','Casata de mora' , '9500', 'Postres', 'Mezcla de mora con leche condensada y otros productos', 'Especial');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('750','Jugo en agua' , '4900', 'Bebidas', 'Jugos cien porciento naturales', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('760','Jugo en leche' , '4900', 'Bebidas', 'Jugos cien porciento naturales', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('770','Malteadas' , '8900', 'Bebidas', 'Helado del vainilla, chocolate, crema de leche', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('780','Limonada de coco' , '7900', 'Bebidas', 'Deliciosa bebida refrescante ', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('790','Limonada de mango biche' , '7900', 'Bebidas', 'Deliciosa bebida refrescante con mango y sal', 'Del dia');
+
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('800','Pedro Parrilla' , '16900', 'Platos fuertes', '1/2 libra de carne de res + doble loncha de queso doble crema + 50 gramos de pechuga desmechada en salsa blanca + cebolla en salsa roja', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('810', 'Super carrne de PP' , '14900', 'Platos fuertes', '200 GRS de carne de res + doble loncha de queso doble crema + tocineta crujiente  + cebolla en salsa', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('820', 'Super jamones de PP' , '14900', 'Platos fuertes', '1/2 de carne de res + 50 grs de pechuga desmechada en salsa blanca + doble loncha de queso doble crema + tocineta crujiente  + cebolla en salsa', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('830', 'Tradicional de PP' , '13900', 'Platos fuertes', 'Maduro + pechuga desmechada en salsa bechamel cubierto de queso doble crema gratinado', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('840', 'Ranchero de PP' , '12900', 'Platos fuertes', 'Maduro + jamon y rodajas de chorizo en salsa bechamel con tocinata crujiente cubierto de queso doble crema gratinado', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('850', 'Campestre de pedro' , '12900', 'Platos fuertes', 'Maduro + maiz dulce en salsa bechamel con tocinata crujiente cubierto de queso doble crema gratinado', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('860', 'Super pollo' , '13900', 'Platos fuertes', '150 grs de pechuga desmechada en salsa blanca + dos lonchas de queso doble crema + tomate fresco', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('870', 'Especial' , '14900', 'Platos fuertes', '100 grs de pechuga desmechada en salsa blanca+ jamón + salami + tocineta crujiente + dos lonchas de queso doble crema + tomate fresco', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('880', 'Especial' , '10900', 'Platos fuertes', 'Jamón + tocineta crujiente + dos lonchas de queso doble crema + tomate fresco', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('890', 'Malteadas' , '7500', 'Bedidas', 'Vanialla,chocolate,frutos rojo', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('900', 'Gaseosa' , '3000', 'Bedidas', 'Vaso 16 onz', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('910', 'Gaseosa' , '3200', 'Bedidas', 'Vaso 400 ml', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('920', 'Gaseosa' , '3000', 'Bedidas', 'Vaso 350 ml', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('930', 'Té' , '3000', 'Bedidas', 'En botella', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('940', 'Hawaiana' , '17000', 'Platos fuertes', 'Extraqueso, jamón y piña', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('950', 'Fiesta Pepperoni' , '19500', 'Platos fuertes', 'Extraqueso, doble pepperoni', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('960', 'Super pollo' , '22000', 'Platos fuertes', 'Tradicional mezcla de trocitos de pechuga de pollo, champiñones frescos y extraqueso', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('970', '3 Estaciones' , '29500', 'Platos fuertes', 'Nuestra versión especial de pollo y champiñones con chorizo', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('980', 'Americana' , '32000', 'Platos fuertes', 'Maíz tierno y tocineta con un toque de picantico de pepperoni', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('990', 'Canela Baitz' , '15000', 'Entradas', 'Deliciosos panecillos dulces hechos con la receta unica de Dominos', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('1000', 'Palitos de queso' , '15500', 'Entradas', 'Exquisitas barritas de pan cubiertas con queso mozarella', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('1010', 'Coca cola' , '4500', 'Bebidas', 'En botella', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('1020', 'Quatro toronja' , '4500', 'Bebidas', 'En botella', 'Del dia');
+INSERT INTO public.plato(
+	id, name, precio, categoria, descripcion, tipoplato)
+	VALUES ('1030', 'Sprite' , '4500', 'Bebidas', 'En botella', 'Del dia');
+
+
+--Creacion de base de datos menu
+CREATE DATABASE "menuBD"
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Colombia.1252'
+    LC_CTYPE = 'Spanish_Colombia.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+--Creacion de tabla menu, visualizacion, ofrece
+CREATE TABLE IF NOT EXISTS menu 
+(
+	idmenu varchar(60) PRIMARY KEY,
+	namemenu varchar(60) NOT NULL,
+	idrest varchar(60) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS visualizacion
+(
+	idmenu varchar(60) NOT NULL,
+	dia varchar(60) NOT NULL,
+	PRIMARY KEY (idmenu, dia)
+);
+CREATE TABLE IF NOT EXISTS ofrece
+(
+	idmenu varchar(60) NOT NULL,
+	id varchar(60) NOT NULL,
+	PRIMARY KEY (idmenu, id)
+);
+
+--Insercion de datos menu
+INSERT INTO public.menu(
+	idmenu, namemenu, idrest)
+	VALUES ('11', 'Entrada', '100');
+INSERT INTO public.menu(
+	idmenu, namemenu, idrest)
+	VALUES ('22', 'Parrilla', '100');
+INSERT INTO public.menu(
+	idmenu, namemenu, idrest)
+	VALUES ('33', 'Chuzos', '100');
+INSERT INTO public.menu(
+	idmenu, namemenu, idrest)
+	VALUES ('44', 'Postres', '100');
+INSERT INTO public.menu(
+	idmenu, namemenu, idrest)
+	VALUES ('55', 'Bebidas', '100');
+INSERT INTO public.menu(
+	idmenu, namemenu, idrest)
+	VALUES ('66', 'Hamburguesas', '400');
+INSERT INTO public.menu(
+	idmenu, namemenu, idrest)
+	VALUES ('77', 'Maduritos gratinados', '400');
+INSERT INTO public.menu(
+	idmenu, namemenu, idrest)
+	VALUES ('99', 'Bebidas', '400');
+INSERT INTO public.menu(
+	idmenu, namemenu, idrest)
+	VALUES ('111', 'Pizzas', '500');
+INSERT INTO public.menu(
+	idmenu, namemenu, idrest)
+	VALUES ('222', 'Acompañamientos', '500');
+INSERT INTO public.menu(
+	idmenu, namemenu, idrest)
+	VALUES ('333', 'Bebidas', '500');
+
+--Insercion de datos visualizacion
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('11', 'Lunes');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('11', 'Martes');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('11', 'Miercoles');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('22', 'Miercoles');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('22', 'Jueves');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('22', 'Domingo');
+--Insercion de datos ofrecer
+INSERT INTO public.ofrece(
+	idmenu, id)
+	VALUES ('11', '1');
+INSERT INTO public.ofrece(
+	idmenu, id)
+	VALUES ('22', '2');
+INSERT INTO public.ofrece(
+	idmenu, id)
+	VALUES ('33', '3');
+
+--Creacion de base de datos pedido
+CREATE DATABASE "pedidoBD"
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Colombia.1252'
+    LC_CTYPE = 'Spanish_Colombia.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+--Creacion de tabla pedido, factura, tiene
+CREATE TABLE IF NOT EXISTS pedido
+(
+	idpedido serial PRIMARY KEY,
+	idrest varchar(60) NOT NULL,
+	username varchar(60) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS FACTURA
+(
+	idfactura serial PRIMARY KEY,
+	idpedido varchar(60) NOT NULL,
+	username varchar(60) NOT NULL,
+	direccion varchar(60) NOT NULL,
+	telefono varchar(60) NOT NULL,
+	metodoPago varchar(60) NOT NULL,
+	total varchar(60) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS tiene
+(
+	idpedido varchar(60) NOT NULL,
+	idplato varchar(60) NOT NULL,
+	cantidad varchar(60) NOT NULL,
+	PRIMARY KEY (idpedido,idplato)
+);
+
+--Insercion de datos pedido
+INSERT INTO public.pedido(
+	 idrest, username)
+	VALUES ('100', 'nruizm');
+INSERT INTO public.pedido(
+	 idrest, username)
+	VALUES ('400', 'nruizm');
+INSERT INTO public.pedido(
+	 idrest, username)
+	VALUES ('500', 'mfgranoble');
+INSERT INTO public.pedido(
+	 idrest, username)
+	VALUES ('100', 'mfgranoble');
+INSERT INTO public.pedido(
+	 idrest, username)
+	VALUES ('400','mariatrijillca');
+--insercion de datos factura
+INSERT INTO public.factura(
+	 idpedido, username, direccion, telefono, metodopago, total)
+	VALUES ('2', 'nruizm', 'cra 5 #5-20', '313654987', 'Tarjeta', '17300');
+INSERT INTO public.factura(
+	 idpedido, username, direccion, telefono, metodopago, total)
+	VALUES ('5', 'mariatrijillca', 'cra 10N #5-20', '3154896324', 'Efectivo', '18100');
+INSERT INTO public.factura(
+	 idpedido, username, direccion, telefono, metodopago, total)
+	VALUES ('1', 'nruirm', 'cra 5 #5-20', '313654987', 'Tarjeta', '45900');
+INSERT INTO public.factura(
+	 idpedido, username, direccion, telefono, metodopago, total)
+	VALUES ('4', 'mfgranoble', 'calle 10N #70-20', '311547110', 'Tarjeta', '45900');
+INSERT INTO public.factura(
+	 idpedido, username, direccion, telefono, metodopago, total)
+	VALUES ('3', 'mfgranoble', 'calle 10N #70-20', '311547110', 'Tarjeta', '32000');
+--insercion de datos tiene
+INSERT INTO public.tiene(
+	idpedido, idplato, cantidad)
+	VALUES ('1', '600', '1');
+INSERT INTO public.tiene(
+	idpedido, idplato, cantidad)
+	VALUES ('1', '790', '1');
+
+INSERT INTO public.tiene(
+	idpedido, idplato, cantidad)
+	VALUES ('2', '810', '1');
+
+INSERT INTO public.tiene(
+	idpedido, idplato, cantidad)
+	VALUES ('3', '980', '1');
+INSERT INTO public.tiene(
+	idpedido, idplato, cantidad)
+	VALUES ('4', '670', '1');
+
+INSERT INTO public.tiene(
+	idpedido, idplato, cantidad)
+	VALUES ('5', '880', '2');

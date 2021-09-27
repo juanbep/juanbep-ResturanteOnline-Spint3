@@ -1,0 +1,11 @@
+D:\Laboratorio Ingenieria del Software II\LAB. SOFTWARE II\PROYECTO\Entrega 3\AppRestaurant ah hand\API-Plato\src\main\java\co\unicauca\plato\domain\service\PlatoService.java
+D:\Laboratorio Ingenieria del Software II\LAB. SOFTWARE II\PROYECTO\Entrega 3\AppRestaurant ah hand\API-Plato\src\main\java\co\unicauca\plato\domain\validators\ValidationError.java
+D:\Laboratorio Ingenieria del Software II\LAB. SOFTWARE II\PROYECTO\Entrega 3\AppRestaurant ah hand\API-Plato\src\main\java\co\unicauca\plato\infra\Utilities.java
+D:\Laboratorio Ingenieria del Software II\LAB. SOFTWARE II\PROYECTO\Entrega 3\AppRestaurant ah hand\API-Plato\src\main\java\co\unicauca\plato\infra\Error.java
+D:\Laboratorio Ingenieria del Software II\LAB. SOFTWARE II\PROYECTO\Entrega 3\AppRestaurant ah hand\API-Plato\src\main\java\co\unicauca\plato\ApplicationConfig.java
+D:\Laboratorio Ingenieria del Software II\LAB. SOFTWARE II\PROYECTO\Entrega 3\AppRestaurant ah hand\API-Plato\src\main\java\co\unicauca\plato\domain\entity\Dish.java
+D:\Laboratorio Ingenieria del Software II\LAB. SOFTWARE II\PROYECTO\Entrega 3\AppRestaurant ah hand\API-Plato\src\main\java\co\unicauca\plato\access\IPlatoRepository.java
+D:\Laboratorio Ingenieria del Software II\LAB. SOFTWARE II\PROYECTO\Entrega 3\AppRestaurant ah hand\API-Plato\src\main\java\co\unicauca\plato\infra\JsonResponse.java
+D:\Laboratorio Ingenieria del Software II\LAB. SOFTWARE II\PROYECTO\Entrega 3\AppRestaurant ah hand\API-Plato\src\main\java\co\unicauca\plato\presentation\rest\PlatoController.java
+D:\Laboratorio Ingenieria del Software II\LAB. SOFTWARE II\PROYECTO\Entrega 3\AppRestaurant ah hand\API-Plato\src\main\java\co\unicauca\plato\infra\DomainErrors.java
+D:\Laboratorio Ingenieria del Software II\LAB. SOFTWARE II\PROYECTO\Entrega 3\AppRestaurant ah hand\API-Plato\src\main\java\co\unicauca\plato\access\PlatoRepository.java

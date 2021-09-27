@@ -1,0 +1,11 @@
+co\unicauca\restaurante\infra\JsonResponse.class
+co\unicauca\restaurante\infra\Utilities.class
+co\unicauca\restaurante\ApplicationConfig.class
+co\unicauca\restaurante\domain\validators\ValidationError.class
+co\unicauca\restaurante\domain\service\RestaurantService.class
+co\unicauca\restaurante\domain\entity\Restaurant.class
+co\unicauca\restaurante\infra\Error.class
+co\unicauca\restaurante\presentation\rest\RestauranteController.class
+co\unicauca\restaurante\access\IRestaurantRepository.class
+co\unicauca\restaurante\infra\DomainErrors.class
+co\unicauca\restaurante\access\RestaurantRepository.class
