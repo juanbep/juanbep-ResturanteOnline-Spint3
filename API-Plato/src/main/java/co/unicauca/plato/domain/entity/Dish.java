@@ -17,16 +17,19 @@ public class Dish {
 
     private String atrTypeDish;
 
+    private String atrIdMenu;
+
     //Categoria
     private String atrCategoriaDish;
 
-    public Dish(String atrIdFood, String atrNameFood, String atrPriceFood, String Description, String atrTypeDish, String atrCategoriaDish) {
+    public Dish(String atrIdFood, String atrNameFood, String atrPriceFood, String Description, String atrTypeDish, String atrCategoriaDish, String atrIdMenu) {
         this.atrIdDish = atrIdFood;
         this.atrNameDish = atrNameFood;
         this.atrPriceDish = atrPriceFood;
         this.atrDescriptionDish = Description;
         this.atrTypeDish = atrTypeDish;
         this.atrCategoriaDish = atrCategoriaDish;
+        this.atrIdMenu = atrIdMenu;
     }
 
     public Dish() {
@@ -79,6 +82,14 @@ public class Dish {
 
     public void setAtrCategoriaDish(String atrCategoriaDish) {
         this.atrCategoriaDish = atrCategoriaDish;
+    }
+
+    public String getAtrIdMenu() {
+        return atrIdMenu;
+    }
+
+    public void setAtrIdMenu(String atrIdMenu) {
+        this.atrIdMenu = atrIdMenu;
     }
 
 }

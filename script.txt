@@ -92,143 +92,144 @@ CREATE TABLE IF NOT EXISTS plato
 	precio varchar(60) not null,
 	categoria varchar(60) not null,
 	descripcion varchar(200) not null,
-	tipoplato varchar(60) not null
+	tipoplato varchar(60) not null,
+	idmenu varchar(60) not null
 );
 
 --Insercion de datos Plato
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('600','Chunchullo Asado' , '9400', 'Entradas', '500 gramos de chunchullo, manejados en termino completo', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('600','Chunchullo Asado' , '9400', 'Entradas', '500 gramos de chunchullo, manejados en termino completo', 'Del dia', '100');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('610','Langostinos a la mariposa' , '38000', 'Entradas', '1000 gramos de langostinos, sazonado con todo tipos de verduras', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('610','Langostinos a la mariposa' , '38000', 'Entradas', '1000 gramos de langostinos, sazonado con todo tipos de verduras', 'Del dia', '11');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('620','Langostinos grantinados' , '38000', 'Entradas', '1000 gramos de langostinos, sazonado con todo tipos de verduras, mas salsas de la casa', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('620','Langostinos grantinados' , '38000', 'Entradas', '1000 gramos de langostinos, sazonado con todo tipos de verduras, mas salsas de la casa', 'Del dia', '111');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('630','Punta de anca' , '31500', 'Platos fuertes', '1500 gramos de punta de anca, termino completo', 'Especial');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('630','Punta de anca' , '31500', 'Platos fuertes', '1500 gramos de punta de anca, termino completo', 'Especial', '22');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('640','Costilla Ahumada' , '31900', 'Platos fuertes', '900 gramos de costilla ahumada, sazonada con finas hiervas', 'Especial');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('640','Costilla Ahumada' , '31900', 'Platos fuertes', '900 gramos de costilla ahumada, sazonada con finas hiervas', 'Especial', '222');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('650','Churrasco Argentino' , '31500', 'Platos fuertes', '900 gramos de carne de res, pollo, choriso, sazonada con finas hiervas', 'Especial');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('650','Churrasco Argentino' , '31500', 'Platos fuertes', '900 gramos de carne de res, pollo, choriso, sazonada con finas hiervas', 'Especial', '33');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('660','Lomo de cerdo a la parrilla' , '29500', 'Platos fuertes', '1200 gramos de carne sazonada con finas hiervas', 'Especial');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('660','Lomo de cerdo a la parrilla' , '29500', 'Platos fuertes', '1200 gramos de carne sazonada con finas hiervas', 'Especial', '333');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('670','Pollo a la parrilla' , '23500', 'Platos fuertes', '800 gramos de pollo sazonada con finas hiervas', 'Especial');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('670','Pollo a la parrilla' , '23500', 'Platos fuertes', '800 gramos de pollo sazonada con finas hiervas', 'Especial', '44');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('680','Chuso de res' , '16900', 'Platos fuertes', '500 gramos de carne de res sazonada con finas hiervas', 'Especial');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('680','Chuso de res' , '16900', 'Platos fuertes', '500 gramos de carne de res sazonada con finas hiervas', 'Especial', '55');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('690','Chuso de res y cerdo' , '16900', 'Platos fuertes', '700 gramos de carne de res y de cerdo sazonada con finas hiervas', 'Especial');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('690','Chuso de res y cerdo' , '16900', 'Platos fuertes', '700 gramos de carne de res y de cerdo sazonada con finas hiervas', 'Especial', '66');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('700','Chuso de res y pollo' , '16900', 'Platos fuertes', '700 gramos de carne de res y de pollo sazonada con finas hiervas', 'Especial');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('700','Chuso de res y pollo' , '16900', 'Platos fuertes', '700 gramos de carne de res y de pollo sazonada con finas hiervas', 'Especial', '77');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('710','Chuso mixto' , '1700', 'Platos fuertes', '700 gramos de diferentes carnes sazonada con finas hiervas', 'Especial');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('710','Chuso mixto' , '1700', 'Platos fuertes', '700 gramos de diferentes carnes sazonada con finas hiervas', 'Especial', '99');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('720','Brevas con queso' , '9500', 'Postres', '250 gramos de brevas mas 200 gramos de queso', 'Especial');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('720','Brevas con queso' , '9500', 'Postres', '250 gramos de brevas mas 200 gramos de queso', 'Especial', '44');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('730','Casata de maracuya' , '9500', 'Postres', 'Mezcla de maracuya con leche condensada y otros productos', 'Especial');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('730','Casata de maracuya' , '9500', 'Postres', 'Mezcla de maracuya con leche condensada y otros productos', 'Especial', '11');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('740','Casata de mora' , '9500', 'Postres', 'Mezcla de mora con leche condensada y otros productos', 'Especial');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('740','Casata de mora' , '9500', 'Postres', 'Mezcla de mora con leche condensada y otros productos', 'Especial', '222');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('750','Jugo en agua' , '4900', 'Bebidas', 'Jugos cien porciento naturales', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('750','Jugo en agua' , '4900', 'Bebidas', 'Jugos cien porciento naturales', 'Del dia', '100');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('760','Jugo en leche' , '4900', 'Bebidas', 'Jugos cien porciento naturales', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('760','Jugo en leche' , '4900', 'Bebidas', 'Jugos cien porciento naturales', 'Del dia', '99');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('770','Malteadas' , '8900', 'Bebidas', 'Helado del vainilla, chocolate, crema de leche', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('770','Malteadas' , '8900', 'Bebidas', 'Helado del vainilla, chocolate, crema de leche', 'Del dia', '55');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('780','Limonada de coco' , '7900', 'Bebidas', 'Deliciosa bebida refrescante ', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('780','Limonada de coco' , '7900', 'Bebidas', 'Deliciosa bebida refrescante ', 'Del dia', '11');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('790','Limonada de mango biche' , '7900', 'Bebidas', 'Deliciosa bebida refrescante con mango y sal', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('790','Limonada de mango biche' , '7900', 'Bebidas', 'Deliciosa bebida refrescante con mango y sal', 'Del dia', '100');
 
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('800','Pedro Parrilla' , '16900', 'Platos fuertes', '1/2 libra de carne de res + doble loncha de queso doble crema + 50 gramos de pechuga desmechada en salsa blanca + cebolla en salsa roja', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('800','Pedro Parrilla' , '16900', 'Platos fuertes', '1/2 libra de carne de res + doble loncha de queso doble crema + 50 gramos de pechuga desmechada en salsa blanca + cebolla en salsa roja', 'Del dia', '44');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('810', 'Super carrne de PP' , '14900', 'Platos fuertes', '200 GRS de carne de res + doble loncha de queso doble crema + tocineta crujiente  + cebolla en salsa', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('810', 'Super carrne de PP' , '14900', 'Platos fuertes', '200 GRS de carne de res + doble loncha de queso doble crema + tocineta crujiente  + cebolla en salsa', 'Del dia', '55');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('820', 'Super jamones de PP' , '14900', 'Platos fuertes', '1/2 de carne de res + 50 grs de pechuga desmechada en salsa blanca + doble loncha de queso doble crema + tocineta crujiente  + cebolla en salsa', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('820', 'Super jamones de PP' , '14900', 'Platos fuertes', '1/2 de carne de res + 50 grs de pechuga desmechada en salsa blanca + doble loncha de queso doble crema + tocineta crujiente  + cebolla en salsa', 'Del dia', '222');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('830', 'Tradicional de PP' , '13900', 'Platos fuertes', 'Maduro + pechuga desmechada en salsa bechamel cubierto de queso doble crema gratinado', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('830', 'Tradicional de PP' , '13900', 'Platos fuertes', 'Maduro + pechuga desmechada en salsa bechamel cubierto de queso doble crema gratinado', 'Del dia', '77');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('840', 'Ranchero de PP' , '12900', 'Platos fuertes', 'Maduro + jamon y rodajas de chorizo en salsa bechamel con tocinata crujiente cubierto de queso doble crema gratinado', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('840', 'Ranchero de PP' , '12900', 'Platos fuertes', 'Maduro + jamon y rodajas de chorizo en salsa bechamel con tocinata crujiente cubierto de queso doble crema gratinado', 'Del dia', '55');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('850', 'Campestre de pedro' , '12900', 'Platos fuertes', 'Maduro + maiz dulce en salsa bechamel con tocinata crujiente cubierto de queso doble crema gratinado', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('850', 'Campestre de pedro' , '12900', 'Platos fuertes', 'Maduro + maiz dulce en salsa bechamel con tocinata crujiente cubierto de queso doble crema gratinado', 'Del dia', '44');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('860', 'Super pollo' , '13900', 'Platos fuertes', '150 grs de pechuga desmechada en salsa blanca + dos lonchas de queso doble crema + tomate fresco', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('860', 'Super pollo' , '13900', 'Platos fuertes', '150 grs de pechuga desmechada en salsa blanca + dos lonchas de queso doble crema + tomate fresco', 'Del dia', '100');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('870', 'Especial' , '14900', 'Platos fuertes', '100 grs de pechuga desmechada en salsa blanca+ jamón + salami + tocineta crujiente + dos lonchas de queso doble crema + tomate fresco', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('870', 'Especial' , '14900', 'Platos fuertes', '100 grs de pechuga desmechada en salsa blanca+ jamón + salami + tocineta crujiente + dos lonchas de queso doble crema + tomate fresco', 'Del dia', '333');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('880', 'Especial' , '10900', 'Platos fuertes', 'Jamón + tocineta crujiente + dos lonchas de queso doble crema + tomate fresco', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('880', 'Especial' , '10900', 'Platos fuertes', 'Jamón + tocineta crujiente + dos lonchas de queso doble crema + tomate fresco', 'Del dia', '66');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('890', 'Malteadas' , '7500', 'Bedidas', 'Vanialla,chocolate,frutos rojo', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('890', 'Malteadas' , '7500', 'Bedidas', 'Vanialla,chocolate,frutos rojo', 'Del dia', '44');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('900', 'Gaseosa' , '3000', 'Bedidas', 'Vaso 16 onz', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('900', 'Gaseosa' , '3000', 'Bedidas', 'Vaso 16 onz', 'Del dia', '100');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('910', 'Gaseosa' , '3200', 'Bedidas', 'Vaso 400 ml', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('910', 'Gaseosa' , '3200', 'Bedidas', 'Vaso 400 ml', 'Del dia', '66');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('920', 'Gaseosa' , '3000', 'Bedidas', 'Vaso 350 ml', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('920', 'Gaseosa' , '3000', 'Bedidas', 'Vaso 350 ml', 'Del dia', '55');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('930', 'Té' , '3000', 'Bedidas', 'En botella', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('930', 'Té' , '3000', 'Bedidas', 'En botella', 'Del dia', '11');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('940', 'Hawaiana' , '17000', 'Platos fuertes', 'Extraqueso, jamón y piña', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('940', 'Hawaiana' , '17000', 'Platos fuertes', 'Extraqueso, jamón y piña', 'Del dia', '44');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('950', 'Fiesta Pepperoni' , '19500', 'Platos fuertes', 'Extraqueso, doble pepperoni', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('950', 'Fiesta Pepperoni' , '19500', 'Platos fuertes', 'Extraqueso, doble pepperoni', 'Del dia', '99');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('960', 'Super pollo' , '22000', 'Platos fuertes', 'Tradicional mezcla de trocitos de pechuga de pollo, champiñones frescos y extraqueso', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('960', 'Super pollo' , '22000', 'Platos fuertes', 'Tradicional mezcla de trocitos de pechuga de pollo, champiñones frescos y extraqueso', 'Del dia', '55');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('970', '3 Estaciones' , '29500', 'Platos fuertes', 'Nuestra versión especial de pollo y champiñones con chorizo', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('970', '3 Estaciones' , '29500', 'Platos fuertes', 'Nuestra versión especial de pollo y champiñones con chorizo', 'Del dia', '11');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('980', 'Americana' , '32000', 'Platos fuertes', 'Maíz tierno y tocineta con un toque de picantico de pepperoni', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('980', 'Americana' , '32000', 'Platos fuertes', 'Maíz tierno y tocineta con un toque de picantico de pepperoni', 'Del dia', '222');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('990', 'Canela Baitz' , '15000', 'Entradas', 'Deliciosos panecillos dulces hechos con la receta unica de Dominos', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('990', 'Canela Baitz' , '15000', 'Entradas', 'Deliciosos panecillos dulces hechos con la receta unica de Dominos', 'Del dia', '44');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('1000', 'Palitos de queso' , '15500', 'Entradas', 'Exquisitas barritas de pan cubiertas con queso mozarella', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('1000', 'Palitos de queso' , '15500', 'Entradas', 'Exquisitas barritas de pan cubiertas con queso mozarella', 'Del dia', '55');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('1010', 'Coca cola' , '4500', 'Bebidas', 'En botella', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('1010', 'Coca cola' , '4500', 'Bebidas', 'En botella', 'Del dia', '55');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('1020', 'Quatro toronja' , '4500', 'Bebidas', 'En botella', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato, idmenu)
+	VALUES ('1020', 'Quatro toronja' , '4500', 'Bebidas', 'En botella', 'Del dia', '99');
 INSERT INTO public.plato(
-	id, name, precio, categoria, descripcion, tipoplato)
-	VALUES ('1030', 'Sprite' , '4500', 'Bebidas', 'En botella', 'Del dia');
+	id, name, precio, categoria, descripcion, tipoplato idmenu)
+	VALUES ('1030', 'Sprite' , '4500', 'Bebidas', 'En botella', 'Del dia', '99');
 
 
 --Creacion de base de datos menu

@@ -18,31 +18,30 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-
-
 /**
- ** API Plato de los servicios web. La anotación @Path indica la URL en la 
- * cual responderá los servicios. Esta anotación se puede poner a nivel de 
- * clase y método. Todos los servicios comparten el mismo Path, la acción 
- * se hacer mediante la anotació GET (consultar), POST (agregar), PUT (editar),
- * DELETE (eliminar).
- * @Beca98 
+ ** API Plato de los servicios web. La anotación @Path indica la URL en la cual
+ * responderá los servicios. Esta anotación se puede poner a nivel de clase y
+ * método. Todos los servicios comparten el mismo Path, la acción se hacer
+ * mediante la anotació GET (consultar), POST (agregar), PUT (editar), DELETE
+ * (eliminar).
+ *
+ * @Beca98
  */
-
 @Stateless
 @Path("/plato")
 public class PlatoController {
-    
+
     /**
-    * Se inyecta la única implementación que hay de ProductService
-    */
+     * Se inyecta la única implementación que hay de ProductService
+     */
     @Inject
     private PlatoService service;
-    
+
     public PlatoController() {
         service = new PlatoService();
-      
+
     }
+
     /*
         Su uso desde consola mediante client url:
         curl -X GET http://localhost:8084/API-Plato/plato-service/plato/ 
@@ -53,7 +52,7 @@ public class PlatoController {
     public List<Dish> findAll() {
         return service.findAll();
     }
-    
+
     /*
         Su uso desde consola mediante client url:
         curl -X GET http://localhost:8084/API-Plato/plato-service/plato/123 
@@ -65,7 +64,7 @@ public class PlatoController {
     public Dish findByIdDish(@PathParam("Id") String Id) {
         return service.findByIdDish(Id);
     }
-    
+
     /*
         Su uso desde consola mediante client url:
         curl -X POST \
@@ -76,11 +75,12 @@ public class PlatoController {
                "atrPriceDish":"10000",
                "atrDescriptionDish":"Carne roja",
                "atrTypeDish":"Especial",
-               "atrCategoriaDish":"Platos fuertes"    
+               "atrCategoriaDish":"Platos fuertes",
+               "atrIdMenu":"100"
                
         }'
-    */
-     @POST
+     */
+    @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response create(Dish dish) {
         JsonResponse resp;
@@ -90,9 +90,9 @@ public class PlatoController {
             resp = new JsonResponse(false, "No se pudo crear el Plato", DomainErrors.getErrors());
         }
         return Response.ok().entity(resp).build();
-    } 
-    
-     /*
+    }
+
+    /*
         Su uso desde consola mediante client url:
         curl -X PUT \
           http://localhost:8084/API-Plato/plato-service/plato/123 
@@ -102,10 +102,11 @@ public class PlatoController {
                "atrPriceDish":"5000",
                "atrDescriptionDish":"Tres bolas",
                "atrTypeDish":"Especial",
-               "atrCategoriaDish":"Postres"
+               "atrCategoriaDish":"Postres",
+               "atrIdMenu":"100"
             
         }'
-    */
+     */
     @PUT
     @Path("{Id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -119,7 +120,7 @@ public class PlatoController {
         return Response.ok().entity(resp).build();
 
     }
-    
+
     /*
         Su uso desde consola mediante client url:
         curl -X DELETE http://localhost:8084/API-Plato/plato-service/plato/123 
@@ -141,7 +142,5 @@ public class PlatoController {
         return Response.ok().entity(resp).build();
 
     }
-    
 
-    
 }

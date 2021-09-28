@@ -1,7 +1,4 @@
-
 package co.unicauca.plato.domain.service;
-
-
 
 import co.unicauca.plato.access.IPlatoRepository;
 import co.unicauca.plato.domain.entity.Dish;
@@ -12,23 +9,24 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+
 /**
  ** Servicio de Plato. Es una fachada de acceso al negocio. Lo usa la capa de
  * presentación.
+ *
  * @author Beca98
  */
 @RequestScoped
-public class PlatoService 
-{
-      /**
+public class PlatoService {
+
+    /**
      * Dependencia de una abstracción No es algo concreto. No se sabe como será
      * implementado
      */
     @Inject
-    
-   private IPlatoRepository repository;
-    
-    
+
+    private IPlatoRepository repository;
+
     /**
      * Busca un plato por su Id
      *
@@ -38,11 +36,11 @@ public class PlatoService
     public Dish findByIdDish(String prmIdDish) {
         return repository.findByIdDish(prmIdDish);
     }
-    
-    public void setPlatoRepository(IPlatoRepository repository){
+
+    public void setPlatoRepository(IPlatoRepository repository) {
         this.repository = repository;
     }
-    
+
     /**
      * Busca todos los platos
      *
@@ -52,7 +50,7 @@ public class PlatoService
         List<Dish> dishs = repository.findAll();
         return dishs;
     }
-    
+
     /**
      * Crea un nuevo plato
      *
@@ -61,9 +59,11 @@ public class PlatoService
      */
     public boolean create(Dish newPlato) {
         List<Error> errors = validateCreate(newPlato);
-        if (newPlato.getAtrIdDish()== null || newPlato.getAtrIdDish().isEmpty()) {
+        if (newPlato.getAtrIdDish() == null || newPlato.getAtrIdDish().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Id", "La identificacion del plato es obligatorio");
             errors.add(error);
+        } else if (newPlato.getAtrIdMenu() == null || newPlato.getAtrIdMenu().isEmpty()) {
+            Error error = new Error(ValidationError.EMPTY_FIELD, "Id", "La identificacion del menu al cual pertenece el plato es obligatorio");
         }
         if (!errors.isEmpty()) {
             DomainErrors.setErrors(errors);
@@ -72,12 +72,11 @@ public class PlatoService
         //Si pasa las validaciones se graba en la bd
         return repository.create(newPlato);
     }
-    
-    
+
     /**
      * Edita o actualiza un plato
      *
-     * @param Id id del plato 
+     * @param Id id del plato
      * @param newPlato plato a editar en el sistema
      * @return true si lo actualiza, false si no
      */
@@ -93,16 +92,16 @@ public class PlatoService
         dishAux.setAtrCategoriaDish(newPlato.getAtrCategoriaDish());
         dishAux.setAtrDescriptionDish(newPlato.getAtrDescriptionDish());
         dishAux.setAtrTypeDish(newPlato.getAtrTypeDish());
-        
-           
+        dishAux.setAtrIdMenu(newPlato.getAtrIdMenu());
+
         repository.update(dishAux);
         return true;
     }
-    
+
     /**
      * Elimina un plato de la base de datos
      *
-     * @param idDish identificacion del plato 
+     * @param idDish identificacion del plato
      * @return true si lo elimina, false si no
      */
     public boolean delete(String idDish) {
@@ -115,27 +114,26 @@ public class PlatoService
         // Pasada la validación, se puede borrar de la bd
         return repository.delete(idDish);
     }
-    
+
     /**
      * Valida que el plato esté correcto antes de grabarlo
      *
      * @param newPlato plato
      * @return lista de errores de negocio
      */
-    private List<Error> validateCreate(Dish newPlato){
-        List<Error> errors; 
-        
+    private List<Error> validateCreate(Dish newPlato) {
+        List<Error> errors;
+
         //Validar plato
         errors = validarCampos(newPlato);
-        
+
         /*if (newPlato.getAtrIdDish()==null || newPlato.getAtrIdDish().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Id", "El Id del plato es obligatorio");
             errors.add(error);
         }
-        */
+         */
         //Validar que no exista el plato
-        
-        if(newPlato.getAtrIdDish() != null){
+        if (newPlato.getAtrIdDish() != null) {
             if (!newPlato.getAtrIdDish().isEmpty()) {
 
                 Dish dishAux = repository.findByIdDish(newPlato.getAtrIdDish());
@@ -152,16 +150,17 @@ public class PlatoService
 
     /**
      * Valida que el plato esté correcto antes de editarlo en la bd
+     *
      * @param Id identificacion del plato
      * @param newPlato plato
      * @return lista de errores de negocio
      */
     private List<Error> validateUpdate(String Id, Dish newPlato) {
-         List<Error> errors = new ArrayList<>();
+        List<Error> errors = new ArrayList<>();
         //Validar usuario
         errors = validarCampos(newPlato);
-        
-         // Validar que exista el plato
+
+        // Validar que exista el plato
         Dish dishAux = repository.findByIdDish(Id);
         if (dishAux == null) {
             // El plato no existe
@@ -173,26 +172,25 @@ public class PlatoService
     }
 
     /**
-     * Valida que los datos del plato no esten vacios o nulos 
+     * Valida que los datos del plato no esten vacios o nulos
      *
      * @param newPlato Dish
      * @return lista de errores de negocio
      */
-    private List<Error> validarCampos (Dish newPlato){
-        
+    private List<Error> validarCampos(Dish newPlato) {
+
         List<Error> errors = new ArrayList<>();
-        
+
         //Validate plato
-        
         if (newPlato.getAtrNameDish() == null || newPlato.getAtrNameDish().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Name", "El nombre del plato es obligatorio");
             errors.add(error);
         }
-        if (newPlato.getAtrPriceDish()== null || newPlato.getAtrPriceDish().isEmpty()) {
+        if (newPlato.getAtrPriceDish() == null || newPlato.getAtrPriceDish().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Precio", "El precio del plato es obligatorio");
             errors.add(error);
         }
-        if (newPlato.getAtrCategoriaDish()== null || newPlato.getAtrCategoriaDish().isEmpty()) {
+        if (newPlato.getAtrCategoriaDish() == null || newPlato.getAtrCategoriaDish().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Categoria", "La categoria del plato es obligatorio");
             errors.add(error);
         }
@@ -200,22 +198,26 @@ public class PlatoService
             Error error = new Error(ValidationError.EMPTY_FIELD, "Descripcion", "La descripcion del plato es obligatorio");
             errors.add(error);
         }
-        if (newPlato.getAtrTypeDish()== null || newPlato.getAtrTypeDish().isEmpty()) {
+        if (newPlato.getAtrTypeDish() == null || newPlato.getAtrTypeDish().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "TipoPlato", "El tipo de plato es obligatorio");
             errors.add(error);
         }
-              
+        if (newPlato.getAtrIdMenu() == null || newPlato.getAtrIdMenu().isEmpty()) {
+            Error error = new Error(ValidationError.EMPTY_FIELD, "IdMenu", "El IdMenu es obligatorio");
+            errors.add(error);
+        }
+
         return errors;
     }
 
     /**
      * Valida que el plato exista para poder eliminarlo de la BD
      *
-     * @param Id identificacion de usuario 
+     * @param Id identificacion de usuario
      * @return lista de errores de negocio
      */
     private List<Error> validateDelete(String Id) {
-        
+
         List<Error> errors = new ArrayList<>();
         // Validar que exista el plato
         Dish dishAux = repository.findByIdDish(Id);
@@ -228,7 +230,5 @@ public class PlatoService
 
         return errors;
     }
-    
-    
-    
+
 }
