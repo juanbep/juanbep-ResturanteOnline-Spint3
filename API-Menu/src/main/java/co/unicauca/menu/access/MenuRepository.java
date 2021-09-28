@@ -100,7 +100,7 @@ public class MenuRepository implements IMenuRepository {
     public List<Menu> findAll() {
         List<Menu> menu = new ArrayList<>();
         String idMenu;
-        //List<String> dias = new ArrayList<>();
+
         try {
 
             String sql = "SELECT * FROM menu";
@@ -129,6 +129,8 @@ public class MenuRepository implements IMenuRepository {
     @Override
     public List<Menu> findByIdRest(String IdRest) {
         List<Menu> menu = new ArrayList<>();
+        String idMenu;
+
         try {
 
             String sql = "SELECT * FROM menu where idrest='" + IdRest + "'";
@@ -139,8 +141,10 @@ public class MenuRepository implements IMenuRepository {
             while (rs.next()) {
                 Menu newMenu = new Menu();
                 newMenu.setAtrIdMenu(rs.getString("IDMENU"));
+                idMenu = rs.getString("IDMENU");
                 newMenu.setAtrNomMenu(rs.getString("NAMEMENU"));
                 newMenu.setAtrIdMenu(rs.getString("IDREST"));
+                obtenerDias(idMenu, newMenu);
                 menu.add(newMenu);
             }
             this.disconnect();
@@ -157,6 +161,7 @@ public class MenuRepository implements IMenuRepository {
     @Override
     public Menu findByMenuId(String prmIdMenu) {
         Menu menu = null;
+        String idMenu;
         try {
 
             String sql = "SELECT * FROM menu Where IDMENU='" + prmIdMenu + "'";
@@ -166,8 +171,10 @@ public class MenuRepository implements IMenuRepository {
             if (rs.next()) {
                 menu = new Menu();
                 menu.setAtrIdMenu(rs.getString("idmenu"));
+                idMenu = rs.getString("IDMENU");
                 menu.setAtrNomMenu(rs.getString("namemenu"));
                 menu.setAtrIdRest(rs.getString("idrest"));
+                obtenerDias(idMenu, menu);
             }
             this.disconnect();
 
