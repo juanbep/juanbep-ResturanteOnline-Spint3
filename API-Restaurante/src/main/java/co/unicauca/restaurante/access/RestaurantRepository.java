@@ -184,14 +184,13 @@ public class RestaurantRepository implements IRestaurantRepository{
             this.connect();
 
             String sql = "UPDATE restaurante "
-                    + "SET "
-                    + "name          = ?,"
-                    + "address       = ?,"
-                    + "mobile        = ?,"
-                    + "email         = ?,"
-                    + "city          = ?,"
-                    + "userNameAdmin = ? "
-                    + "WHERE nit = ?";
+                    + "SET NAME = ?,"
+                    + "ADDRESS = ?,"
+                    + "MOBILE = ?,"
+                    + "EMAIL = ?,"
+                    + "CITY = ?,"
+                    + "USERNAMEADMIN = ? "
+                    + "WHERE NIT = ?";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newRestaurant.getAtrNameRest());
