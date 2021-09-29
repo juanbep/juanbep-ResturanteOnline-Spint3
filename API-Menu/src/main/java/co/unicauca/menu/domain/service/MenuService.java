@@ -96,10 +96,16 @@ public class MenuService
             if (!newMenu.getAtrIdMenu().isEmpty()) {
 
                 Menu menuAux = repository.findByMenuId(newMenu.getAtrIdMenu());
-
+                List<Menu> RestAsociado = repository.findByIdRest(newMenu.getAtrIdRest());
+                
                 if (menuAux != null) {
                     // El usuario ya existe
                     Error error = new Error(ValidationError.INVALID_FIELD, "Id Menu", "El id del menu ya existe");
+                    errors.add(error);
+                }
+                if(RestAsociado==null || RestAsociado.isEmpty()){
+                     // El usuario ya existe
+                    Error error = new Error(ValidationError.INVALID_FIELD, "Id Rest", "El id del resturante no existe");
                     errors.add(error);
                 }
             }

@@ -13,8 +13,6 @@ public interface IMenuRepository
 
     Menu findByMenuId(String prmIdMenu);
     
-    Menu findByRestaurantId(String prmIdRest);
-    
     List<Menu> findByIdRest(String prmIdRest);
 
     boolean create(Menu prmNewMenu);
