@@ -213,7 +213,7 @@ public class UserRepository implements IUserRepository{
     public void connect(){
         try {
             
-            String url = "jdbc:postgresql://localhost:5432/userDB";
+            String url = "jdbc:postgresql://localhost:5432/restauranteBD";
             String usuario = "postgres";
             String contrasenia = "123";
             Class.forName("org.postgresql.Driver");

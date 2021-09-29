@@ -300,22 +300,58 @@ INSERT INTO public.menu(
 --Insercion de datos visualizacion
 INSERT INTO public.visualizacion(
 	idmenu, dia)
-	VALUES ('11', 'Lunes');
+	VALUES ('100', 'Lunes');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('100', 'Miercoles');
 INSERT INTO public.visualizacion(
 	idmenu, dia)
 	VALUES ('11', 'Martes');
 INSERT INTO public.visualizacion(
 	idmenu, dia)
-	VALUES ('11', 'Miercoles');
+	VALUES ('11', 'Jueves');
 INSERT INTO public.visualizacion(
 	idmenu, dia)
-	VALUES ('22', 'Miercoles');
+	VALUES ('111', 'Domingo');
 INSERT INTO public.visualizacion(
 	idmenu, dia)
-	VALUES ('22', 'Jueves');
+	VALUES ('111', 'Miercoles');
 INSERT INTO public.visualizacion(
 	idmenu, dia)
-	VALUES ('22', 'Domingo');
+	VALUES ('22', 'Martes');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('222', 'Lunes');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('33', 'Miercoles');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('333', 'Jueves');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('44', 'Viernes');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('55', 'Sabado');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('66', 'Lunes');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('66', 'Martes');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('66', 'Miercoles');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('77', 'Lunes');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('99', 'Jueves');
+INSERT INTO public.visualizacion(
+	idmenu, dia)
+	VALUES ('99', 'Martes');
 --Insercion de datos ofrecer
 INSERT INTO public.ofrece(
 	idmenu, id)

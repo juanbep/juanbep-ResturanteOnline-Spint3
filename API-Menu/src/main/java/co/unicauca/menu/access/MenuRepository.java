@@ -71,7 +71,7 @@ public class MenuRepository implements IMenuRepository {
     public void connect() {
         try {
 
-            String url = "jdbc:postgresql://localhost:5432/menuBD";
+            String url = "jdbc:postgresql://localhost:5432/restauranteBD";
             String usuario = "postgres";
             String contrasenia = "123";
             Class.forName("org.postgresql.Driver");
@@ -181,6 +181,32 @@ public class MenuRepository implements IMenuRepository {
         } catch (SQLException ex) {
             Logger.getLogger(MenuRepository.class.getName()).log(Level.SEVERE, "Error al buscar en la base de datos", ex);
         }
+        return menu;
+    }
+
+    @Override
+    public Menu findByRestaurantId(String prmIdRest) {
+        Menu menu = null;
+//        try {
+//
+//            String sql = "SELECT * FROM menu Where IDMENU='" + prmIdMenu + "'";
+//            this.connect();
+//            Statement stmt = conn.createStatement();
+//            ResultSet rs = stmt.executeQuery(sql);
+//            if (rs.next()) {
+//                menu = new Menu();
+//                menu.setAtrIdMenu(rs.getString("idmenu"));
+//                idMenu = rs.getString("IDMENU");
+//                menu.setAtrNomMenu(rs.getString("namemenu"));
+//                menu.setAtrIdRest(rs.getString("idrest"));
+//                obtenerDias(idMenu, menu);
+//            }
+//            this.disconnect();
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(MenuRepository.class.getName()).log(Level.SEVERE, "Error al buscar en la base de datos", ex);
+//        }
+//
         return menu;
     }
 
