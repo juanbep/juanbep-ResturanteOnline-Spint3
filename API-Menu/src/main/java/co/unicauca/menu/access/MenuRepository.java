@@ -364,19 +364,19 @@ public class MenuRepository implements IMenuRepository {
 
     @Override
     public List<String> listarPlato(String prmIdMenu) {
+
         List<String> listaPlato = null;
         try {
 
-            String sql = "SELECT ID FROM ofrece WHERE IDMENU = '" + prmIdMenu + "'";
+            String sql = "SELECT NAME FROM plato WHERE IDMENU = '" + prmIdMenu + "'";
             this.connect();
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
+            listaPlato = new ArrayList<>();
             while (rs.next()) {
-                listaPlato = new ArrayList<>();
 
-                listaPlato.add(rs.getString("ID"));
-
+                listaPlato.add(rs.getString("NAME"));
             }
             this.disconnect();
         } catch (SQLException ex) {

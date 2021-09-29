@@ -128,12 +128,12 @@ public class RestauranteController {
           http://localhost:8084/API-Restaurante/restaurante-service/restaurante/222
           -H 'Content-Type: application/json' \
           -d '{
-               "name":"La Parrilla española",
-               "address":"Diagonal a Éxito Panamericana", 
-               "mobile":"8282822",
-               "email":"española@", 
-               "city":"popayan",
-               "userNameAdmin":"magutierrez"
+               "atrNameRest":"La Parrilla española",
+               "atrAddressRest":"Diagonal a Éxito Panamericana", 
+               "atrMobileRest":"8282822",
+               "atrEmailRest":"española@", 
+               "atrCityRest":"popayan",
+               "atrAdmiRest":"magutierrez"
         }'
     */
     @PUT
