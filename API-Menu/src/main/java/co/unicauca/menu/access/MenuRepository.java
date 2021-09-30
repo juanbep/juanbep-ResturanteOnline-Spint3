@@ -117,6 +117,7 @@ public class MenuRepository implements IMenuRepository {
                 newMenu.setAtrNomMenu(rs.getString("NAMEMENU"));
                 newMenu.setAtrIdRest(rs.getString("IDREST"));
                 obtenerDias(idMenu, newMenu);
+                obtenerPlatos(idMenu, newMenu);
                 menu.add(newMenu);
             }
             this.disconnect();
@@ -145,6 +146,7 @@ public class MenuRepository implements IMenuRepository {
                 newMenu.setAtrNomMenu(rs.getString("NAMEMENU"));
                 newMenu.setAtrIdMenu(rs.getString("IDREST"));
                 obtenerDias(idMenu, newMenu);
+                obtenerPlatos(idMenu, newMenu);
                 menu.add(newMenu);
             }
             this.disconnect();
@@ -175,6 +177,7 @@ public class MenuRepository implements IMenuRepository {
                 menu.setAtrNomMenu(rs.getString("namemenu"));
                 menu.setAtrIdRest(rs.getString("idrest"));
                 obtenerDias(idMenu, menu);
+                obtenerPlatos(idMenu, menu);
             }
             this.disconnect();
 
@@ -319,25 +322,35 @@ public class MenuRepository implements IMenuRepository {
     }
 
     public void obtenerDias(String prmIdMenu, Menu menu) {
-
         try {
-
             String sql = "SELECT * FROM visualizacion WHERE IDMENU = '" + prmIdMenu + "'";
             this.connect();
-
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-
             while (rs.next()) {
-
                 menu.setAtrDiasVisualizacion(rs.getString("DIA"));
-
             }
             this.disconnect();
         } catch (SQLException ex) {
             Logger.getLogger(MenuRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+     public void obtenerPlatos(String prmIdMenu, Menu menu) {
+        try {
+            String sql = "SELECT * FROM plato WHERE IDMENU = '" + prmIdMenu + "'";
+            this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                menu.setAtrIdPlatos(rs.getString("ID"));
+            }
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 
     @Override
     public List<String> listarDia(String prmIdMenu) {
