@@ -301,12 +301,12 @@ public class MenuRepository implements IMenuRepository {
     }
 
     @Override
-    public boolean deleteOfrece(String prmIdMenu, String prmIDPlato) {
+    public boolean deletePlato(String prmIdMenu, String prmIDPlato) {
         String sql = "";
         try {
             this.connect();
 
-            sql = "DELETE  FROM ofrece WHERE IDMENU='" + prmIdMenu + "' and ID='" + prmIDPlato + "'";
+            sql = "DELETE  FROM plato WHERE IDMENU='" + prmIdMenu + "' and ID='" + prmIDPlato + "'";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
@@ -368,7 +368,7 @@ public class MenuRepository implements IMenuRepository {
         List<String> listaPlato = null;
         try {
 
-            String sql = "SELECT NAME FROM plato WHERE IDMENU = '" + prmIdMenu + "'";
+            String sql = "SELECT ID FROM plato WHERE IDMENU = '" + prmIdMenu + "'";
             this.connect();
 
             Statement stmt = conn.createStatement();
@@ -376,7 +376,7 @@ public class MenuRepository implements IMenuRepository {
             listaPlato = new ArrayList<>();
             while (rs.next()) {
 
-                listaPlato.add(rs.getString("NAME"));
+                listaPlato.add(rs.getString("ID"));
             }
             this.disconnect();
         } catch (SQLException ex) {

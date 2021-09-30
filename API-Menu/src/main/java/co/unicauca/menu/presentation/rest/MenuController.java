@@ -19,27 +19,28 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * API REST de los servicios web. La anotación @Path indica la URL en la 
- * cual responderá los servicios. Esta anotación se puede poner a nivel de 
- * clase y método. Todos los servicios comparten el mismo Path, la acción 
- * se hacer mediante la anotació GET (consultar), POST (agregar), PUT (editar),
- * DELETE (eliminar).
+ * API REST de los servicios web. La anotación @Path indica la URL en la cual
+ * responderá los servicios. Esta anotación se puede poner a nivel de clase y
+ * método. Todos los servicios comparten el mismo Path, la acción se hacer
+ * mediante la anotació GET (consultar), POST (agregar), PUT (editar), DELETE
+ * (eliminar).
+ *
  * @author Beca98
  */
-
 @Stateless
 @Path("/menu")
 public class MenuController {
+
     /**
-    * Se inyecta la única implementación que hay de ProductService
-    */
+     * Se inyecta la única implementación que hay de ProductService
+     */
     @Inject
     private MenuService service;
-    
+
     public MenuController() {
         service = new MenuService();
     }
-    
+
     /*
         Su uso desde consola mediante client url:
         curl -X GET http://localhost:8084/API-Menu/menu-service/menu/ 
@@ -50,34 +51,31 @@ public class MenuController {
     public List<Menu> findAll() {
         return service.findAll();
     }
-    
+
     /*
         Su uso desde consola mediante client url:
         curl -X GET http://localhost:8084/API-Menu/menu-service/menu/100 
 
      */
-    
     @GET
     @Path("{idMenu}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Menu findByMenuId(@PathParam("idMenu") String id) {
         return service.findByMenuId(id);
     }
-    
-    
+
     /*
         Su uso desde consola mediante client url:
         curl -X GET http://localhost:8084/API-Menu/menu-service/menu/findIdRest100 
 
      */
-    
     @GET
     @Path("/findIdRest/{idMenu}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Menu> findByIdRest(@PathParam("idMenu") String id) {
         return service.findByIdRest(id);
     }
-    
+
     /*
         Su uso desde consola mediante client url:
         curl -X POST \
@@ -87,7 +85,7 @@ public class MenuController {
                "atrNomMenu":"Pizza",
                "atrIdRest":"10"
         }'
-    */
+     */
     @POST
     @Path("/createMenu")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -99,23 +97,21 @@ public class MenuController {
             resp = new JsonResponse(false, "No se pudo crear el Menu", DomainErrors.getErrors());
         }
         return Response.ok().entity(resp).build();
-    } 
-    
+    }
+
     /*
         Su uso desde consola mediante client url:
         curl -X POST \
           http://localhost:8084/API-Menu/menu-service/menu/createMenuVisualizacion/100/sabado 
           -H 'Content-Type: application/json' \
-          -d '{"atrIdMenu":"200",
-               "atrNomMenu":"Pizza",
-               "atrIdRest":"10"
+          -d '{"atrIdMenu":"44",
+               "atrDia":"Jueves"
         }'
-    */
-    
+     */
     @POST
     @Path("/createMenuVisualizacion/{idMenu}/{Dia}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response createVisualizacion(@PathParam("idMenu") String idMenu,@PathParam("Dia") String dia ) {
+    public Response createVisualizacion(@PathParam("idMenu") String idMenu, @PathParam("Dia") String dia) {
         JsonResponse resp;
         if (service.createVisualizacion(idMenu, dia)) {
             resp = new JsonResponse(true, "Dia agregado", null);
@@ -123,10 +119,9 @@ public class MenuController {
             resp = new JsonResponse(false, "No se pudo agregar el dia", DomainErrors.getErrors());
         }
         return Response.ok().entity(resp).build();
-    }     
-    
-    
-        /*
+    }
+
+    /*
         Su uso desde consola mediante client url:
         curl -X POST \
           http://localhost:8084/API-Menu/menu-service/menu/createOfrece/100/sabado 
@@ -135,12 +130,11 @@ public class MenuController {
                "atrNomMenu":"Pizza",
                "atrIdRest":"10"
         }'
-    */
-    
+     */
     @POST
     @Path("/createOfrece/{idMenu}/{idPlato}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response createOfrece(@PathParam("idMenu") String idMenu,@PathParam("idPlato") String idplato ) {
+    public Response createOfrece(@PathParam("idMenu") String idMenu, @PathParam("idPlato") String idplato) {
         JsonResponse resp;
         if (service.createOfrece(idMenu, idplato)) {
             resp = new JsonResponse(true, "Plato agregado", null);
@@ -148,8 +142,8 @@ public class MenuController {
             resp = new JsonResponse(false, "No se pudo agregar plato", DomainErrors.getErrors());
         }
         return Response.ok().entity(resp).build();
-    } 
-    
+    }
+
     /*
         Su uso desde consola mediante client url:
         curl -X PUT \
@@ -160,7 +154,7 @@ public class MenuController {
                "atrIdRest":"10"
             
         }'
-    */
+     */
     @PUT
     @Path("{idMenu}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -174,14 +168,14 @@ public class MenuController {
         return Response.ok().entity(resp).build();
 
     }
-    
+
     /*
         Su uso desde consola mediante client url:
-        curl -X DELETE http://localhost:8084/API-Menu/menu-service/menu/100 
+        curl -X DELETE http://localhost:8084/API-Menu/menu-service/menu/deleteMenu/100 
 
      */
     @DELETE
-    @Path("{idMenu}")
+    @Path("/deleteMenu/{idMenu}")
     public Response deleteMenu(@PathParam("idMenu") String idMenu) {
         JsonResponse resp;
 
@@ -194,7 +188,7 @@ public class MenuController {
         return Response.ok().entity(resp).build();
 
     }
-    
+
     /*
         Su uso desde consola mediante client url:
         curl -X DELETE http://localhost:8084/API-Menu/menu-service/menu/deleteVisualizacion/100/sabado 
@@ -202,7 +196,7 @@ public class MenuController {
      */
     @DELETE
     @Path("/deleteVisualizacion/{idMenu}/{Dia}")
-    public Response deleteVisualizacion(@PathParam("idMenu") String idMenu, @PathParam("Dia") String Dia ) {
+    public Response deleteVisualizacion(@PathParam("idMenu") String idMenu, @PathParam("Dia") String Dia) {
         JsonResponse resp;
 
         if (service.deleteVisualizacion(idMenu, Dia)) {
@@ -213,7 +207,7 @@ public class MenuController {
         }
         return Response.ok().entity(resp).build();
     }
-    
+
     /*
         Su uso desde consola mediante client url:
         curl -X DELETE http://localhost:8084/API-Menu/menu-service/menu/deleteOfrece/100/sabado 
@@ -221,10 +215,10 @@ public class MenuController {
      */
     @DELETE
     @Path("/deleteOfrece/{idMenu}/{idPlato}")
-    public Response deleteOfrece(@PathParam("idMenu") String idMenu, @PathParam("plato") String plato ) {
+    public Response deleteOfrece(@PathParam("idMenu") String idMenu, @PathParam("plato") String plato) {
         JsonResponse resp;
 
-        if (service.deleteOfrece(idMenu, plato)) {
+        if (service.deletePlato(idMenu, plato)) {
             resp = new JsonResponse(true, "plato eliminado con éxito", null);
 
         } else {
@@ -232,8 +226,8 @@ public class MenuController {
         }
         return Response.ok().entity(resp).build();
     }
-    
-     /*
+
+    /*
         Su uso desde consola mediante client url:
         curl -X GET http://localhost:8084/API-Menu/menu-service/menu/lisPlatos/100 
 
@@ -244,8 +238,8 @@ public class MenuController {
     public List<String> findPlato(@PathParam("idMenu") String idMenu) {
         return service.listaPlatos(idMenu);
     }
-    
-     /*
+
+    /*
         Su uso desde consola mediante client url:
         curl -X GET http://localhost:8084/API-Menu/menu-service/menu/lisDia/100 
 

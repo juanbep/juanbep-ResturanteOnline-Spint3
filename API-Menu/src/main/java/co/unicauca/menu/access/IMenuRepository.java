@@ -31,5 +31,5 @@ public interface IMenuRepository
     
     boolean deleteVisualizacion (String prmIdMenu, String prmDia);
     
-    boolean deleteOfrece (String prmIdMenu, String prmIDPlato);
+    boolean deletePlato (String prmIdMenu, String prmIDPlato);
 }
