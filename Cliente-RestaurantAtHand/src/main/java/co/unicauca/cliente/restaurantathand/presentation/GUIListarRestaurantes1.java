@@ -5,8 +5,6 @@
  */
 package co.unicauca.cliente.restaurantathand.presentation;
 
-
-
 import co.unicauca.cliente.restaurantathand.access.Factory;
 import co.unicauca.cliente.restaurantathand.access.IRestaurantAccess;
 import co.unicauca.cliente.restaurantathand.domain.entity.Admin;
@@ -21,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -31,25 +30,24 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
 
     /*
      * administrador del restaurante
-    */
-    
+     */
     private Admin admin;
-    
+
     /**
      * Almacena una lista de restaurantes
      */
     private List<Restaurant> restaurants;
-    
+
     /*
      * Restaurante seleccionado
      */
     private Restaurant restaurantSelect;
-    
+
     /**
-     *  
+     *
      */
     private JDesktopPane dskEscritorio;
-    
+
     /**
      * Creates new form GUIListarRestaurantes
      */
@@ -60,8 +58,7 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
     ImageIcon iconobtnMirarPlatos = new ImageIcon("src/main/java/resource/mirarPlato.jpeg");
     ImageIcon iconobtnCancelar = new ImageIcon("src/main/java/resource/cancelar.jpeg");
     ImageIcon iconolblLogo = new ImageIcon("src/main/java/resource/bienvenido.png");
-    
-    
+
     public GUIListarRestaurantes1() {
         initComponents();
         lblLogo.setIcon(iconolblLogo);
@@ -71,6 +68,7 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         btnSeleccionar.setIcon(iconobtnSeleccionar);
         btnPlatos.setIcon(iconobtnMirarPlatos);
         btnRecargar.setIcon(iconobtnCancelar);
+        this.tblListarRest.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 
     public GUIListarRestaurantes1(Admin admin) {
@@ -87,7 +85,7 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         cargarDatosTabla();
         admin.setRestaurants(restaurants);
         btnSeleccionar.setVisible(false);
-      
+
         botones(false);
     }
 
@@ -109,13 +107,14 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         botones(false);
     }
 
-    private void botones (boolean var ){
-    
+    private void botones(boolean var) {
+
         btnActualizar.setEnabled(var);
         btnEliminar.setEnabled(var);
         btnMenu.setEnabled(var);
         btnPlatos.setEnabled(var);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -131,7 +130,6 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblListarRest = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        lblImagenRest = new javax.swing.JLabel();
         btnSeleccionar = new javax.swing.JButton();
         btnPlatos = new javax.swing.JButton();
         btnRecargar = new javax.swing.JButton();
@@ -161,7 +159,19 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
             new String [] {
                 "Nit", "Name", "Address", "Mobile", "Email", "City"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblListarRest.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblListarRest.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblListarRest.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblListarRest.setShowGrid(true);
         tblListarRest.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblListarRestMouseClicked(evt);
@@ -172,8 +182,6 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         pnlSur.add(jScrollPane2);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblImagenRest.setText("jLabel1");
 
         btnSeleccionar.setText("Seleccionar");
 
@@ -212,37 +220,34 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblImagenRest, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSeleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSeleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 24, 24)
+                    .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPlatos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPlatos, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                    .addComponent(btnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRecargar, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(29, 29, 29))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRecargar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
                     .addComponent(btnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSeleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPlatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRecargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(26, 26, 26))
-            .addComponent(lblImagenRest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,8 +255,8 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlNorte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlSur, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlSur, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,10 +271,6 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPlatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlatosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPlatosActionPerformed
-
     //Seleccionar una fila de la tabla
     private void tblListarRestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListarRestMouseClicked
         int seleccionar = tblListarRest.rowAtPoint(evt.getPoint());
@@ -277,46 +278,45 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         cargarLista();
         cargarDatosTabla();
         botones(true);
-        
+
     }//GEN-LAST:event_tblListarRestMouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el registro, ¿desea continuar?",
-                            "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) 
-        {
-            IRestaurantAccess service = Factory.getInstance().getRestaurantService();
-            // Inyecta la dependencia
-            RestaurantService restaurant = new RestaurantService(service);
+            "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        IRestaurantAccess service = Factory.getInstance().getRestaurantService();
+        // Inyecta la dependencia
+        RestaurantService restaurant = new RestaurantService(service);
 
-            try {
-                restaurant.delete(restaurantSelect.getAtrNitRest());
-            } catch (Exception ex) {
-                Logger.getLogger(GUICrearRest.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            cargarLista();
-            cargarDatosTabla();
+        try {
+            restaurant.delete(restaurantSelect.getAtrNitRest());
+        } catch (Exception ex) {
+            Logger.getLogger(GUICrearRest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cargarLista();
+        cargarDatosTabla();
         }
         botones(false);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        GUICrearRest1 objActualizarRest  = new GUICrearRest1(admin);
+        GUICrearRest1 objActualizarRest = new GUICrearRest1(admin);
         objActualizarRest.restaurantUpdate = restaurantSelect;
         objActualizarRest.activarActualizar();
-        
+
         dskEscritorio.add(objActualizarRest);
         try {
-                objActualizarRest.setMaximum(false);
-            } catch (PropertyVetoException ex) {
-                Logger.getLogger(GUIListarRestaurantes1.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            objActualizarRest.setMaximum(false);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(GUIListarRestaurantes1.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             this.setMaximum(false);
         } catch (PropertyVetoException ex) {
             Logger.getLogger(GUIListarRestaurantes1.class.getName()).log(Level.SEVERE, null, ex);
         }
-            objActualizarRest.show();
-            botones(false);
+        objActualizarRest.show();
+        botones(false);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
@@ -325,6 +325,9 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         botones(false);
     }//GEN-LAST:event_btnRecargarActionPerformed
 
+    private void btnPlatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlatosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPlatosActionPerformed
 
     /**
      * Carga un lista a traves de una API REST
@@ -340,10 +343,10 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
             successMessage(ex.getMessage(), "Atención");
         }
     }
-    
+
     public void cargarDatosTabla() {
         tblListarRest.setDefaultRenderer(Object.class, new Render());
-        
+
         DefaultTableModel model = (DefaultTableModel) tblListarRest.getModel();
         limpiarTabla(model);
         Object rowData[] = new Object[6];
@@ -351,21 +354,21 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
             rowData[0] = restaurent.getAtrNitRest();
             rowData[1] = restaurent.getAtrNameRest();
             rowData[2] = restaurent.getAtrAddressRest();
-            rowData[3] = restaurent.getAtrCityRest();
-            rowData[4] = restaurent.getAtrMobileRest();
-            rowData[5] = restaurent.getAtrEmailRest();
+            rowData[3] = restaurent.getAtrMobileRest();
+            rowData[4] = restaurent.getAtrEmailRest();
+            rowData[5] = restaurent.getAtrCityRest();
             model.addRow(rowData);
         }
     }
-    
+
     public void limpiarTabla(DefaultTableModel objTabla) {
         while (objTabla.getRowCount()
                 > 0) {
             objTabla.removeRow(0);
         }
     }
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
@@ -375,7 +378,6 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSeleccionar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblImagenRest;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JPanel pnlNorte;
     private javax.swing.JPanel pnlSur;
