@@ -80,13 +80,13 @@ co\unicauca\cliente\restaurantathand\presentation\GUICrearCliente1$1.class
 co\unicauca\cliente\restaurantathand\presentation\GUICrearPlato.class
 co\unicauca\cliente\restaurantathand\presentation\GUILoginRest1$1.class
 co\unicauca\cliente\restaurantathand\access\IRestaurantAccess.class
+co\unicauca\cliente\restaurantathand\presentation\GUIListarMenu$2.class
 co\unicauca\cliente\restaurantathand\presentation\GUIListarRestaurantesCustomer.class
 co\unicauca\cliente\restaurantathand\domain\entity\Menu.class
 co\unicauca\cliente\restaurantathand\presentation\GUICrearMenu$2.class
 co\unicauca\cliente\restaurantathand\access\Factory.class
 co\unicauca\cliente\restaurantathand\presentation\GUIListarMenu.class
 co\unicauca\cliente\PlatoJerseyClient.class
-co\unicauca\cliente\restaurantathand\presentation\GUIListarRestaurantes1$6.class
 co\unicauca\cliente\restaurantathand\presentation\GUICustomerRest1$3.class
 co\unicauca\cliente\restaurantathand\presentation\GUILoginRest1$2.class
 co\unicauca\cliente\restaurantathand\presentation\GUIListarRestaurantesCustomer$2.class

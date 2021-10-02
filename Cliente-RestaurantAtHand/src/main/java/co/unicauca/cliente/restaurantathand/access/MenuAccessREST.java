@@ -27,7 +27,7 @@ public class MenuAccessREST implements IMenuAccess {
 
     @Override
     public List<Menu> findMenubyRN(String name) throws Exception {
-         GenericType<List<Menu>> listResponseTypeM = new GenericType<List<Menu>>() {
+        GenericType<List<Menu>> listResponseTypeM = new GenericType<List<Menu>>() {
         };
         List<Menu> menus = jersey.findMbyRN_JSON(listResponseTypeM, name);
         return menus;
@@ -41,17 +41,16 @@ public class MenuAccessREST implements IMenuAccess {
         }
         menu = newMenu;
         rta = jersey.edit_JSON(menu, id);
-        
-        if(newMenu.getAtrIdPlatos() !=null)
-        {
-            for (int i=0; i < newMenu.getAtrIdPlatos().size();i++){
-                jersey.createOfrece_JSON(menu, menu.getAtrIdMenu(),newMenu.getAtrIdPlatos().get(i));
-            }  
+
+        if (newMenu.getAtrIdPlatos() != null) {
+            for (int i = 0; i < newMenu.getAtrIdPlatos().size(); i++) {
+                jersey.createOfrece_JSON(menu, menu.getAtrIdMenu(), newMenu.getAtrIdPlatos().get(i));
+            }
         }
-        if(newMenu.getAtrDiasVisualizacion() != null){
-            for (int i=0; i < newMenu.getAtrDiasVisualizacion().size();i++){
-                jersey.createVisualizacion_JSON(menu, menu.getAtrIdMenu(),newMenu.getAtrDiasVisualizacion().get(i));
-            } 
+        if (newMenu.getAtrDiasVisualizacion() != null) {
+            for (int i = 0; i < newMenu.getAtrDiasVisualizacion().size(); i++) {
+                jersey.createVisualizacion_JSON(menu, menu.getAtrIdMenu(), newMenu.getAtrDiasVisualizacion().get(i));
+            }
         }
         return true;
     }
@@ -68,38 +67,38 @@ public class MenuAccessREST implements IMenuAccess {
 
     @Override
     public boolean createMenu(Menu newMenu) throws Exception {
-         Menu menu = findMenu(newMenu.getAtrIdMenu());
+        Menu menu = findMenu(newMenu.getAtrIdMenu());
         if (menu != null) {
             return false;
         }
         rta = jersey.create_JSON(newMenu);
-        
-        if(newMenu.getAtrDiasVisualizacion() != null){
-            for (int i=0; i < newMenu.getAtrDiasVisualizacion().size();i++){
-                jersey.createVisualizacion_JSON(menu, newMenu.getAtrIdMenu(),newMenu.getAtrDiasVisualizacion().get(i));
-            } 
+
+        if (newMenu.getAtrDiasVisualizacion() != null) {
+            for (int i = 0; i < newMenu.getAtrDiasVisualizacion().size(); i++) {
+                jersey.createVisualizacion_JSON(menu, newMenu.getAtrIdMenu(), newMenu.getAtrDiasVisualizacion().get(i));
+            }
         }
         return true;
     }
 
-    public boolean addDish(Menu menu,Dish dish){
+    public boolean addDish(Menu menu, Dish dish) {
         GenericType<List<String>> listResponseTypeM = new GenericType<List<String>>() {
         };
         List<String> platos = jersey.findPlato_JSON(listResponseTypeM, dish.getAtrNameDish());
-        
+
         //buscar si ya existe el plato en ese menu 
-        if( !platos.isEmpty())
-        {
-            for (int i=0; i < platos.size();i++){
-                if(platos.get(i).equals(dish.getAtrIdDish())){
+        if (!platos.isEmpty()) {
+            for (int i = 0; i < platos.size(); i++) {
+                if (platos.get(i).equals(dish.getAtrIdDish())) {
                     return false;
                 }
-            }  
+            }
         }
-        
-         jersey.createOfrece_JSON(menu, menu.getAtrIdMenu(),dish.getAtrIdDish());
-         return true;
+
+        jersey.createOfrece_JSON(menu, menu.getAtrIdMenu(), dish.getAtrIdDish());
+        return true;
     }
+
     /**
      * Lista todos los menus consumiendo un API REST mediante un cliente jersey
      *
@@ -113,5 +112,13 @@ public class MenuAccessREST implements IMenuAccess {
         List<Menu> menus = jersey.findAll(listResponseTypeM);
         return menus;
     }
+
+//    @Override
+//    public List<Menu> findbyMenubyIdRest(String idRest) throws Exception {
+//        GenericType<List<Menu>> listResponseTypeM = new GenericType<List<Menu>>() {
+//        };
+//        List<Menu> menus = jersey.findByMenuIdRest_JSON(listResponseTypeM, idRest);
+//        return menus;
+//    }
 
 }

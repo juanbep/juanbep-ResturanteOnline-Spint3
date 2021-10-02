@@ -66,4 +66,6 @@ public interface IMenuAccess {
     
     public boolean addDish(Menu menu,Dish dish)throws Exception;
     
+//    public List<Menu> findbyMenubyIdRest(String idRest)throws Exception;
+     
 }

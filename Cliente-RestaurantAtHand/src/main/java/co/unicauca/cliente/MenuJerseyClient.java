@@ -104,7 +104,7 @@ public class MenuJerseyClient {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
-    
+
     public Response deleteOfrece(String idMenu, String idPlato) throws ClientErrorException {
         return webTarget.path(java.text.MessageFormat.format("deleteOfrece/{0}/{1}", new Object[]{idMenu, idPlato})).request().delete(Response.class);
     }
@@ -118,16 +118,16 @@ public class MenuJerseyClient {
         resource = resource.path(java.text.MessageFormat.format("findIdRest/{0}", new Object[]{rn}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_XML).get(responseType);
     }
-    
-     public <T> List<Menu> findMbyRN_JSON(GenericType<List<Menu>> responseType, String rn) throws ClientErrorException {
+
+    public <T> List<Menu> findMbyRN_JSON(GenericType<List<Menu>> responseType, String rn) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("findIdRest/{0}", new Object[]{rn}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
-
-    public <T> List<String> findPlato_JSON(GenericType<List<String>> responseType, String atrNameDish) throws ClientErrorException{
+   
+    public <T> List<String> findPlato_JSON(GenericType<List<String>> responseType, String atrNameDish) throws ClientErrorException {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
-    
+
 }

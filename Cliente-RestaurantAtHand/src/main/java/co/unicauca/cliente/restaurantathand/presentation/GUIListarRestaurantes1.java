@@ -124,18 +124,18 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlNorte = new javax.swing.JPanel();
-        lblLogo = new javax.swing.JLabel();
         pnlSur = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblListarRest = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        btnSeleccionar = new javax.swing.JButton();
-        btnPlatos = new javax.swing.JButton();
-        btnRecargar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
+        btnPlatos = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnSeleccionar = new javax.swing.JButton();
+        btnRecargar = new javax.swing.JButton();
+        pnlNorte = new javax.swing.JPanel();
+        lblLogo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -143,21 +143,16 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
-        pnlNorte.setBackground(new java.awt.Color(255, 255, 255));
-        pnlNorte.setLayout(new java.awt.GridLayout(1, 0));
-
-        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pnlNorte.add(lblLogo);
-
         pnlSur.setBackground(new java.awt.Color(255, 255, 255));
-        pnlSur.setLayout(new java.awt.GridLayout(1, 0));
+        pnlSur.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Restaurantes", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        pnlSur.setLayout(new java.awt.GridLayout());
 
         tblListarRest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nit", "Name", "Address", "Mobile", "Email", "City"
+                "Id Restaurante", "Nombre", "Direccion", "Telefono", "Email", "Ciudad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -168,9 +163,6 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblListarRest.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tblListarRest.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblListarRest.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblListarRest.setShowGrid(true);
         tblListarRest.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -182,31 +174,14 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         pnlSur.add(jScrollPane2);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(393, 140));
+        jPanel1.setLayout(new java.awt.GridLayout(2, 3));
 
-        btnSeleccionar.setText("Seleccionar");
+        btnMenu.setText("Ver Menus");
+        jPanel1.add(btnMenu);
 
-        btnPlatos.setText("Mirar Platos");
-        btnPlatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlatosActionPerformed(evt);
-            }
-        });
-
-        btnRecargar.setText("Recargar Pagina");
-        btnRecargar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRecargarActionPerformed(evt);
-            }
-        });
-
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
-
-        btnMenu.setText("Mirar Menu");
+        btnPlatos.setText("Ver Platos");
+        jPanel1.add(btnPlatos);
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -214,92 +189,69 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnEliminar);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSeleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPlatos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRecargar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActualizar)
-                    .addComponent(btnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSeleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPlatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRecargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        btnActualizar.setText("Actualizar Restaurante");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnActualizar);
+
+        btnSeleccionar.setText("Seleccionar");
+        jPanel1.add(btnSeleccionar);
+
+        btnRecargar.setText("Recargar");
+        btnRecargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecargarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRecargar);
+
+        pnlNorte.setBackground(new java.awt.Color(255, 255, 255));
+        pnlNorte.setLayout(new java.awt.GridLayout());
+
+        lblLogo.setBackground(new java.awt.Color(255, 255, 255));
+        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLogo.setMaximumSize(new java.awt.Dimension(393, 56));
+        lblLogo.setMinimumSize(new java.awt.Dimension(393, 56));
+        lblLogo.setPreferredSize(new java.awt.Dimension(393, 28));
+        pnlNorte.add(lblLogo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlSur, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlNorte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlSur, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlNorte, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(pnlNorte, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlSur, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlSur, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //Seleccionar una fila de la tabla
     private void tblListarRestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListarRestMouseClicked
+        // TODO add your handling code here:
         int seleccionar = tblListarRest.rowAtPoint(evt.getPoint());
         restaurantSelect = restaurants.get(seleccionar);
         cargarLista();
         cargarDatosTabla();
         botones(true);
-
     }//GEN-LAST:event_tblListarRestMouseClicked
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el registro, ¿desea continuar?",
-            "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-        IRestaurantAccess service = Factory.getInstance().getRestaurantService();
-        // Inyecta la dependencia
-        RestaurantService restaurant = new RestaurantService(service);
-
-        try {
-            restaurant.delete(restaurantSelect.getAtrNitRest());
-        } catch (Exception ex) {
-            Logger.getLogger(GUICrearRest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        cargarLista();
-        cargarDatosTabla();
-        }
-        botones(false);
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
         GUICrearRest1 objActualizarRest = new GUICrearRest1(admin);
         objActualizarRest.restaurantUpdate = restaurantSelect;
         objActualizarRest.activarActualizar();
@@ -320,14 +272,30 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
+        // TODO add your handling code here:
         cargarLista();
         cargarDatosTabla();
         botones(false);
     }//GEN-LAST:event_btnRecargarActionPerformed
 
-    private void btnPlatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlatosActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPlatosActionPerformed
+        if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el registro, ¿desea continuar?",
+                "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            IRestaurantAccess service = Factory.getInstance().getRestaurantService();
+            // Inyecta la dependencia
+            RestaurantService restaurant = new RestaurantService(service);
+
+            try {
+                restaurant.delete(restaurantSelect.getAtrNitRest());
+            } catch (Exception ex) {
+                Logger.getLogger(GUICrearRest.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            cargarLista();
+            cargarDatosTabla();
+        }
+        botones(false);
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * Carga un lista a traves de una API REST

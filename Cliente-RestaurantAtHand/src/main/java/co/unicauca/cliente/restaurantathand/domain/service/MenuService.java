@@ -10,7 +10,7 @@ import java.util.List;
  * @author Beca98
  */
 public class MenuService {
-    
+
     private final IMenuAccess service;
 
     /**
@@ -21,8 +21,8 @@ public class MenuService {
     public MenuService(IMenuAccess service) {
         this.service = service;
     }
-    
-     /**
+
+    /**
      * Busca un Menu en el servidor remoto
      *
      * @param id identificador del Menu
@@ -94,8 +94,13 @@ public class MenuService {
     public List<Menu> listMenus() throws Exception {
         return service.list();
     }
-    
-    public boolean addDish (Menu menu, Dish dish) throws Exception{
+
+    public boolean addDish(Menu menu, Dish dish) throws Exception {
         return service.addDish(menu, dish);
     }
+
+//    public List<Menu> findbyMenubyIdRest(String idRest) throws Exception {
+//        return service.findbyMenubyIdRest(idRest);
+//    }
+
 }
