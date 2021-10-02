@@ -65,8 +65,8 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         btnActualizar.setIcon(iconobtnActualizar);
         btnMenu.setIcon(iconobtnMirarMenu);
         btnEliminar.setIcon(iconobtnEliminar);
-        btnSeleccionar.setIcon(iconobtnSeleccionar);
-        btnPlatos.setIcon(iconobtnMirarPlatos);
+        //    btnSeleccionar.setIcon(iconobtnSeleccionar);
+        //  btnPlatos.setIcon(iconobtnMirarPlatos);
         btnRecargar.setIcon(iconobtnCancelar);
         this.tblListarRest.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
@@ -77,14 +77,14 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         btnActualizar.setIcon(iconobtnActualizar);
         btnMenu.setIcon(iconobtnMirarMenu);
         btnEliminar.setIcon(iconobtnEliminar);
-        btnSeleccionar.setIcon(iconobtnSeleccionar);
-        btnPlatos.setIcon(iconobtnMirarPlatos);
+        //  btnSeleccionar.setIcon(iconobtnSeleccionar);
+        //  btnPlatos.setIcon(iconobtnMirarPlatos);
         btnRecargar.setIcon(iconobtnCancelar);
         this.admin = admin;
         cargarLista();
         cargarDatosTabla();
         admin.setRestaurants(restaurants);
-        btnSeleccionar.setVisible(false);
+        //  btnSeleccionar.setVisible(false);
 
         botones(false);
     }
@@ -95,15 +95,15 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         btnActualizar.setIcon(iconobtnActualizar);
         btnMenu.setIcon(iconobtnMirarMenu);
         btnEliminar.setIcon(iconobtnEliminar);
-        btnSeleccionar.setIcon(iconobtnSeleccionar);
-        btnPlatos.setIcon(iconobtnMirarPlatos);
+        // btnSeleccionar.setIcon(iconobtnSeleccionar);
+        //  btnPlatos.setIcon(iconobtnMirarPlatos);
         btnRecargar.setIcon(iconobtnCancelar);
         this.admin = admin;
         this.dskEscritorio = dskEscritorio;
         cargarLista();
         cargarDatosTabla();
         admin.setRestaurants(restaurants);
-        btnSeleccionar.setVisible(false);
+        //  btnSeleccionar.setVisible(false);
         botones(false);
     }
 
@@ -112,7 +112,7 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         btnActualizar.setEnabled(var);
         btnEliminar.setEnabled(var);
         btnMenu.setEnabled(var);
-        btnPlatos.setEnabled(var);
+        //btnPlatos.setEnabled(var);
     }
 
     /**
@@ -129,10 +129,8 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         tblListarRest = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         btnMenu = new javax.swing.JButton();
-        btnPlatos = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
-        btnSeleccionar = new javax.swing.JButton();
         btnRecargar = new javax.swing.JButton();
         pnlNorte = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
@@ -178,10 +176,12 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new java.awt.GridLayout(2, 3));
 
         btnMenu.setText("Ver Menus");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnMenu);
-
-        btnPlatos.setText("Ver Platos");
-        jPanel1.add(btnPlatos);
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -198,9 +198,6 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(btnActualizar);
-
-        btnSeleccionar.setText("Seleccionar");
-        jPanel1.add(btnSeleccionar);
 
         btnRecargar.setText("Recargar");
         btnRecargar.addActionListener(new java.awt.event.ActionListener() {
@@ -241,17 +238,18 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblListarRestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListarRestMouseClicked
-        // TODO add your handling code here:
-        int seleccionar = tblListarRest.rowAtPoint(evt.getPoint());
+    public void seleccionRest() {
+// TODO add your handling code here:
+        int seleccionar = tblListarRest.getSelectedRow();
         restaurantSelect = restaurants.get(seleccionar);
         cargarLista();
         cargarDatosTabla();
-        botones(true);
-    }//GEN-LAST:event_tblListarRestMouseClicked
+    }
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
+
+        seleccionRest();
         GUICrearRest1 objActualizarRest = new GUICrearRest1(admin);
         objActualizarRest.restaurantUpdate = restaurantSelect;
         objActualizarRest.activarActualizar();
@@ -268,6 +266,7 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
             Logger.getLogger(GUIListarRestaurantes1.class.getName()).log(Level.SEVERE, null, ex);
         }
         objActualizarRest.show();
+
         botones(false);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
@@ -278,8 +277,10 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         botones(false);
     }//GEN-LAST:event_btnRecargarActionPerformed
 
+
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
+        seleccionRest();
         if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el registro, ¿desea continuar?",
                 "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             IRestaurantAccess service = Factory.getInstance().getRestaurantService();
@@ -294,8 +295,28 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
             cargarLista();
             cargarDatosTabla();
         }
+
         botones(false);
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void tblListarRestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListarRestMouseClicked
+        // TODO add your handling code here:
+        botones(true);
+    }//GEN-LAST:event_tblListarRestMouseClicked
+
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        // TODO add your handling code here:
+        seleccionRest();
+        GUIListarMenu objListarMenu = new GUIListarMenu(dskEscritorio, restaurantSelect);
+        dskEscritorio.add(objListarMenu);
+        try {
+            objListarMenu.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(GUIListarMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        objListarMenu.show();
+
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     /**
      * Carga un lista a traves de una API REST
@@ -341,9 +362,7 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btnPlatos;
     private javax.swing.JButton btnRecargar;
-    private javax.swing.JButton btnSeleccionar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblLogo;

@@ -144,7 +144,7 @@ public class MenuRepository implements IMenuRepository {
                 newMenu.setAtrIdMenu(rs.getString("IDMENU"));
                 idMenu = rs.getString("IDMENU");
                 newMenu.setAtrNomMenu(rs.getString("NAMEMENU"));
-                newMenu.setAtrIdMenu(rs.getString("IDREST"));
+                newMenu.setAtrIdRest(rs.getString("IDREST"));
                 obtenerDias(idMenu, newMenu);
                 obtenerPlatos(idMenu, newMenu);
                 menu.add(newMenu);

@@ -116,11 +116,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver Menus"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnPlatos">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ver Platos"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMenuActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEliminar">
           <Properties>
@@ -137,11 +135,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnSeleccionar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Seleccionar"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnRecargar">
           <Properties>
