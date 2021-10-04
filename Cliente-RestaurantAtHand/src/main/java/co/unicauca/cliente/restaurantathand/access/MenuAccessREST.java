@@ -26,10 +26,10 @@ public class MenuAccessREST implements IMenuAccess {
     }
 
     @Override
-    public List<Menu> findMenubyRN(String name) throws Exception {
+    public List<Menu> findMenubyIdRest(String idRest) throws Exception {
         GenericType<List<Menu>> listResponseTypeM = new GenericType<List<Menu>>() {
         };
-        List<Menu> menus = jersey.findMbyRN_JSON(listResponseTypeM, name);
+        List<Menu> menus = jersey.findMenubyIdRest_JSON(listResponseTypeM, idRest);
         return menus;
     }
 

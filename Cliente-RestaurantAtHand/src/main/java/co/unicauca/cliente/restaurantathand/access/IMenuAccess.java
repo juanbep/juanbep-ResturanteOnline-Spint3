@@ -26,7 +26,7 @@ public interface IMenuAccess {
      * @return objeto de tipo Menu
      * @throws Exception error al buscar un Menu y restaurante
      */
-    public List<Menu> findMenubyRN(String name) throws Exception;
+    public List<Menu> findMenubyIdRest(String idRest) throws Exception;
 
     /**
      * Metodo encargado de actualizar un Menu

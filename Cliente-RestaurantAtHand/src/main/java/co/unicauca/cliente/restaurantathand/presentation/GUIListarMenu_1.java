@@ -73,7 +73,7 @@ public class GUIListarMenu_1 extends javax.swing.JInternalFrame {
         MenuService menu = new MenuService(service);
 
         try {
-            Menus = menu.findbyMenubyRN(restaurant.getAtrNitRest());
+            Menus = menu.findbyMenubyIdRest(restaurant.getAtrNitRest());
         } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");
         }

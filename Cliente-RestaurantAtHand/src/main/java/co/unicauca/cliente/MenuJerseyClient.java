@@ -119,9 +119,9 @@ public class MenuJerseyClient {
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_XML).get(responseType);
     }
 
-    public <T> List<Menu> findMbyRN_JSON(GenericType<List<Menu>> responseType, String rn) throws ClientErrorException {
+    public <T> List<Menu> findMenubyIdRest_JSON(GenericType<List<Menu>> responseType, String idRest) throws ClientErrorException {
         WebTarget resource = webTarget;
-        resource = resource.path(java.text.MessageFormat.format("findIdRest/{0}", new Object[]{rn}));
+        resource = resource.path(java.text.MessageFormat.format("findIdRest/{0}", new Object[]{idRest}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
    

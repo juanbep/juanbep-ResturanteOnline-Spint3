@@ -75,7 +75,7 @@ public final class GUIRestauranteEscogido extends javax.swing.JInternalFrame {
         MenuService menu = new MenuService(service);
 
         try {
-            listMenu= menu.findbyMenubyRN(restauranteEscogido.getAtrNitRest());
+            listMenu= menu.findbyMenubyIdRest(restauranteEscogido.getAtrNitRest());
         } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");
         }
