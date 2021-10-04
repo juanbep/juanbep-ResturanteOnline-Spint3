@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Beca98
  */
-public class GUIListarMenu extends javax.swing.JInternalFrame {
+public class GUIListarMenu_1 extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GUIListarMenu
@@ -45,19 +45,19 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
      */
     private List<Menu> Menus;
 
-    public GUIListarMenu() {
+    public GUIListarMenu_1() {
         initComponents();
         lblLogo.setIcon(iconolbl);
-        //btnBuscarMenuList.setIcon(iconobtn);
-       // btnBuscarMenuList.setVisible(true);
+        btnBuscarMenuList.setIcon(iconobtn);
+        btnBuscarMenuList.setVisible(true);
     }
 
-    public GUIListarMenu(JDesktopPane dskEscritorio, Restaurant restaurant) {
+    public GUIListarMenu_1(JDesktopPane dskEscritorio, Restaurant restaurant) {
         initComponents();
         lblLogo.setIcon(iconolbl);
-        //btnBuscarMenuList.setIcon(iconobtn);
+        btnBuscarMenuList.setIcon(iconobtn);
         this.restaurant = restaurant;
-       // btnBuscarMenuList.setVisible(true);
+        btnBuscarMenuList.setVisible(true);
         this.dskEscritorio = dskEscritorio;
         cargarLista();
         cargarDatosTabla();
@@ -114,17 +114,15 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         pnlCentro = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        lblidMenuList = new javax.swing.JLabel();
+        txtIdMenuList = new javax.swing.JTextField();
+        btnBuscarMenuList = new javax.swing.JButton();
         pnlSur = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListarMenus = new javax.swing.JTable();
         pnlNorte = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -132,24 +130,16 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
 
         pnlCentro.setBackground(new java.awt.Color(255, 255, 255));
         pnlCentro.setPreferredSize(new java.awt.Dimension(393, 140));
-        pnlCentro.setLayout(new java.awt.GridLayout(2, 2));
+        pnlCentro.setLayout(new java.awt.GridLayout(3, 3));
 
-        jButton1.setText("Ver Platos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        pnlCentro.add(jButton1);
+        lblidMenuList.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblidMenuList.setText("ID MENU:");
+        lblidMenuList.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlCentro.add(lblidMenuList);
+        pnlCentro.add(txtIdMenuList);
 
-        jButton2.setText("Eliminar");
-        pnlCentro.add(jButton2);
-
-        jButton3.setText("Actualizar Menu");
-        pnlCentro.add(jButton3);
-
-        jButton4.setText("Recargar ");
-        pnlCentro.add(jButton4);
+        btnBuscarMenuList.setText("Buscar");
+        pnlCentro.add(btnBuscarMenuList);
 
         pnlSur.setBackground(new java.awt.Color(255, 255, 255));
         pnlSur.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Menus ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -245,22 +235,17 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
         }*/
     }//GEN-LAST:event_tblListarMenusMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnBuscarMenuList;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblidMenuList;
     private javax.swing.JPanel pnlCentro;
     private javax.swing.JPanel pnlNorte;
     private javax.swing.JPanel pnlSur;
     private javax.swing.JTable tblListarMenus;
+    private javax.swing.JTextField txtIdMenuList;
     // End of variables declaration//GEN-END:variables
 
 }

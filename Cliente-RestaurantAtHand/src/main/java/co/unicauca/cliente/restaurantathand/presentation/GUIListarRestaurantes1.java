@@ -312,7 +312,7 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
         try {
             objListarMenu.setMaximum(true);
         } catch (PropertyVetoException ex) {
-            Logger.getLogger(GUIListarMenu.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUIListarMenu_1.class.getName()).log(Level.SEVERE, null, ex);
         }
         objListarMenu.show();
 
