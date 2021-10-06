@@ -105,11 +105,11 @@ public final class GUIRestauranteEscogido extends javax.swing.JInternalFrame {
         // Inyecta la dependencia
         PlatoService plato = new PlatoService(service);
         Dish platito;
-        for (String platos : menuSeleccionado.getAtrIdPlatos()) {
-            platito = plato.findDish(platos);
-            listPlato.add(platito);
-            
-        }
+//        for (String platos : menuSeleccionado.getAtrIdPlatos()) {
+//            platito = plato.findDish(platos);
+//            listPlato.add(platito);
+//            
+//        }
         
     }
     

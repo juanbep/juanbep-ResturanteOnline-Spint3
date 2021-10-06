@@ -42,11 +42,11 @@ public class MenuAccessREST implements IMenuAccess {
         menu = newMenu;
         rta = jersey.edit_JSON(menu, id);
 
-        if (newMenu.getAtrIdPlatos() != null) {
-            for (int i = 0; i < newMenu.getAtrIdPlatos().size(); i++) {
-                jersey.createOfrece_JSON(menu, menu.getAtrIdMenu(), newMenu.getAtrIdPlatos().get(i));
-            }
-        }
+//        if (newMenu.getAtrIdPlatos() != null) {
+//            for (int i = 0; i < newMenu.getAtrIdPlatos().size(); i++) {
+//                jersey.createOfrece_JSON(menu, menu.getAtrIdMenu(), newMenu.getAtrIdPlatos().get(i));
+//            }
+//        }
         if (newMenu.getAtrDiasVisualizacion() != null) {
             for (int i = 0; i < newMenu.getAtrDiasVisualizacion().size(); i++) {
                 jersey.createVisualizacion_JSON(menu, menu.getAtrIdMenu(), newMenu.getAtrDiasVisualizacion().get(i));

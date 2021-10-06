@@ -84,14 +84,14 @@ public class GUIListarMenu_1 extends javax.swing.JInternalFrame {
         tblListarMenus.setDefaultRenderer(Object.class, new Render());
         DefaultTableModel model = (DefaultTableModel) tblListarMenus.getModel();
         limpiarTabla(model);
-        Object rowData[] = new Object[5];
+        Object rowData[] = new Object[4];
         
         for(Menu menus : Menus){
             rowData[0] = menus.getAtrIdRest();
             rowData[1] = menus.getAtrIdMenu();
             rowData[2] = menus.getAtrNomMenu();
-            rowData[3] = menus.getAtrIdPlatos();
-            rowData[4] = menus.getAtrDiasVisualizacion();
+            //rowData[3] = menus.getAtrIdPlatos();
+            rowData[3] = menus.getAtrDiasVisualizacion();
             model.addRow(rowData);
         }
 
