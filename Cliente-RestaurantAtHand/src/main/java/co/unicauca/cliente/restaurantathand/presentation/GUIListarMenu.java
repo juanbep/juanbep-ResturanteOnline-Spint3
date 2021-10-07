@@ -160,11 +160,11 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id Restaurante", "Id Menu", "Nombre ", "Platos ", "Dias Ofrecido"
+                "Id Restaurante", "Id Menu", "Nombre ", "Dias Ofrecido"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

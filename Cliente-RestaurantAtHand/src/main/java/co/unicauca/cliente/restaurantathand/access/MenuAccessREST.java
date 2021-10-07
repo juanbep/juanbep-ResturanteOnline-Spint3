@@ -47,11 +47,11 @@ public class MenuAccessREST implements IMenuAccess {
 //                jersey.createOfrece_JSON(menu, menu.getAtrIdMenu(), newMenu.getAtrIdPlatos().get(i));
 //            }
 //        }
-        if (newMenu.getAtrDiasVisualizacion() != null) {
-            for (int i = 0; i < newMenu.getAtrDiasVisualizacion().size(); i++) {
-                jersey.createVisualizacion_JSON(menu, menu.getAtrIdMenu(), newMenu.getAtrDiasVisualizacion().get(i));
-            }
-        }
+//        if (newMenu.getAtrDiasVisualizacion() != null) {
+//            for (int i = 0; i < newMenu.getAtrDiasVisualizacion().size(); i++) {
+//                jersey.createVisualizacion_JSON(menu, menu.getAtrIdMenu(), newMenu.getAtrDiasVisualizacion().get(i));
+//            }
+//        }
         return true;
     }
 
@@ -73,11 +73,11 @@ public class MenuAccessREST implements IMenuAccess {
         }
         rta = jersey.create_JSON(newMenu);
 
-        if (newMenu.getAtrDiasVisualizacion() != null) {
-            for (int i = 0; i < newMenu.getAtrDiasVisualizacion().size(); i++) {
-                jersey.createVisualizacion_JSON(menu, newMenu.getAtrIdMenu(), newMenu.getAtrDiasVisualizacion().get(i));
-            }
-        }
+//        if (newMenu.getAtrDiasVisualizacion() != null) {
+//            for (int i = 0; i < newMenu.getAtrDiasVisualizacion().size(); i++) {
+//                jersey.createVisualizacion_JSON(menu, newMenu.getAtrIdMenu(), newMenu.getAtrDiasVisualizacion().get(i));
+//            }
+//        }
         return true;
     }
 

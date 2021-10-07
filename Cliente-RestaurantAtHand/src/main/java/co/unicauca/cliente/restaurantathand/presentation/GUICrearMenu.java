@@ -279,7 +279,7 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
                menu.setAtrNomMenu(idNom);
                List<String> dias = diasVisualizacion();
                if(dias.size()!=0){
-                   menu.setDias(dias);
+                   //menu.setDias(dias);
                    if(menuService.createMenu(menu))
                     {
                          successMessage("Menu agregada con éxito.", "Atención");

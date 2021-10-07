@@ -327,9 +327,12 @@ public class MenuRepository implements IMenuRepository {
             this.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
+            String cadena = new String("Dias:,");
             while (rs.next()) {
-                menu.setAtrDiasVisualizacion(rs.getString("DIA"));
+                cadena += rs.getString("DIA") + ",";
+                //menu.setAtrDiasVisualizacion(rs.getString("DIA"));
             }
+            menu.setAtrDiasVisualizacion(cadena);
             this.disconnect();
         } catch (SQLException ex) {
             Logger.getLogger(MenuRepository.class.getName()).log(Level.SEVERE, null, ex);

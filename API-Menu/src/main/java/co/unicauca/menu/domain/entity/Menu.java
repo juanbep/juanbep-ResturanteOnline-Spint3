@@ -15,20 +15,21 @@ public class Menu {
     private String atrIdMenu;
     private String atrNomMenu;
     private String atrIdRest;
-    private List<String> atrDiasVisualizacion;
+    private String atrDiasVisualizacion;
     //private List<String> atrIdPlatos;
 
-    public Menu(String atrIdMenu, String atrNomMenu, String atrIdRest) {
+    public Menu(String atrIdMenu, String atrNomMenu, String atrIdRest, String atrDiasVisualizacion) {
         this.atrIdMenu = atrIdMenu;
         this.atrNomMenu = atrNomMenu;
         this.atrIdRest = atrIdRest;
-        atrDiasVisualizacion = new ArrayList<String>();
-       // atrIdPlatos = new ArrayList<String>();
+        this.atrDiasVisualizacion = atrDiasVisualizacion;
+        //atrDiasVisualizacion = new ArrayList<String>();
+        // atrIdPlatos = new ArrayList<String>();
     }
 
     public Menu() {
-        atrDiasVisualizacion = new ArrayList<String>();
-       // atrIdPlatos = new ArrayList<String>();
+        //atrDiasVisualizacion = new ArrayList<String>();
+        // atrIdPlatos = new ArrayList<String>();
     }
 
     public String getAtrIdMenu() {
@@ -55,14 +56,6 @@ public class Menu {
         this.atrIdRest = atrIdRest;
     }
 
-    public void setAtrDiasVisualizacion(String dia) {
-        this.atrDiasVisualizacion.add(dia);
-    }
-
-    public List<String> getAtrDiasVisualizacion() {
-        return atrDiasVisualizacion;
-    }
-
 //    public void setAtrIdPlatos(String plato) {
 //        this.atrIdPlatos.add(plato);
 //    }
@@ -70,4 +63,11 @@ public class Menu {
 //    public List<String> getAtrIdPlatos() {
 //        return atrIdPlatos;
 //    }
+    public String getAtrDiasVisualizacion() {
+        return atrDiasVisualizacion;
+    }
+
+    public void setAtrDiasVisualizacion(String atrDiasVisualizacion) {
+        this.atrDiasVisualizacion = atrDiasVisualizacion;
+    }
 }
