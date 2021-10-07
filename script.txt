@@ -1,5 +1,5 @@
---Creacion de base de datos Usuario
-CREATE DATABASE "userBD"
+--Creacion base de datos restaurante
+CREATE DATABASE "restauranteBD"
     WITH 
     OWNER = postgres
     ENCODING = 'UTF8'
@@ -24,29 +24,21 @@ CREATE TABLE IF NOT EXISTS users
 --Insercion de datos usuario
 INSERT INTO public.users(
 	username, id, name, lastname, password, city, address, phone, type)
-	VALUES ('magutierrez', '10', 'Michel', 'Vallejo', '123', 'Popayan', 'calle 5 #10-20', '310356588', 'admin');
+	VALUES ('juanbep', '10', 'Juan', 'Beca', '123', 'Popayan', 'calle 5 #10-20', '310356588', 'admin');
 INSERT INTO public.users(
 	username, id, name, lastname, password, city, address, phone, type)
-	VALUES ('mfgranoble', '20', 'Mannuel', 'Granoble', '456', 'Popayan', 'calle 10N #70-20', '311547110', 'user');
+	VALUES ('elbananero', '20', 'Manuel', 'Gutierrez', '456', 'Popayan', 'calle 10N #70-20', '311547110', 'user');
 INSERT INTO public.users(
 	username, id, name, lastname, password, city, address, phone, type)
-	VALUES ('axquijano', '30', 'Ximena', 'Quijano', '789', 'Popayan', 'cra 12 #5-15', '3216987454', 'admin');
+	VALUES ('sebas312', '30', 'Sebastian', 'Chaux', '789', 'Popayan', 'cra 12 #5-15', '3216987454', 'admin');
 INSERT INTO public.users(
 	username, id, name, lastname, password, city, address, phone, type)
-	VALUES ('nruizm', '40', 'Nathalia', 'Ruiz', '101', 'Popayan', 'cra 5 #5-20', '313654987', 'user');
+	VALUES ('Julia98', '40', 'Julia', 'Cepeda', '101', 'Popayan', 'cra 5 #5-20', '313654987', 'user');
 INSERT INTO public.users(
 	username, id, name, lastname, password, city, address, phone, type)
-	VALUES ('mariatrijillca', '50', 'Maria', 'Trujillo', '110', 'Popayan', 'cra 10N #5-20', '3154896324', 'user');
+	VALUES ('elvergalarga', '50', 'Elver', 'Galarga', '110', 'Popayan', 'cra 10N #5-20', '3154896324', 'user');
 
---Creacion base de datos restaurante
-CREATE DATABASE "restauranteBD"
-    WITH 
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'Spanish_Colombia.1252'
-    LC_CTYPE = 'Spanish_Colombia.1252'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
+
 --Creacion de tabla restaurante
 CREATE TABLE IF NOT EXISTS restaurante (
 
@@ -74,15 +66,7 @@ INSERT INTO public.restaurante(
 INSERT INTO public.restaurante(
 	nit, name, address, mobile, email, city, usernameadmin)
 	VALUES ('500', 'Dominos' , 'Cra 17N # 20-35', '8231111','dominos@gmail.com', 'Popayan', 'axquijano');
---Creacion base de datos plato
-CREATE DATABASE "platoBD"
-    WITH 
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'Spanish_Colombia.1252'
-    LC_CTYPE = 'Spanish_Colombia.1252'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
+
 
 --Creacion de tabla Plato
 CREATE TABLE IF NOT EXISTS plato
@@ -232,17 +216,9 @@ INSERT INTO public.plato(
 	VALUES ('1030', 'Sprite' , '4500', 'Bebidas', 'En botella', 'Del dia', '99');
 
 
---Creacion de base de datos menu
-CREATE DATABASE "menuBD"
-    WITH 
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'Spanish_Colombia.1252'
-    LC_CTYPE = 'Spanish_Colombia.1252'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
 
---Creacion de tabla menu, visualizacion, ofrece
+
+--Creacion de tabla menu, visualizacion
 CREATE TABLE IF NOT EXISTS menu 
 (
 	idmenu varchar(60) PRIMARY KEY,
@@ -255,12 +231,7 @@ CREATE TABLE IF NOT EXISTS visualizacion
 	dia varchar(60) NOT NULL,
 	PRIMARY KEY (idmenu, dia)
 );
-CREATE TABLE IF NOT EXISTS ofrece
-(
-	idmenu varchar(60) NOT NULL,
-	id varchar(60) NOT NULL,
-	PRIMARY KEY (idmenu, id)
-);
+
 
 --Insercion de datos menu
 INSERT INTO public.menu(
@@ -352,26 +323,7 @@ INSERT INTO public.visualizacion(
 INSERT INTO public.visualizacion(
 	idmenu, dia)
 	VALUES ('99', 'Martes');
---Insercion de datos ofrecer
-INSERT INTO public.ofrece(
-	idmenu, id)
-	VALUES ('11', '1');
-INSERT INTO public.ofrece(
-	idmenu, id)
-	VALUES ('22', '2');
-INSERT INTO public.ofrece(
-	idmenu, id)
-	VALUES ('33', '3');
 
---Creacion de base de datos pedido
-CREATE DATABASE "pedidoBD"
-    WITH 
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'Spanish_Colombia.1252'
-    LC_CTYPE = 'Spanish_Colombia.1252'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
 
 --Creacion de tabla pedido, factura, tiene
 CREATE TABLE IF NOT EXISTS pedido
