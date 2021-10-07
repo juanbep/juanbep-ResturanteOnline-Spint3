@@ -6,7 +6,9 @@ package co.unicauca.cliente.restaurantathand.domain.entity;
  */
 public class Dish {
 
-    //Id
+    //Ide menu 
+    private String atrIdMenu;
+    //Id plato
     private String atrIdDish;
     //Nombre
     private String atrNameDish;
@@ -20,7 +22,8 @@ public class Dish {
     //Categoria
     private String atrCategoriaDish;
 
-    public Dish(String atrIdFood, String atrNameFood, String atrPriceFood, String Description, String atrTypeDish, String atrCategoriaDish) {
+    public Dish(String atrIdMenu, String atrIdFood, String atrNameFood, String atrPriceFood, String Description, String atrTypeDish, String atrCategoriaDish) {
+        this.atrIdMenu = atrIdMenu;
         this.atrIdDish = atrIdFood;
         this.atrNameDish = atrNameFood;
         this.atrPriceDish = atrPriceFood;
@@ -39,6 +42,14 @@ public class Dish {
 
     public void setAtrTypeDish(String atrTypeDish) {
         this.atrTypeDish = atrTypeDish;
+    }
+
+    public String getAtrIdMenu() {
+        return atrIdMenu;
+    }
+
+    public void setAtrIdMenu(String atrIdMenu) {
+        this.atrIdMenu = atrIdMenu;
     }
 
     public String getAtrIdDish() {

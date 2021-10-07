@@ -47,7 +47,10 @@ public class PlatoAccessREST implements IPlatoAccess {
      */
     @Override
     public List<Dish> findDishIdMenu(String prmIdMenu) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        GenericType<List<Dish>> listResponseTypeM = new GenericType<List<Dish>>() {
+        };
+        List<Dish> dish = jersey.findByDishIdMenu_JSON(listResponseTypeM, prmIdMenu);
+        return dish;
     }
 
     /**

@@ -14,6 +14,7 @@ import static co.unicauca.cliente.restaurantathand.infra.Messages.successMessage
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -41,7 +42,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
      * Almacena los platos que pertenecen a un menu especifico
      */
     private List<Dish> platos;
-    
+
     public GUIListarPlato() {
         initComponents();
         lblLogo.setIcon(iconolbl);
@@ -60,27 +61,46 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
     }
 
     /**
-     * Carga una lista de platos a traves de una API Rest 
+     * Carga una lista de platos a traves de una API Rest
      */
-    public void cargarLista(){
+    public void cargarLista() {
         IPlatoAccess service = Factory.getInstance().getPlatoService();
         //Inyecta la dependencia 
         PlatoService plato = new PlatoService(service);
-        
-        try{
+
+        try {
             platos = plato.findDishIdMenu(menu.getAtrIdMenu());
-        }catch(Exception ex){
+        } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");
         }
-            
-        
+
     }
-    
-    public void cargarDatosTabla(){
-        
+
+    public void cargarDatosTabla() {
+        tblListarPlatos.setDefaultRenderer(Object.class, new Render());
+        DefaultTableModel model = (DefaultTableModel) tblListarPlatos.getModel();
+        limpiarTabla(model);
+        Object rowData[] = new Object[7];
+
+        for (Dish dishs : platos) {
+            rowData[0] = dishs.getAtrIdMenu();
+            rowData[1] = dishs.getAtrIdDish();
+            rowData[2] = dishs.getAtrCategoriaDish();
+            rowData[3] = dishs.getAtrTypeDish();
+            rowData[4] = dishs.getAtrNameDish();
+            rowData[5] = dishs.getAtrDescriptionDish();
+            rowData[6] = dishs.getAtrPriceDish();
+            model.addRow(rowData);
+        }
     }
-    
-    
+
+    public void limpiarTabla(DefaultTableModel objTabla) {
+        while (objTabla.getRowCount()
+                > 0) {
+            objTabla.removeRow(0);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,7 +116,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
         jButton7 = new javax.swing.JButton();
         pnlSur = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblListarRestaurant = new javax.swing.JTable();
+        tblListarPlatos = new javax.swing.JTable();
         pnlNorte = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
 
@@ -122,7 +142,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
         pnlSur.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Plato", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         pnlSur.setLayout(new java.awt.GridLayout(1, 0));
 
-        tblListarRestaurant.setModel(new javax.swing.table.DefaultTableModel(
+        tblListarPlatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -138,12 +158,12 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblListarRestaurant.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblListarPlatos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblListarRestaurantMouseClicked(evt);
+                tblListarPlatosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblListarRestaurant);
+        jScrollPane1.setViewportView(tblListarPlatos);
 
         pnlSur.add(jScrollPane1);
 
@@ -184,10 +204,10 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblListarRestaurantMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListarRestaurantMouseClicked
+    private void tblListarPlatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListarPlatosMouseClicked
         // TODO add your handling code here:
-        int column = tblListarRestaurant.getColumnModel().getColumnIndexAtX(evt.getX());
-        int row = evt.getY() / tblListarRestaurant.getRowHeight();
+        int column = tblListarPlatos.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY() / tblListarPlatos.getRowHeight();
         /*if (row < tblListarRestaurant.getRowCount() && row >= 0 && column < tblListarRestaurant.getColumnCount() && column >= 0) 
         {
             Object value = tblListarRestaurant.getValueAt(row, column);
@@ -212,7 +232,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
                 }
             }
         }*/
-    }//GEN-LAST:event_tblListarRestaurantMouseClicked
+    }//GEN-LAST:event_tblListarPlatosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -224,7 +244,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlCentro;
     private javax.swing.JPanel pnlNorte;
     private javax.swing.JPanel pnlSur;
-    private javax.swing.JTable tblListarRestaurant;
+    private javax.swing.JTable tblListarPlatos;
     // End of variables declaration//GEN-END:variables
 
 }

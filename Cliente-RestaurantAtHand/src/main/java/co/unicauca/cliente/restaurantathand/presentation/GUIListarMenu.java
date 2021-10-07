@@ -13,7 +13,10 @@ import co.unicauca.cliente.restaurantathand.domain.entity.Restaurant;
 import co.unicauca.cliente.restaurantathand.domain.entity.User;
 import co.unicauca.cliente.restaurantathand.domain.service.MenuService;
 import static co.unicauca.cliente.restaurantathand.infra.Messages.successMessage;
+import java.beans.PropertyVetoException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.table.DefaultTableModel;
@@ -36,9 +39,14 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
     private Restaurant restaurant;
 
     /**
-     * 
+     *
      */
     private JDesktopPane dskEscritorio;
+
+    /**
+     * Menu seleccionado
+     */
+    private Menu menuSelect;
 
     /*
      * Almacena los menus que pertenecen a un restaurante especifico
@@ -49,7 +57,7 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
         initComponents();
         lblLogo.setIcon(iconolbl);
         //btnBuscarMenuList.setIcon(iconobtn);
-       // btnBuscarMenuList.setVisible(true);
+        // btnBuscarMenuList.setVisible(true);
     }
 
     public GUIListarMenu(JDesktopPane dskEscritorio, Restaurant restaurant) {
@@ -57,11 +65,11 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
         lblLogo.setIcon(iconolbl);
         //btnBuscarMenuList.setIcon(iconobtn);
         this.restaurant = restaurant;
-       // btnBuscarMenuList.setVisible(true);
+        // btnBuscarMenuList.setVisible(true);
         this.dskEscritorio = dskEscritorio;
         cargarLista();
         cargarDatosTabla();
-        
+
     }
 
     /**
@@ -85,8 +93,8 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) tblListarMenus.getModel();
         limpiarTabla(model);
         Object rowData[] = new Object[4];
-        
-        for(Menu menus : Menus){
+
+        for (Menu menus : Menus) {
             rowData[0] = menus.getAtrIdRest();
             rowData[1] = menus.getAtrIdMenu();
             rowData[2] = menus.getAtrNomMenu();
@@ -102,6 +110,14 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
                 > 0) {
             objTabla.removeRow(0);
         }
+    }
+
+    public void seleccionRest() {
+// TODO add your handling code here:
+        int seleccionar = tblListarMenus.getSelectedRow();
+        menuSelect = Menus.get(seleccionar);
+        cargarLista();
+        cargarDatosTabla();
     }
 
     /**
@@ -247,6 +263,16 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        seleccionRest();
+        GUIListarPlato objListarPlato = new GUIListarPlato(dskEscritorio, menuSelect);
+        dskEscritorio.add(objListarPlato);
+        try {
+            objListarPlato.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(GUIListarPlato_1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        objListarPlato.show();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

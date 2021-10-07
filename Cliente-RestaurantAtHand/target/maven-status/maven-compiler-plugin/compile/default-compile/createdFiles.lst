@@ -39,9 +39,11 @@ co\unicauca\cliente\restaurantathand\presentation\GUICrearPlato$2.class
 co\unicauca\cliente\restaurantathand\presentation\GUIListarRestaurantes.class
 co\unicauca\cliente\restaurantathand\presentation\GUIAdminMenu1$6.class
 co\unicauca\cliente\restaurantathand\presentation\GUICrearCliente$1.class
+co\unicauca\cliente\restaurantathand\presentation\GUIListarPlato$2.class
 co\unicauca\cliente\restaurantathand\presentation\GUIRestauranteEscogido$2.class
 co\unicauca\cliente\restaurantathand\presentation\GUIListarRestaurantes1$3.class
 co\unicauca\cliente\restaurantathand\presentation\GUIAdminMenu$3.class
+co\unicauca\cliente\restaurantathand\access\PlatoAccessREST$2.class
 co\unicauca\cliente\restaurantathand\access\RestaurantAccessREST$2.class
 co\unicauca\cliente\restaurantathand\presentation\GUICrearCliente1$2.class
 co\unicauca\cliente\restaurantathand\presentation\GUICrearPlato$1.class
@@ -58,6 +60,7 @@ co\unicauca\cliente\UsersJerseyClient.class
 co\unicauca\cliente\restaurantathand\presentation\GUICrearRest$3.class
 co\unicauca\cliente\restaurantathand\access\PlatoAccessREST.class
 co\unicauca\cliente\restaurantathand\presentation\GUIListarRestaurantesCustomer$4.class
+co\unicauca\cliente\restaurantathand\presentation\GUIListarPlato_1.class
 co\unicauca\cliente\restaurantathand\presentation\GUILoginRest1$4.class
 co\unicauca\cliente\RestaurantJerseyClient.class
 co\unicauca\cliente\restaurantathand\presentation\GUIAdminMenu$2.class
@@ -83,6 +86,7 @@ co\unicauca\cliente\restaurantathand\presentation\GUICrearCliente1$1.class
 co\unicauca\cliente\restaurantathand\presentation\GUICrearPlato.class
 co\unicauca\cliente\restaurantathand\presentation\GUILoginRest1$1.class
 co\unicauca\cliente\restaurantathand\access\IRestaurantAccess.class
+co\unicauca\cliente\restaurantathand\presentation\GUIListarPlato_1$1.class
 co\unicauca\cliente\restaurantathand\presentation\GUIListarMenu_1$1.class
 co\unicauca\cliente\restaurantathand\presentation\GUIListarMenu$2.class
 co\unicauca\cliente\restaurantathand\presentation\GUIListarRestaurantesCustomer.class
