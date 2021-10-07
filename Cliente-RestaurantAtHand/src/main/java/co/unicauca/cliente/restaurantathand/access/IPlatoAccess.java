@@ -9,12 +9,12 @@ import co.unicauca.cliente.restaurantathand.domain.entity.Dish;
 import java.util.List;
 
 /**
- * Interface que define los servicios de persistencia de platos del
- * restaurante
- * 
+ * Interface que define los servicios de persistencia de platos del restaurante
+ *
  * @author Beca98
  */
 public interface IPlatoAccess {
+
     /**
      * Buscar un plato consumiendo un API REST
      *
@@ -23,6 +23,7 @@ public interface IPlatoAccess {
      * @throws Exception error al buscar un plato
      */
     public Dish findDish(String prmIdDish) throws Exception;
+
     /**
      *
      * @param prmIdDish id del plato
@@ -30,13 +31,14 @@ public interface IPlatoAccess {
      * @param prmPriceDish precio del plato
      * @param prmDescriptionDish descripcion del plato
      * @param prmTypeDish tipo de plato(Especial , Del dia)
-     * @param prmCategoriaDish categoria del plato(Entradas,Platos fuertes,Ensaladas,Postres,Bebidas)
+     * @param prmCategoriaDish categoria del plato(Entradas,Platos
+     * fuertes,Ensaladas,Postres,Bebidas)
      * @return objeto plato
      * @throws Exception error al actualizar el plato
      */
-    public boolean updateDish(String prmIdDish, String prmNameDish, String prmPriceDish, String prmDescriptionDish, String prmTypeDish, String prmCategoriaDish)throws Exception;
-    
-      /**
+    public boolean updateDish(String prmIdDish, String prmNameDish, String prmPriceDish, String prmDescriptionDish, String prmTypeDish, String prmCategoriaDish) throws Exception;
+
+    /**
      * Elimina un plato consumiendo un API REST mediante un plato jersey
      *
      * @param prmIdDish id del plato
@@ -44,25 +46,32 @@ public interface IPlatoAccess {
      * contrario
      * @throws Exception error al actualizar el plato
      */
-      public boolean deleteDish(String prmIdDish) throws Exception ;
-      
-      /**
+    public boolean deleteDish(String prmIdDish) throws Exception;
+
+    /**
      * Crea un plato consumiendo un API REST mediante un plato jersey
      *
      * @param dish plato del menu
      * @return Devuelve true si se pudo crear
      * @throws Exception error crear el usuario
      */
-    public boolean createDish(Dish dish) throws Exception ;
-    
-     /**
-     * Lista todos los platos consumiendo un API REST mediante un cliente
-     * jersey
+    public boolean createDish(Dish dish) throws Exception;
+
+    /**
+     * Lista todos los platos consumiendo un API REST mediante un cliente jersey
      *
      * @return Lista de platos
      * @throws java.lang.Exception
      */
     public List<Dish> list() throws Exception;
-    
-    
+
+    /**
+     * Buscar un Plato consumiento una API Rest
+     *
+     * @param prmIdMenu id del menu
+     * @return objeto tipo plato
+     * @throws Exception error al buscar un plato
+     */
+    public List<Dish> findDishIdMenu(String prmIdMenu) throws Exception;
+
 }

@@ -12,6 +12,8 @@ public interface IPlatoRepository {
     List<Dish> findAll();
 
     Dish findByIdDish(String prmIdDish);
+    
+    List<Dish> findByDishIdMenu(String prmIdMenu);
 
     boolean create(Dish prmNewDish);
 

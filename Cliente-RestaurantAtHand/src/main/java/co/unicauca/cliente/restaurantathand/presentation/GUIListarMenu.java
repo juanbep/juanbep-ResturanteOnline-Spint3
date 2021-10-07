@@ -142,7 +142,7 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
         });
         pnlCentro.add(jButton1);
 
-        jButton2.setText("Eliminar");
+        jButton2.setText("Eliminar Menu");
         pnlCentro.add(jButton2);
 
         jButton3.setText("Actualizar Menu");

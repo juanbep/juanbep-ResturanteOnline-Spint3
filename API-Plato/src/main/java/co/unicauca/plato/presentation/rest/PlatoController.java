@@ -67,6 +67,18 @@ public class PlatoController {
 
     /*
         Su uso desde consola mediante client url:
+        curl -X GET http://localhost:8084/API-Plato/plato-service/plato/findIdMenu/100 
+
+     */
+    @GET
+    @Path("/findIdMenu/{Id}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Dish> findByDishIdMenu(@PathParam("Id") String Id) {
+        return service.findByDishIdMenu(Id);
+    }
+
+    /*
+        Su uso desde consola mediante client url:
         curl -X POST \
           http://localhost:8084/API-Plato/plato-service/plato/ 
           -H 'Content-Type: application/json' \

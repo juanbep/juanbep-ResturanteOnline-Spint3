@@ -13,18 +13,18 @@ import javax.ws.rs.core.Response;
 
 /**
  * Interfaz donde se declara un CRUD para Plato(Dish)
+ *
  * @author Beca98
  */
 public class PlatoAccessREST implements IPlatoAccess {
-    
+
     PlatoJerseyClient jersey;
     Response rta;
-    
+
     public PlatoAccessREST() {
         this.jersey = new PlatoJerseyClient();
     }
-    
-    
+
     /**
      * Buscar un plato consumiendo un API REST mediante un plato jersey
      *
@@ -37,7 +37,19 @@ public class PlatoAccessREST implements IPlatoAccess {
         Dish dish = jersey.findByIdDish_JSON(Dish.class, prmIdDish);
         return dish;
     }
-     
+
+    /**
+     * Buscar un plato consumiendo un API REST mediante un plato jersey
+     *
+     * @param prmIdMenu
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<Dish> findDishIdMenu(String prmIdMenu) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      *
      * @param prmIdDish id del plato
@@ -45,7 +57,8 @@ public class PlatoAccessREST implements IPlatoAccess {
      * @param prmPriceDish precio del plato
      * @param prmDescriptionDish descripcion del plato
      * @param prmTypeDish tipo de plato(Especial , Del dia)
-     * @param prmCategoriaDish categoria del plato(Entradas,Platos fuertes,Ensaladas,Postres,Bebidas)
+     * @param prmCategoriaDish categoria del plato(Entradas,Platos
+     * fuertes,Ensaladas,Postres,Bebidas)
      * @return objeto plato
      * @throws Exception error al actualizar el plato
      */
@@ -61,12 +74,11 @@ public class PlatoAccessREST implements IPlatoAccess {
         dish.setAtrDescriptionDish(prmDescriptionDish);
         dish.setAtrTypeDish(prmTypeDish);
         dish.setAtrCategoriaDish(prmCategoriaDish);
-       
+
         rta = jersey.edit_JSON(dish, prmIdDish);
         return true;
     }
 
-    
     /**
      * Elimina un plato consumiendo un API REST mediante un plato jersey
      *
@@ -85,7 +97,6 @@ public class PlatoAccessREST implements IPlatoAccess {
         return true;
     }
 
-    
     /**
      * Crea un plato consumiendo un API REST mediante un plato jersey
      *
@@ -103,10 +114,8 @@ public class PlatoAccessREST implements IPlatoAccess {
         return true;
     }
 
-    
     /**
-     * Lista todos los platos consumiendo un API REST mediante un cliente
-     * jersey
+     * Lista todos los platos consumiendo un API REST mediante un cliente jersey
      *
      * @return Lista de platos
      * @throws java.lang.Exception
@@ -118,8 +127,5 @@ public class PlatoAccessREST implements IPlatoAccess {
         List<Dish> user = jersey.findAll(listResponseTypeM);
         return user;
     }
-    
-    
-    
 
 }

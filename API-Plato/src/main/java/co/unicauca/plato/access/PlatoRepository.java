@@ -90,6 +90,38 @@ public class PlatoRepository implements IPlatoRepository {
     }
 
     @Override
+    public List<Dish> findByDishIdMenu(String prmIdMenu) {
+        List<Dish> dishs = new ArrayList<>();
+        Dish dish = null;
+        try {
+
+            String sql = "SELECT * FROM plato Where IDMENU='" + prmIdMenu + "'";
+            this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                dish = new Dish();
+                dish.setAtrIdDish(rs.getString("ID"));
+                dish.setAtrNameDish(rs.getString("NAME"));
+                dish.setAtrPriceDish(rs.getString("PRECIO"));
+                dish.setAtrCategoriaDish(rs.getString("CATEGORIA"));
+                dish.setAtrDescriptionDish(rs.getString("DESCRIPCION"));
+                dish.setAtrTypeDish(rs.getString("TIPOPLATO"));
+                dish.setAtrIdMenu(rs.getString("IDMENU"));
+                
+                dishs.add(dish);
+            }
+            this.disconnect();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PlatoRepository.class.getName()).log(Level.SEVERE, "Error al buscar el producto en la base de datos", ex);
+        }
+        return dishs;
+
+    }
+
+    @Override
     public boolean create(Dish prmNewDish) {
         String sql = "";
         try {

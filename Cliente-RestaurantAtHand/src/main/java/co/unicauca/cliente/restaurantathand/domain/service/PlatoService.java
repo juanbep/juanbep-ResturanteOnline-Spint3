@@ -7,6 +7,7 @@ package co.unicauca.cliente.restaurantathand.domain.service;
 
 import co.unicauca.cliente.restaurantathand.access.IPlatoAccess;
 import co.unicauca.cliente.restaurantathand.domain.entity.Dish;
+import java.util.List;
 
 /**
  * Es una fachada para comunicar la presentación con el dominio
@@ -37,6 +38,22 @@ public class PlatoService {
         return service.findDish(prmIdDish);
 
     }
+    
+    /**
+     * Busca un plato en el servidor remoto
+     *
+     *  @param prmIdDish id del plato 
+     * @return Objeto tipo plato, null si no lo encuentra
+     * @throws java.lang.Exception la excepcio se lanza cuando no logra conexión
+     * con el servidor
+     */
+    public List<Dish> findDishIdMenu(String prmIdMenu) throws Exception {
+        return service.findDishIdMenu(prmIdMenu);
+
+    }
+    
+    
+    
     
    /**
      *

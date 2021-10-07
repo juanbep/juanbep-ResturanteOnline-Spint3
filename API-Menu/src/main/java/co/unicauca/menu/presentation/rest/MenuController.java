@@ -66,7 +66,7 @@ public class MenuController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X GET http://localhost:8084/API-Menu/menu-service/menu/findIdRest100 
+        curl -X GET http://localhost:8084/API-Menu/menu-service/menu/findIdRest/100 
 
      */
     @GET

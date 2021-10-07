@@ -36,6 +36,19 @@ public class PlatoService {
     public Dish findByIdDish(String prmIdDish) {
         return repository.findByIdDish(prmIdDish);
     }
+    
+    
+    /**
+     * Busca un plato por el Id del Menu
+     *
+     * @param prmIdDish id del plato
+     * @return plato, o null, si no lo encuentra
+     */
+    public List<Dish> findByDishIdMenu(String prmIdMenu) {
+        return repository.findByDishIdMenu(prmIdMenu);
+    }
+    
+ 
 
     public void setPlatoRepository(IPlatoRepository repository) {
         this.repository = repository;

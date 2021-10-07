@@ -24,7 +24,7 @@ public class PlatoJerseyClient {
 
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://localhost:8084/API-Plato/webresources";
+    private static final String BASE_URI = "http://localhost:8084/API-Plato/plato-service";
 
     public PlatoJerseyClient() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
@@ -49,6 +49,12 @@ public class PlatoJerseyClient {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("{0}", new Object[]{Id}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+    }
+    
+      public List<Dish> findByDishIdMenu_JSON(GenericType<List<Dish>> listResponseTypeM, String Id) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        resource = resource.path(java.text.MessageFormat.format("findIdMenu/{0}", new Object[]{Id}));
+        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(listResponseTypeM);
     }
 
     public Response create_XML(Object requestEntity) throws ClientErrorException {
