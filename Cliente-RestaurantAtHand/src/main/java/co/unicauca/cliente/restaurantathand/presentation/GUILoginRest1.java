@@ -53,7 +53,6 @@ public class GUILoginRest1 extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         lblContraseña = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JPasswordField();
-        jSeparator1 = new javax.swing.JSeparator();
         btnBotonEnter = new javax.swing.JButton();
         lblRecoverPassw = new javax.swing.JLabel();
         lblNuevoCliente = new javax.swing.JLabel();
@@ -61,7 +60,7 @@ public class GUILoginRest1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnlIzquierdo.setBackground(new java.awt.Color(76, 174, 235));
+        pnlIzquierdo.setBackground(new java.awt.Color(252, 180, 4));
 
         lblLogoRest.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogoRest.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -72,7 +71,7 @@ public class GUILoginRest1 extends javax.swing.JFrame {
             pnlIzquierdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlIzquierdoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblLogoRest, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                .addComponent(lblLogoRest, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlIzquierdoLayout.setVerticalGroup(
@@ -88,11 +87,15 @@ public class GUILoginRest1 extends javax.swing.JFrame {
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo.setPreferredSize(new java.awt.Dimension(160, 120));
 
+        lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblUsuario.setText("Usuario:");
 
-        txtUsuario.setBorder(null);
+        txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        lblContraseña.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblContraseña.setText("Contraseña:");
+
+        txtContraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnBotonEnter.setText("Enter");
         btnBotonEnter.addActionListener(new java.awt.event.ActionListener() {
@@ -125,56 +128,47 @@ public class GUILoginRest1 extends javax.swing.JFrame {
         pnlDerechoLayout.setHorizontalGroup(
             pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDerechoLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(55, 55, 55)
+                .addGroup(pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblUsuario)
+                    .addComponent(lblContraseña))
                 .addGroup(pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDerechoLayout.createSequentialGroup()
-                        .addGroup(pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDerechoLayout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addComponent(lblRecoverPassw, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                                .addGap(96, 96, 96))
-                            .addGroup(pnlDerechoLayout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(54, 54, 54))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDerechoLayout.createSequentialGroup()
+                    .addGroup(pnlDerechoLayout.createSequentialGroup()
                         .addGroup(pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlDerechoLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnBotonEnter))
-                            .addGroup(pnlDerechoLayout.createSequentialGroup()
-                                .addGap(31, 31, 31)
+                                .addGap(7, 7, 7)
                                 .addGroup(pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtContraseña)
-                                    .addComponent(jSeparator1)
-                                    .addComponent(txtUsuario)))
+                                    .addComponent(txtUsuario)
+                                    .addComponent(txtContraseña)))
                             .addGroup(pnlDerechoLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNuevoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(pnlDerechoLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRegistrarse, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)))
-                        .addGap(79, 79, 79))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                .addGroup(pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblNuevoCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                                    .addComponent(btnBotonEnter, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnRegistrarse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(79, 79, 79))
+                    .addGroup(pnlDerechoLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(lblRecoverPassw, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDerechoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlDerechoLayout.setVerticalGroup(
             pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDerechoLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(89, 89, 89)
-                .addGroup(pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlDerechoLayout.createSequentialGroup()
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(lblUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
-                .addGroup(pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(lblContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBotonEnter)
                 .addGap(18, 18, 18)
@@ -204,16 +198,22 @@ public class GUILoginRest1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
+        GUICrearCliente1 ins = new GUICrearCliente1();
+        ins.setExtendedState(NORMAL);
+        ins.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegistrarseActionPerformed
+
     private void btnBotonEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBotonEnterActionPerformed
         IUserAccess service = Factory.getInstance().getUserService();
-        UserService userService = new UserService(service); 
+        UserService userService = new UserService(service);
         String userName = txtUsuario.getText();
         String password = txtContraseña.getText();
         User user = new User();
-        
-        
+
         if (userName.equals("")  || password.equals("")) {
-            
+
             Messages.warningMessage("ERROR LOGIN:  \nCampos vacios", "Warning");
             return;
         }
@@ -222,8 +222,7 @@ public class GUILoginRest1 extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(GUILoginRest1.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         //Aqui vendria el analizar si el usuario existe en el sistema
         if(user!=null){
             if ("admin".equals(user.getAtrType())) {
@@ -242,11 +241,11 @@ public class GUILoginRest1 extends javax.swing.JFrame {
                     ins = new GUIAdminMenu1(admin);
                     ins.setExtendedState(NORMAL);
                     ins.setVisible(true);
-                        
+
                     this.dispose();
                 }else{
                     warningMessage("Contraseña incorrecta", "Atención");
-                    
+
                 }
             }else if ("user".equals(user.getAtrType())) {
                 if(password.equals(user.getAtrPassword())){
@@ -265,18 +264,11 @@ public class GUILoginRest1 extends javax.swing.JFrame {
                     warningMessage("Contraseña incorrecta", "Atención");
                 }
             }
-        
+
         }else {
             warningMessage("No se puede acceder al sistema: Usuario no registrado ", "Advertencia");
         }
     }//GEN-LAST:event_btnBotonEnterActionPerformed
-
-    private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-        GUICrearCliente1 ins = new GUICrearCliente1();
-        ins.setExtendedState(NORMAL);
-        ins.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,7 +311,6 @@ public class GUILoginRest1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBotonEnter;
     private javax.swing.JButton btnRegistrarse;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblLogoRest;
@@ -337,7 +328,7 @@ private void initIcons()
         //addIcon(lblUserRest, "src/main/java/resource/Username.png");
         //addIcon(lblPassRest, "src/main/java/resource/Password.png");
         addIcon(lblLogoRest, "src/main/java/resource/logoRest.png");
-        addIcon(lblLogo, "src/main/java/resource/welcome.png");
+        addIcon(lblLogo, "src/main/java/resource/welcome.jpg");
     }
     private void addIcon(JLabel lb, String pathIcon)
     {
