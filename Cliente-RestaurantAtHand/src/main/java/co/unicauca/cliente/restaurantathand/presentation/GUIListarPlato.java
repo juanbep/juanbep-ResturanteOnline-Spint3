@@ -119,7 +119,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
 
     private void botones(boolean var) {
 
-        jButton6.setEnabled(var);
+        btnEliminar.setEnabled(var);
         jButton7.setEnabled(var);
         //btnPlatos.setEnabled(var);
     }
@@ -135,7 +135,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
 
         pnlCentro = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         pnlSur = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -160,13 +160,13 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
         });
         pnlCentro.add(jButton5);
 
-        jButton6.setText("Eliminar Plato");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setText("Eliminar Plato");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
-        pnlCentro.add(jButton6);
+        pnlCentro.add(btnEliminar);
 
         jButton7.setText("Actualizar Plato");
         pnlCentro.add(jButton7);
@@ -239,6 +239,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
 
     private void tblListarPlatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListarPlatosMouseClicked
         // TODO add your handling code here:
+        botones(true);
         int column = tblListarPlatos.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY() / tblListarPlatos.getRowHeight();
         /*if (row < tblListarRestaurant.getRowCount() && row >= 0 && column < tblListarRestaurant.getColumnCount() && column >= 0) 
@@ -267,7 +268,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
         }*/
     }//GEN-LAST:event_tblListarPlatosMouseClicked
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         seleccionPlato();
         if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el registro, ¿desea continuar?",
@@ -277,7 +278,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
             PlatoService plato = new PlatoService(service);
 
             try {
-
+                plato.deleteDish(platoSelect.getAtrIdDish());
             } catch (Exception ex) {
                 Logger.getLogger(GUICrearPlato.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -286,7 +287,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
             cargarDatosTabla();
         }
         botones(false);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -297,8 +298,8 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLogo;
