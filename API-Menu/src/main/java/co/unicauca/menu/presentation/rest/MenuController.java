@@ -175,7 +175,7 @@ public class MenuController {
 
      */
     @DELETE
-    @Path("/deleteMenu/{idMenu}")
+    @Path("{idMenu}")
     public Response deleteMenu(@PathParam("idMenu") String idMenu) {
         JsonResponse resp;
 
@@ -185,6 +185,7 @@ public class MenuController {
         } else {
             resp = new JsonResponse(false, "No se pudo eliminar el menu", DomainErrors.getErrors());
         }
+        service.delete(idMenu);
         return Response.ok().entity(resp).build();
 
     }

@@ -315,7 +315,7 @@ public class GUIListarRestaurantes1 extends javax.swing.JInternalFrame {
             Logger.getLogger(GUIListarMenu_1.class.getName()).log(Level.SEVERE, null, ex);
         }
         objListarMenu.show();
-
+        botones(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     /**

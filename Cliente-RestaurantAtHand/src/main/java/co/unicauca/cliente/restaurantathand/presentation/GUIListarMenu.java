@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -69,7 +70,7 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
         this.dskEscritorio = dskEscritorio;
         cargarLista();
         cargarDatosTabla();
-
+        botones(false);
     }
 
     /**
@@ -105,6 +106,14 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
 
     }
 
+    private void botones(boolean var) {
+
+        jButton3.setEnabled(var);
+        btnEliminar.setEnabled(var);
+        jButton1.setEnabled(var);
+        //btnPlatos.setEnabled(var);
+    }
+
     public void limpiarTabla(DefaultTableModel objTabla) {
         while (objTabla.getRowCount()
                 > 0) {
@@ -112,7 +121,7 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
         }
     }
 
-    public void seleccionRest() {
+    public void seleccionMenu() {
 // TODO add your handling code here:
         int seleccionar = tblListarMenus.getSelectedRow();
         menuSelect = Menus.get(seleccionar);
@@ -131,7 +140,7 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
 
         pnlCentro = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         pnlSur = new javax.swing.JPanel();
@@ -158,13 +167,23 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
         });
         pnlCentro.add(jButton1);
 
-        jButton2.setText("Eliminar Menu");
-        pnlCentro.add(jButton2);
+        btnEliminar.setText("Eliminar Menu");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        pnlCentro.add(btnEliminar);
 
         jButton3.setText("Actualizar Menu");
         pnlCentro.add(jButton3);
 
         jButton4.setText("Recargar ");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         pnlCentro.add(jButton4);
 
         pnlSur.setBackground(new java.awt.Color(255, 255, 255));
@@ -233,6 +252,7 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
 
     private void tblListarMenusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListarMenusMouseClicked
         // TODO add your handling code here:
+        botones(true);
         int column = tblListarMenus.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY() / tblListarMenus.getRowHeight();
         /*if (row < tblListarRestaurant.getRowCount() && row >= 0 && column < tblListarRestaurant.getColumnCount() && column >= 0) 
@@ -263,7 +283,7 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        seleccionRest();
+        seleccionMenu();
         GUIListarPlato objListarPlato = new GUIListarPlato(dskEscritorio, menuSelect);
         dskEscritorio.add(objListarPlato);
         try {
@@ -275,10 +295,41 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        cargarLista();
+        cargarDatosTabla();
+        botones(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+
+        seleccionMenu();
+
+        if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el registro, ¿desea continuar?",
+                "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            IMenuAccess service = Factory.getInstance().getMenuService();
+            //Inyecta dependencia 
+            MenuService menu = new MenuService(service);
+
+            try {
+                menu.deleteMenu(menuSelect.getAtrIdMenu());
+            } catch (Exception ex) {
+                Logger.getLogger(GUICrearMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            cargarLista();
+            cargarDatosTabla();
+        }
+
+        botones(false);
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;

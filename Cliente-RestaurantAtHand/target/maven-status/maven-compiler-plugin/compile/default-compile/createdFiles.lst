@@ -2,6 +2,7 @@ co\unicauca\cliente\MenuJerseyClient.class
 co\unicauca\cliente\restaurantathand\presentation\GUILoginRest1$3.class
 co\unicauca\cliente\restaurantathand\domain\service\RestaurantService.class
 co\unicauca\cliente\restaurantathand\presentation\GUICustomerRest$2.class
+co\unicauca\cliente\restaurantathand\presentation\GUIListarMenu$4.class
 co\unicauca\cliente\restaurantathand\presentation\GUICrearCliente.class
 co\unicauca\cliente\restaurantathand\presentation\GUICrearMenu.class
 co\unicauca\cliente\restaurantathand\presentation\GUIListarMenu$1.class
@@ -34,6 +35,7 @@ co\unicauca\cliente\restaurantathand\presentation\GUIListarRestaurantes1$2.class
 co\unicauca\cliente\restaurantathand\presentation\GUIListarRestaurantes$1.class
 co\unicauca\cliente\restaurantathand\presentation\GUILoginRest1.class
 co\unicauca\cliente\restaurantathand\presentation\GUICrearCliente1.class
+co\unicauca\cliente\restaurantathand\presentation\GUIListarMenu$5.class
 co\unicauca\cliente\restaurantathand\access\PlatoAccessREST$1.class
 co\unicauca\cliente\restaurantathand\presentation\GUICrearPlato$2.class
 co\unicauca\cliente\restaurantathand\presentation\GUIListarRestaurantes.class

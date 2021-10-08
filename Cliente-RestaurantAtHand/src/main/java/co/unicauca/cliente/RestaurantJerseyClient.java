@@ -97,10 +97,9 @@ public class RestaurantJerseyClient {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
-    
-   
+
     public void close() {
         client.close();
     }
-    
+
 }
