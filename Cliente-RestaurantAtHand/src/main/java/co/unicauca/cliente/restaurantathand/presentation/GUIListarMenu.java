@@ -122,7 +122,7 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
     }
 
     public void seleccionMenu() {
-// TODO add your handling code here:
+        // TODO add your handling code here:
         int seleccionar = tblListarMenus.getSelectedRow();
         menuSelect = Menus.get(seleccionar);
         cargarLista();

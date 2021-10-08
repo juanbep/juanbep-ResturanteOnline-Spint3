@@ -12,8 +12,11 @@ import co.unicauca.cliente.restaurantathand.domain.entity.Menu;
 import co.unicauca.cliente.restaurantathand.domain.service.PlatoService;
 import static co.unicauca.cliente.restaurantathand.infra.Messages.successMessage;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,6 +41,11 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
      */
     private JDesktopPane dskEscritorio;
 
+    /**
+     *
+     */
+    private Dish platoSelect;
+
     /*
      * Almacena los platos que pertenecen a un menu especifico
      */
@@ -57,7 +65,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
         this.dskEscritorio = dskEscritorio;
         cargarLista();
         cargarDatosTabla();
-
+        botones(false);
     }
 
     /**
@@ -101,6 +109,21 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
         }
     }
 
+    public void seleccionPlato() {
+        // TODO add your handling code here:
+        int seleccionar = tblListarPlatos.getSelectedRow();
+        platoSelect = platos.get(seleccionar);
+        cargarLista();
+        cargarDatosTabla();
+    }
+
+    private void botones(boolean var) {
+
+        jButton6.setEnabled(var);
+        jButton7.setEnabled(var);
+        //btnPlatos.setEnabled(var);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -130,9 +153,19 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
         pnlCentro.setLayout(new java.awt.GridLayout(3, 1));
 
         jButton5.setText("Recargar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         pnlCentro.add(jButton5);
 
         jButton6.setText("Eliminar Plato");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         pnlCentro.add(jButton6);
 
         jButton7.setText("Actualizar Plato");
@@ -233,6 +266,34 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
             }
         }*/
     }//GEN-LAST:event_tblListarPlatosMouseClicked
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        seleccionPlato();
+        if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el registro, ¿desea continuar?",
+                "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            IPlatoAccess service = Factory.getInstance().getPlatoService();
+            //Inyecta dependencia 
+            PlatoService plato = new PlatoService(service);
+
+            try {
+
+            } catch (Exception ex) {
+                Logger.getLogger(GUICrearPlato.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            cargarLista();
+            cargarDatosTabla();
+        }
+        botones(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        cargarLista();
+        cargarDatosTabla();
+        botones(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
