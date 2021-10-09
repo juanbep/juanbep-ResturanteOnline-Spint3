@@ -32,27 +32,42 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
     /**
      * Creates new form GUICrearMenu
      */
-     ImageIcon iconolbl = new ImageIcon("src/main/java/resource/registrarmenu.png");
-     
-     private User admin;
-     private Restaurant restaurante;
+    ImageIcon iconolbl = new ImageIcon("src/main/java/resource/registrarmenu.png");
+
+    
+    /**
+     * Restaurante al que pertenece el menu 
+     */
+    private Restaurant restaurante;
+    
+    /**
+     * Menu que vamos a seleccionar 
+     */
+    public Menu menuUpdate;
+    
+    /**
+     * Almacena una lista de menus 
+     */
+    private List<Menu> menus;
+
     public GUICrearMenu() {
         initComponents();
-         lblLogo.setIcon(iconolbl);
-         txtIdMenu.setEnabled(false);
-         txtNameMenu.setEnabled(false);
-         panel(false);
+        lblLogo.setIcon(iconolbl);
+        txtIdMenu.setEnabled(false);
+        txtNameMenu.setEnabled(false);
+        panel(false);
     }
 
-    public GUICrearMenu(Admin admin) {
+    public GUICrearMenu(Restaurant restaurante) {
         initComponents();
-         lblLogo.setIcon(iconolbl);
-         txtIdMenu.setEnabled(false);
-         txtNameMenu.setEnabled(false);
-         panel(false);
-         
-         this.admin = admin;
+        lblLogo.setIcon(iconolbl);
+        txtIdMenu.setEnabled(false);
+        txtNameMenu.setEnabled(false);
+        panel(false);
+        this.restaurante = restaurante;
+        //this.admin = admin;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -215,119 +230,114 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBucarIdMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBucarIdMenuActionPerformed
-       
+
         String idRest = txtIdRestMenu.getText();
         IRestaurantAccess service = Factory.getInstance().getRestaurantService();
-        RestaurantService restaurantService = new RestaurantService(service); 
+        RestaurantService restaurantService = new RestaurantService(service);
         Restaurant restaurant = new Restaurant();
-        if (idRest.equals("")  || idRest.isEmpty()) {
-            
+        if (idRest.equals("") || idRest.isEmpty()) {
+
             Messages.warningMessage("ERROR Menu:  \nCampo vacios", "Warning");
             return;
         }
-        
+
         try {
             restaurant = restaurantService.findRestaurantByNit(idRest);
         } catch (Exception ex) {
             Logger.getLogger(GUICrearMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        if(restaurant != null){
-            if(restaurant.getAtrAdmiRest().equals(admin.getAtrUserName())){
+
+        if (restaurant != null) {
+            if (restaurant.getAtrAdmiRest().equals(restaurante.getAtrNameRest())) {
                 panel(true);
                 txtIdMenu.setEnabled(true);
                 txtNameMenu.setEnabled(true);
-                restaurante = restaurant;
+                //restaurante = restaurant;
+            } else {
+                warningMessage("No es el administrador del Restaurante", "Atención");
             }
-            else{
-                 warningMessage("No es el administrador del Restaurante", "Atención");
-            }
+        } else {
+            warningMessage("No hay un restaurante registrado con ese nit", "Atención");
         }
-        else{
-             warningMessage("No hay un restaurante registrado con ese nit", "Atención");
-        }
-        
+
     }//GEN-LAST:event_btnBucarIdMenuActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       String idMenu = txtIdMenu.getText();
-       String idNom = txtNameMenu.getText();
-       String idRest = txtIdRestMenu.getText();
-       
-       if (idMenu.equals("")  || idNom.equals("")) {
-            
+        String idMenu = txtIdMenu.getText();
+        String idNom = txtNameMenu.getText();
+        String idRest = txtIdRestMenu.getText();
+
+        if (idMenu.equals("") || idNom.equals("")) {
+
             Messages.warningMessage("ERROR Menu:  \nCampo vacios", "Warning");
             return;
-       }
-        
+        }
+
         IMenuAccess service = Factory.getInstance().getMenuService();
-        MenuService menuService = new MenuService(service); 
+        MenuService menuService = new MenuService(service);
         Menu menu = null;
-        
+
         try {
             menu = menuService.findMenu(idMenu);
         } catch (Exception ex) {
             Logger.getLogger(GUICrearMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        if(menu == null){
-           try {
-               menu = new Menu();
-               menu.setAtrIdRest(idRest);
-               menu.setAtrIdMenu(idMenu);
-               menu.setAtrNomMenu(idNom);
-               List<String> dias = diasVisualizacion();
-               if(dias.size()!=0){
-                   //menu.setDias(dias);
-                   if(menuService.createMenu(menu))
-                    {
-                         successMessage("Menu agregada con éxito.", "Atención");
-                    }else{
-                         Messages.warningMessage("El Menu no pudo ser agregado", "Warning");
-                   }    
-               }
-               else{
-                   warningMessage("Se debe elegir al menos un dia para que este disponible el menu ", "Atención");
-               }     
-           } catch (Exception ex) {
-               Logger.getLogger(GUICrearMenu.class.getName()).log(Level.SEVERE, null, ex);
-           }
+
+        if (menu == null) {
+            try {
+                menu = new Menu();
+                menu.setAtrIdRest(idRest);
+                menu.setAtrIdMenu(idMenu);
+                menu.setAtrNomMenu(idNom);
+                List<String> dias = diasVisualizacion();
+                if (dias.size() != 0) {
+                    //menu.setDias(dias);
+                    if (menuService.createMenu(menu)) {
+                        successMessage("Menu agregada con éxito.", "Atención");
+                    } else {
+                        Messages.warningMessage("El Menu no pudo ser agregado", "Warning");
+                    }
+                } else {
+                    warningMessage("Se debe elegir al menos un dia para que este disponible el menu ", "Atención");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(GUICrearMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            warningMessage("Ya se registro un menu con ese id ", "Atención");
         }
-        else{
-             warningMessage("Ya se registro un menu con ese id ", "Atención");
-        }
-       
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public List<String> diasVisualizacion (){
+    public List<String> diasVisualizacion() {
         List<String> dias = new ArrayList<String>();
-        
-        if(rbtDomingo.isSelected()){
+
+        if (rbtDomingo.isSelected()) {
             dias.add("Domingo");
         }
-        if(rbtSabado.isSelected()){
+        if (rbtSabado.isSelected()) {
             dias.add("Sabado");
         }
-        if(rbtViernes.isSelected()){
+        if (rbtViernes.isSelected()) {
             dias.add("Viernes");
         }
-        if(rbtJueves.isSelected()){
+        if (rbtJueves.isSelected()) {
             dias.add("Jueves");
         }
-        if(rbtMiercoles.isSelected()){
+        if (rbtMiercoles.isSelected()) {
             dias.add("Miercoles");
         }
-        if(rbtMartes.isSelected()){
+        if (rbtMartes.isSelected()) {
             dias.add("Martes");
         }
-        if(rbtLunes.isSelected()){
+        if (rbtLunes.isSelected()) {
             dias.add("Lunes");
         }
         return dias;
     }
-    public void panel (boolean opcion){
-        
+
+    public void panel(boolean opcion) {
+
         rbtDomingo.setEnabled(opcion);
         rbtSabado.setEnabled(opcion);
         rbtViernes.setEnabled(opcion);
@@ -335,7 +345,7 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
         rbtMiercoles.setEnabled(opcion);
         rbtMartes.setEnabled(opcion);
         rbtLunes.setEnabled(opcion);
-        
+
         jButton1.setEnabled(opcion);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

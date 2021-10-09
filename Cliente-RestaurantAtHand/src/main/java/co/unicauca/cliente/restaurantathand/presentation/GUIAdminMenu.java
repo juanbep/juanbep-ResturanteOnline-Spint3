@@ -6,6 +6,7 @@
 package co.unicauca.cliente.restaurantathand.presentation;
 
 import co.unicauca.cliente.restaurantathand.domain.entity.Admin;
+import co.unicauca.cliente.restaurantathand.domain.entity.Restaurant;
 import co.unicauca.cliente.restaurantathand.domain.entity.User;
 import java.beans.PropertyVetoException;
 import java.io.IOException;
@@ -26,6 +27,7 @@ public class GUIAdminMenu extends javax.swing.JFrame {
     /**
      * Creates new form GUIAdminMenu
      */
+    public Restaurant restaurante;
     
     public GUIAdminMenu() {
         initComponents();
@@ -147,7 +149,7 @@ public class GUIAdminMenu extends javax.swing.JFrame {
 
     private void mnuCrearMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCrearMenuActionPerformed
         // TODO add your handling code here:
-        GUICrearMenu objCrearMenu  = new GUICrearMenu(admin);
+        GUICrearMenu objCrearMenu  = new GUICrearMenu(restaurante);
         dskEscritorio.add(objCrearMenu);
         
         try {

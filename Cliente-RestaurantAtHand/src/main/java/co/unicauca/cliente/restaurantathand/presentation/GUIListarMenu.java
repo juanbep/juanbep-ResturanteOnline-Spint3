@@ -108,7 +108,7 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
 
     private void botones(boolean var) {
 
-        jButton3.setEnabled(var);
+        btnActualizar.setEnabled(var);
         btnEliminar.setEnabled(var);
         jButton1.setEnabled(var);
         //btnPlatos.setEnabled(var);
@@ -141,7 +141,7 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
         pnlCentro = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         pnlSur = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -175,8 +175,13 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
         });
         pnlCentro.add(btnEliminar);
 
-        jButton3.setText("Actualizar Menu");
-        pnlCentro.add(jButton3);
+        btnActualizar.setText("Actualizar Menu");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        pnlCentro.add(btnActualizar);
 
         jButton4.setText("Recargar ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -326,11 +331,34 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
         botones(false);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        seleccionMenu();
+        GUICrearMenu objActualizarMenu = new GUICrearMenu(restaurant);
+        objActualizarMenu.menuUpdate = menuSelect;
+
+        dskEscritorio.add(objActualizarMenu);
+
+        try {
+            objActualizarMenu.setMaximum(false);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(GUIListarMenu_1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            this.setMaximum(false);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(GUIListarMenu_1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        objActualizarMenu.show();
+        botones(false);
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLogo;
