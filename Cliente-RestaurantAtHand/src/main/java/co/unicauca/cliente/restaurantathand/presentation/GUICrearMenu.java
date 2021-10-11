@@ -113,6 +113,7 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -208,13 +209,16 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
         pnlSur.add(jLabel9);
         pnlSur.add(jLabel7);
 
+        jButton2.setText("Guardar Cambios");
+        pnlSur.add(jButton2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlNorte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlCentro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlSur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+            .addComponent(pnlSur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,6 +340,23 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
         return dias;
     }
 
+      /*
+     * Cambiar la interfaz´para que actualice en vez de Registrar
+     */
+    public void activarActualizar( ){
+        jButton2.setVisible(true);
+        txtIdRestMenu.setEnabled(false);
+        btnBucarIdMenu.setEnabled(false);
+        
+        llenarCampos();
+    }
+    
+    public void llenarCampos(){
+        
+        
+    }
+    
+    
     public void panel(boolean opcion) {
 
         rbtDomingo.setEnabled(opcion);
@@ -351,6 +372,7 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBucarIdMenu;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

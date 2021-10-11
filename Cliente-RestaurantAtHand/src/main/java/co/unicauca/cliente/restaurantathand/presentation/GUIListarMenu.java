@@ -336,6 +336,7 @@ public class GUIListarMenu extends javax.swing.JInternalFrame {
         seleccionMenu();
         GUICrearMenu objActualizarMenu = new GUICrearMenu(restaurant);
         objActualizarMenu.menuUpdate = menuSelect;
+        objActualizarMenu.activarActualizar();
 
         dskEscritorio.add(objActualizarMenu);
 
