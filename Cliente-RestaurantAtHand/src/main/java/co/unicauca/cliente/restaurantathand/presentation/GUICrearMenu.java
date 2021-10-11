@@ -344,7 +344,8 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
      * Cambiar la interfaz´para que actualice en vez de Registrar
      */
     public void activarActualizar( ){
-        jButton2.setVisible(true);
+        jButton1.setVisible(false);
+        jButton2.setEnabled(false);
         txtIdRestMenu.setEnabled(false);
         btnBucarIdMenu.setEnabled(false);
         
@@ -353,6 +354,22 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
     
     public void llenarCampos(){
         
+       activarCampos(true);
+       
+        
+    }
+    
+    public void activarCampos(boolean opcion){
+         txtIdMenu.setEnabled(true);
+        txtNameMenu.setEnabled(true);
+         rbtDomingo.setEnabled(opcion);
+        rbtSabado.setEnabled(opcion);
+        rbtViernes.setEnabled(opcion);
+        rbtJueves.setEnabled(opcion);
+        rbtMiercoles.setEnabled(opcion);
+        rbtMartes.setEnabled(opcion);
+        rbtLunes.setEnabled(opcion);
+        jButton2.setEnabled(opcion);
         
     }
     
