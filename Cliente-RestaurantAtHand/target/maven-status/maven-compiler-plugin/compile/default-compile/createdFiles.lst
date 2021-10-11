@@ -69,6 +69,7 @@ co\unicauca\cliente\restaurantathand\presentation\GUIListarPlato_1.class
 co\unicauca\cliente\restaurantathand\presentation\GUILoginRest1$4.class
 co\unicauca\cliente\RestaurantJerseyClient.class
 co\unicauca\cliente\restaurantathand\presentation\GUIAdminMenu$2.class
+co\unicauca\cliente\restaurantathand\presentation\GUICrearMenu$3.class
 co\unicauca\cliente\restaurantathand\domain\entity\Restaurant.class
 co\unicauca\cliente\restaurantathand\presentation\GUIAdminMenu$5.class
 co\unicauca\cliente\restaurantathand\domain\service\UserService.class

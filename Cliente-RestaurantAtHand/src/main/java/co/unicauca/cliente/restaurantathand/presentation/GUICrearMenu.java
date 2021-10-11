@@ -210,6 +210,11 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
         pnlSur.add(jLabel7);
 
         jButton2.setText("Guardar Cambios");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         pnlSur.add(jButton2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -313,6 +318,37 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        IMenuAccess service = Factory.getInstance().getMenuService();
+        String idMenu = txtIdMenu.getText();
+        String idRest = restaurante.getAtrNitRest();
+        String nombreMenu = txtNameMenu.getText();
+        
+        if (idMenu.equals("") || nombreMenu.equals("")) {
+            Messages.warningMessage("ERROR AL ACTUALIZAR EL RESTAURANTE: \nCampos vacios", "Warning");
+            return;
+        }
+        
+        MenuService menuService = new MenuService(service);
+        Menu menuAux = new Menu();
+        menuAux.setAtrIdMenu(idMenu);
+        menuAux.setAtrIdRest(idRest);
+        menuAux.setAtrNomMenu(nombreMenu);
+        
+        try {
+            
+            if (menuService.updateMenu(idMenu, menuAux)) {
+                successMessage("Menu actualizado con éxito.", "Atención"); 
+            }else{
+                Messages.warningMessage("el Menu no pudo ser actualizado", "Warning");
+            }
+        } catch (Exception ex) {
+            successMessage(ex.getMessage(), "Atención");
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public List<String> diasVisualizacion() {
         List<String> dias = new ArrayList<String>();
 
@@ -355,8 +391,9 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
     public void llenarCampos(){
         
        activarCampos(true);
+       txtIdMenu.setText(menuUpdate.getAtrIdMenu());
+       txtNameMenu.setText(menuUpdate.getAtrNomMenu());
        
-        
     }
     
     public void activarCampos(boolean opcion){

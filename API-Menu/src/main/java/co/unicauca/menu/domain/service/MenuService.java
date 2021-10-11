@@ -148,7 +148,7 @@ public class MenuService {
         Menu menuAux = this.findByMenuId(idMenu);
         menuAux.setAtrNomMenu(newMenu.getAtrNomMenu());
         menuAux.setAtrIdRest(newMenu.getAtrIdRest());
-
+        
         return repository.update(menuAux);
     }
 
