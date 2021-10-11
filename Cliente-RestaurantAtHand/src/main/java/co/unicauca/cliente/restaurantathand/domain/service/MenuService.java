@@ -98,6 +98,12 @@ public class MenuService {
     public boolean addDish(Menu menu, Dish dish) throws Exception {
         return service.addDish(menu, dish);
     }
+    
+    public boolean createVisualizacion(Menu menu,String IdMenu, String Dia) throws Exception{
+        return service.createVisualizacion(menu,IdMenu, Dia);
+    }
+    
+    
 
 //    public List<Menu> findbyMenubyIdRest(String idRest) throws Exception {
 //        return service.findbyMenubyIdRest(idRest);

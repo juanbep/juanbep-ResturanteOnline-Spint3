@@ -34,19 +34,18 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
      */
     ImageIcon iconolbl = new ImageIcon("src/main/java/resource/registrarmenu.png");
 
-    
     /**
-     * Restaurante al que pertenece el menu 
+     * Restaurante al que pertenece el menu
      */
     private Restaurant restaurante;
-    
+
     /**
-     * Menu que vamos a seleccionar 
+     * Menu que vamos a seleccionar
      */
     public Menu menuUpdate;
-    
+
     /**
-     * Almacena una lista de menus 
+     * Almacena una lista de menus
      */
     private List<Menu> menus;
 
@@ -324,31 +323,50 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
         String idMenu = txtIdMenu.getText();
         String idRest = restaurante.getAtrNitRest();
         String nombreMenu = txtNameMenu.getText();
-        
+
         if (idMenu.equals("") || nombreMenu.equals("")) {
             Messages.warningMessage("ERROR AL ACTUALIZAR EL RESTAURANTE: \nCampos vacios", "Warning");
             return;
         }
-        
+
         MenuService menuService = new MenuService(service);
         Menu menuAux = new Menu();
         menuAux.setAtrIdMenu(idMenu);
         menuAux.setAtrIdRest(idRest);
         menuAux.setAtrNomMenu(nombreMenu);
-        
+
         try {
-            
+
             if (menuService.updateMenu(idMenu, menuAux)) {
-                successMessage("Menu actualizado con éxito.", "Atención"); 
-            }else{
+                for(int i=0; i < diasVisualizacion().size(); i++){
+                    menuService.createVisualizacion(menuAux, idMenu, diasVisualizacion().get(i));
+                }
+                successMessage("Menu actualizado con éxito.", "Atención");
+            } else {
                 Messages.warningMessage("el Menu no pudo ser actualizado", "Warning");
             }
         } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");
         }
-        
+        limpiarCampos();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    public void limpiarCampos() {
+
+        txtIdMenu.setText("");
+        txtNameMenu.setText("");
+        rbtDomingo.setSelected(false);
+        rbtSabado.setSelected(false);
+        rbtViernes.setSelected(false);
+        rbtJueves.setSelected(false);
+        rbtMiercoles.setSelected(false);
+        rbtMartes.setSelected(false);
+        rbtLunes.setSelected(false);
+        jButton2.setSelected(false);
+        
+        
+    }
+    
     public List<String> diasVisualizacion() {
         List<String> dias = new ArrayList<String>();
 
@@ -376,30 +394,30 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
         return dias;
     }
 
-      /*
+    /*
      * Cambiar la interfaz´para que actualice en vez de Registrar
      */
-    public void activarActualizar( ){
+    public void activarActualizar() {
         jButton1.setVisible(false);
         jButton2.setEnabled(false);
         txtIdRestMenu.setEnabled(false);
         btnBucarIdMenu.setEnabled(false);
-        
+
         llenarCampos();
     }
-    
-    public void llenarCampos(){
-        
-       activarCampos(true);
-       txtIdMenu.setText(menuUpdate.getAtrIdMenu());
-       txtNameMenu.setText(menuUpdate.getAtrNomMenu());
-       
+
+    public void llenarCampos() {
+
+        activarCampos(true);
+        txtIdMenu.setText(menuUpdate.getAtrIdMenu());
+        txtNameMenu.setText(menuUpdate.getAtrNomMenu());
+
     }
-    
-    public void activarCampos(boolean opcion){
-         txtIdMenu.setEnabled(true);
+
+    public void activarCampos(boolean opcion) {
+        txtIdMenu.setEnabled(true);
         txtNameMenu.setEnabled(true);
-         rbtDomingo.setEnabled(opcion);
+        rbtDomingo.setEnabled(opcion);
         rbtSabado.setEnabled(opcion);
         rbtViernes.setEnabled(opcion);
         rbtJueves.setEnabled(opcion);
@@ -407,10 +425,9 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
         rbtMartes.setEnabled(opcion);
         rbtLunes.setEnabled(opcion);
         jButton2.setEnabled(opcion);
-        
+
     }
-    
-    
+
     public void panel(boolean opcion) {
 
         rbtDomingo.setEnabled(opcion);

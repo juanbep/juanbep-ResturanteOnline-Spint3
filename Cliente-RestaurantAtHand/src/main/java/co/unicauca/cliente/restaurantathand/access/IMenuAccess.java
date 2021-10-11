@@ -56,6 +56,17 @@ public interface IMenuAccess {
      */
     public boolean createMenu(Menu newMenu) throws Exception;
     
+    
+    /**
+     * 
+     * @param IdMenu
+     * @param dia
+     * @return
+     * @throws Exception 
+     */
+    public boolean createVisualizacion(Menu menu, String IdMenu, String dia) throws Exception; 
+    
+    
     /**
      * Lista todos los menus consumiendo un API REST
      *

@@ -65,6 +65,13 @@ public class MenuAccessREST implements IMenuAccess {
         return true;
     }
 
+    
+    @Override 
+    public boolean createVisualizacion(Menu menu,String idMenu, String dia) throws Exception {
+       rta = jersey.createVisualizacion_JSON(menu,idMenu, dia);
+       return true;
+    }
+   
     @Override
     public boolean createMenu(Menu newMenu) throws Exception {
         Menu menu = findMenu(newMenu.getAtrIdMenu());
