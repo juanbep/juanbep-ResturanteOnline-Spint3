@@ -92,5 +92,10 @@ public class PlatoService {
         return service.createDish(dish);
 
     }
+    
+    public boolean updateDish(String prmIdDish, String prmNameDish, String prmPriceDish, String prmDescriptionDish, String prmTypeDish, String prmCategoriaDish, String prmIdMenu) throws Exception{
+        return service.updateDish(prmIdDish, prmNameDish, prmPriceDish, prmDescriptionDish, prmTypeDish, prmCategoriaDish, prmIdMenu);
+    }
+    
 
 }

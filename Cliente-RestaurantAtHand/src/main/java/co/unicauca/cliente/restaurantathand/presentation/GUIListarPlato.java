@@ -11,6 +11,7 @@ import co.unicauca.cliente.restaurantathand.domain.entity.Dish;
 import co.unicauca.cliente.restaurantathand.domain.entity.Menu;
 import co.unicauca.cliente.restaurantathand.domain.service.PlatoService;
 import static co.unicauca.cliente.restaurantathand.infra.Messages.successMessage;
+import java.beans.PropertyVetoException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,6 +46,7 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
      *
      */
     private Dish platoSelect;
+    
 
     /*
      * Almacena los platos que pertenecen a un menu especifico
@@ -170,6 +172,11 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
         pnlCentro.add(btnEliminar);
 
         jButton7.setText("Actualizar Plato");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         pnlCentro.add(jButton7);
 
         pnlSur.setBackground(new java.awt.Color(255, 255, 255));
@@ -297,6 +304,30 @@ public class GUIListarPlato extends javax.swing.JInternalFrame {
         cargarDatosTabla();
         botones(false);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        seleccionPlato();
+        GUICrearPlato objActualizarPlato = new GUICrearPlato(menu);
+        objActualizarPlato.platoUpdate = platoSelect;
+        objActualizarPlato.activarActualizar();
+        dskEscritorio.add(objActualizarPlato);
+        
+          try {
+            objActualizarPlato.setMaximum(false);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(GUIListarPlato_1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            this.setMaximum(false);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(GUIListarPlato_1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        objActualizarPlato.show();
+        botones(false);
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

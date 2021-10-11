@@ -36,7 +36,7 @@ public interface IPlatoAccess {
      * @return objeto plato
      * @throws Exception error al actualizar el plato
      */
-    public boolean updateDish(String prmIdDish, String prmNameDish, String prmPriceDish, String prmDescriptionDish, String prmTypeDish, String prmCategoriaDish) throws Exception;
+    public boolean updateDish(String prmIdDish, String prmNameDish, String prmPriceDish, String prmDescriptionDish, String prmTypeDish, String prmCategoriaDish, String prmIdMenu) throws Exception;
 
     /**
      * Elimina un plato consumiendo un API REST mediante un plato jersey

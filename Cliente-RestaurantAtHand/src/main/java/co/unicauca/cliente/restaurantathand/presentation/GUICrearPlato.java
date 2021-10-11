@@ -34,22 +34,26 @@ public class GUICrearPlato extends javax.swing.JInternalFrame {
      * Creates new form GUICrearPlato
      */
     ImageIcon iconolbl = new ImageIcon("src/main/java/resource/crearplato.png");
-    
+
     private Restaurant restaurante;
     private User Admin;
+    private Menu menu;
     private Menu atrMenu;
+    public Dish platoUpdate;
+
     public GUICrearPlato() {
         initComponents();
         lblLogo.setIcon(iconolbl);
         botones(false);
     }
 
-    public GUICrearPlato(User admin) {
+    public GUICrearPlato(Menu menu) {
         initComponents();
         lblLogo.setIcon(iconolbl);
         botones(false);
-        Admin = admin;
+        this.menu = menu;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,10 +91,13 @@ public class GUICrearPlato extends javax.swing.JInternalFrame {
         cbxTipoPlato = new javax.swing.JComboBox<>();
         lblReqTipoPlato = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         btnCrearPlato = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        btnGuardarCambios = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -106,7 +113,7 @@ public class GUICrearPlato extends javax.swing.JInternalFrame {
         pnlNorte.add(lblLogo);
 
         pnlCentro.setBackground(new java.awt.Color(255, 255, 255));
-        pnlCentro.setLayout(new java.awt.GridLayout(12, 3));
+        pnlCentro.setLayout(new java.awt.GridLayout(13, 3));
 
         lblIdMenuPlato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIdMenuPlato.setText("Id menu:");
@@ -146,13 +153,24 @@ public class GUICrearPlato extends javax.swing.JInternalFrame {
         lblCategoriaPlato.setText("Categoria:");
         pnlCentro.add(lblCategoriaPlato);
 
-        cbxCategoriaPlato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entradas", "Platos fuertes", "Ensaladas", "Postres", "Bebidas" }));
+        cbxCategoriaPlato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entradas", "Platos fuertes", "Ensaladas", "Postres", "Bebidas", " " }));
+        cbxCategoriaPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCategoriaPlatoActionPerformed(evt);
+            }
+        });
         pnlCentro.add(cbxCategoriaPlato);
         pnlCentro.add(lblReqCategoriaPlato);
 
         lblDescripcionPlato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDescripcionPlato.setText("Descripcion:");
         pnlCentro.add(lblDescripcionPlato);
+
+        txtDescripcionPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescripcionPlatoActionPerformed(evt);
+            }
+        });
         pnlCentro.add(txtDescripcionPlato);
         pnlCentro.add(lblReqDescripcionPlato);
 
@@ -160,13 +178,13 @@ public class GUICrearPlato extends javax.swing.JInternalFrame {
         lblTipoPlato.setText("Tipo plato:");
         pnlCentro.add(lblTipoPlato);
 
-        cbxTipoPlato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Especial", "Del día" }));
+        cbxTipoPlato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Especial", "Del día", "Completo", "Ejecutivo", " " }));
         pnlCentro.add(cbxTipoPlato);
         pnlCentro.add(lblReqTipoPlato);
         pnlCentro.add(jLabel4);
-        pnlCentro.add(jLabel5);
-        pnlCentro.add(jLabel6);
         pnlCentro.add(jLabel7);
+        pnlCentro.add(jLabel8);
+        pnlCentro.add(jLabel9);
 
         btnCrearPlato.setText("Crear ");
         btnCrearPlato.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +193,16 @@ public class GUICrearPlato extends javax.swing.JInternalFrame {
             }
         });
         pnlCentro.add(btnCrearPlato);
+        pnlCentro.add(jLabel10);
+        pnlCentro.add(jLabel11);
+
+        btnGuardarCambios.setText("Guardar Cambios");
+        btnGuardarCambios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarCambiosActionPerformed(evt);
+            }
+        });
+        pnlCentro.add(btnGuardarCambios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,103 +225,166 @@ public class GUICrearPlato extends javax.swing.JInternalFrame {
     private void btnBuscarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMenuActionPerformed
         String idMenu = txtIdMenuPlato.getText();
         IMenuAccess service = Factory.getInstance().getMenuService();
-        MenuService menuService = new MenuService(service); 
+        MenuService menuService = new MenuService(service);
         Menu menu = null;
-        if (idMenu.equals("")  || idMenu.isEmpty()) {
-            
+        if (idMenu.equals("") || idMenu.isEmpty()) {
+
             Messages.warningMessage("ERROR Menu:  \nCampo vacios", "Warning");
             return;
         }
-        
+
         try {
             menu = menuService.findMenu(idMenu);
         } catch (Exception ex) {
             Logger.getLogger(GUICrearPlato.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        if(menu != null){
+
+        if (menu != null) {
             IRestaurantAccess serviceR = Factory.getInstance().getRestaurantService();
-            RestaurantService restaurantService = new RestaurantService(serviceR); 
+            RestaurantService restaurantService = new RestaurantService(serviceR);
             Restaurant restaurant = new Restaurant();
-            
+
             try {
                 restaurant = restaurantService.findRestaurantByNit(menu.getAtrIdRest());
             } catch (Exception ex) {
                 Logger.getLogger(GUICrearPlato.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(restaurant.getAtrAdmiRest().equals(Admin.getAtrUserName())){
+            if (restaurant.getAtrAdmiRest().equals(Admin.getAtrUserName())) {
                 botones(true);
-                
+
                 atrMenu = menu;
+            } else {
+                warningMessage("No es el administrador del Restaurante que tiene este menu", "Atención");
             }
-            else{
-                 warningMessage("No es el administrador del Restaurante que tiene este menu", "Atención");
-            }
-        }
-        else{
-             warningMessage("No hay un menu registrado con ese nit", "Atención");
+        } else {
+            warningMessage("No hay un menu registrado con ese nit", "Atención");
         }
     }//GEN-LAST:event_btnBuscarMenuActionPerformed
 
+    public void activarActualizar() {
+        txtIdMenuPlato.setEnabled(false);
+        btnBuscarMenu.setEnabled(false);
+        txtIdPlato.setEnabled(true);
+        txtNombrePlato.setEnabled(true);
+        txtPrecioPlato.setEnabled(true);
+        cbxCategoriaPlato.setEnabled(true);
+        txtDescripcionPlato.setEnabled(true);
+        cbxTipoPlato.setEnabled(true);
+        btnCrearPlato.setVisible(false);
+        btnGuardarCambios.setEnabled(true);
+        llenarCampos();
+    }
+
+    public void limpiarCampos() {
+        txtIdMenuPlato.setText("");
+        btnBuscarMenu.setText("");
+        txtIdPlato.setText("");
+        txtNombrePlato.setText("");
+        txtPrecioPlato.setText("");
+        cbxCategoriaPlato.setSelectedIndex(0);
+        txtDescripcionPlato.setText("");
+        cbxTipoPlato.setSelectedIndex(0);
+        btnCrearPlato.setText("");
+        btnGuardarCambios.setEnabled(isIcon);
+
+    }
+
+
     private void btnCrearPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPlatoActionPerformed
-        
+
         String idPlato = txtIdPlato.getText();
         String nombre = txtNombrePlato.getText();
-        String precio  =txtPrecioPlato.getText();
-        String descripcion =txtDescripcionPlato.getText();
+        String precio = txtPrecioPlato.getText();
+        String descripcion = txtDescripcionPlato.getText();
         String categoria = cbxCategoriaPlato.getSelectedItem().toString();
         String tipo = cbxTipoPlato.getSelectedItem().toString();
-        
-        if (idPlato.equals("")  || nombre.equals("") || precio.equals("")  || descripcion.equals("")
-             || categoria.equals("") || tipo.equals("") ) {
-            
+
+        if (idPlato.equals("") || nombre.equals("") || precio.equals("") || descripcion.equals("")
+                || categoria.equals("") || tipo.equals("")) {
+
             Messages.warningMessage("ERROR Plato:  \nCampo vacios", "Warning");
             return;
-       }
-        
+        }
+
         IPlatoAccess service = Factory.getInstance().getPlatoService();
-        PlatoService platoService = new PlatoService(service); 
-        Dish plato = null; 
-        
+        PlatoService platoService = new PlatoService(service);
+        Dish plato = null;
+
         try {
             plato = platoService.findDish(idPlato);
         } catch (Exception ex) {
             Logger.getLogger(GUICrearPlato.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if(plato == null){
-           try {
-               plato = new Dish();
-               plato.setAtrCategoriaDish(categoria);
-               plato.setAtrDescriptionDish(descripcion);
-               plato.setAtrIdDish(idPlato);
-               plato.setAtrNameDish(nombre);
-               plato.setAtrPriceDish(precio);
-               plato.setAtrTypeDish(tipo);
-               
-               if(platoService.createDish(plato))
-                {
-                     successMessage("Plato agregada con éxito.", "Atención");
-                }else{
-                     Messages.warningMessage("El plato no pudo ser agregado", "Warning");
-                }    
-               
+        if (plato == null) {
+            try {
+                plato = new Dish();
+                plato.setAtrCategoriaDish(categoria);
+                plato.setAtrDescriptionDish(descripcion);
+                plato.setAtrIdDish(idPlato);
+                plato.setAtrNameDish(nombre);
+                plato.setAtrPriceDish(precio);
+                plato.setAtrTypeDish(tipo);
+
+                if (platoService.createDish(plato)) {
+                    successMessage("Plato agregada con éxito.", "Atención");
+                } else {
+                    Messages.warningMessage("El plato no pudo ser agregado", "Warning");
+                }
+
                 IMenuAccess serviceM = Factory.getInstance().getMenuService();
-                MenuService menuService = new MenuService(serviceM); 
+                MenuService menuService = new MenuService(serviceM);
                 menuService.addDish(atrMenu, plato);
-                  
-           } catch (Exception ex) {
-               Logger.getLogger(GUICrearMenu.class.getName()).log(Level.SEVERE, null, ex);
-           }
+
+            } catch (Exception ex) {
+                Logger.getLogger(GUICrearMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            warningMessage("Ya se registro un plato con ese id ", "Atención");
         }
-        else{
-             warningMessage("Ya se registro un plato con ese id ", "Atención");
-        }
-        
-        
+
+
     }//GEN-LAST:event_btnCrearPlatoActionPerformed
-    public void botones (boolean opcion)
-    {
+
+    private void cbxCategoriaPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCategoriaPlatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxCategoriaPlatoActionPerformed
+
+    private void btnGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambiosActionPerformed
+        // TODO add your handling code here:
+        IPlatoAccess service = Factory.getInstance().getPlatoService();
+        String idPlato = txtIdPlato.getText();
+        String nombre = txtNombrePlato.getText();
+        String precio = txtPrecioPlato.getText();
+        String descripcion = txtDescripcionPlato.getText();
+        String categoria = cbxCategoriaPlato.getSelectedItem().toString();
+        String tipo = cbxTipoPlato.getSelectedItem().toString();
+
+        if (idPlato.equals("") || nombre.equals("") || precio.equals("") || descripcion.equals("")
+                || categoria.equals("") || tipo.equals("")) {
+
+            Messages.warningMessage("ERROR AL ACTUALIZAR Plato:  \nCampo vacios", "Warning");
+            return;
+        }
+
+        PlatoService platoService = new PlatoService(service);
+
+        try {
+            if (platoService.updateDish(idPlato, nombre, precio, descripcion, tipo, categoria, menu.getAtrIdMenu())) {
+                successMessage("Menu actualizado con éxito.", "Atención");
+            } else {
+                Messages.warningMessage("el Menu no pudo ser actualizado", "Warning");
+            }
+        } catch (Exception ex) {
+            successMessage(ex.getMessage(), "Atención");
+        }
+        limpiarCampos();
+    }//GEN-LAST:event_btnGuardarCambiosActionPerformed
+
+    private void txtDescripcionPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionPlatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescripcionPlatoActionPerformed
+    public void botones(boolean opcion) {
         txtIdPlato.setEnabled(opcion);
         txtNombrePlato.setEnabled(opcion);
         txtPrecioPlato.setEnabled(opcion);
@@ -301,20 +392,32 @@ public class GUICrearPlato extends javax.swing.JInternalFrame {
         cbxCategoriaPlato.setEnabled(opcion);
         cbxTipoPlato.setEnabled(opcion);
         btnCrearPlato.setEnabled(opcion);
-    } 
+    }
+
+    public void llenarCampos() {
+
+        txtIdPlato.setText(platoUpdate.getAtrIdDish());
+        txtNombrePlato.setText(platoUpdate.getAtrNameDish());
+        txtPrecioPlato.setText(platoUpdate.getAtrPriceDish());
+        txtDescripcionPlato.setText(platoUpdate.getAtrDescriptionDish());
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarMenu;
     private javax.swing.JButton btnCrearPlato;
+    private javax.swing.JButton btnGuardarCambios;
     private javax.swing.JComboBox<String> cbxCategoriaPlato;
     private javax.swing.JComboBox<String> cbxTipoPlato;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblCategoriaPlato;
     private javax.swing.JLabel lblDescripcionPlato;
     private javax.swing.JLabel lblIdMenuPlato;

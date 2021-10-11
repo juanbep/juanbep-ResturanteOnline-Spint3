@@ -6,6 +6,8 @@
 package co.unicauca.cliente.restaurantathand.presentation;
 
 import co.unicauca.cliente.restaurantathand.domain.entity.Admin;
+import co.unicauca.cliente.restaurantathand.domain.entity.Dish;
+import co.unicauca.cliente.restaurantathand.domain.entity.Menu;
 import co.unicauca.cliente.restaurantathand.domain.entity.Restaurant;
 import co.unicauca.cliente.restaurantathand.domain.entity.User;
 import java.beans.PropertyVetoException;
@@ -29,13 +31,15 @@ public class GUIAdminMenu extends javax.swing.JFrame {
      */
     public Restaurant restaurante;
     
+    public Menu menu;
+    
     public GUIAdminMenu() {
         initComponents();
     }
     
-    public GUIAdminMenu(Admin admin) {
+    public GUIAdminMenu(Menu menu) {
         initComponents();
-        this.admin = admin;
+        this.menu = menu;
     }
 
     /**
@@ -162,7 +166,7 @@ public class GUIAdminMenu extends javax.swing.JFrame {
 
     private void mnuCrearPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCrearPlatoActionPerformed
         // TODO add your handling code here:
-        GUICrearPlato objCrearPlato  = new GUICrearPlato(admin);
+        GUICrearPlato objCrearPlato  = new GUICrearPlato(menu);
         dskEscritorio.add(objCrearPlato);
         
         try {

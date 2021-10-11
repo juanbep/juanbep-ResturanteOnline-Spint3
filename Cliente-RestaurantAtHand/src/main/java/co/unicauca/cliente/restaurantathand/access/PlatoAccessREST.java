@@ -66,7 +66,7 @@ public class PlatoAccessREST implements IPlatoAccess {
      * @throws Exception error al actualizar el plato
      */
     @Override
-    public boolean updateDish(String prmIdDish, String prmNameDish, String prmPriceDish, String prmDescriptionDish, String prmTypeDish, String prmCategoriaDish) throws Exception {
+    public boolean updateDish(String prmIdDish, String prmNameDish, String prmPriceDish, String prmDescriptionDish, String prmTypeDish, String prmCategoriaDish, String prmIdMenu) throws Exception {
         Dish dish = findDish(prmIdDish);
         if (dish == null) {
             return false;
@@ -77,6 +77,7 @@ public class PlatoAccessREST implements IPlatoAccess {
         dish.setAtrDescriptionDish(prmDescriptionDish);
         dish.setAtrTypeDish(prmTypeDish);
         dish.setAtrCategoriaDish(prmCategoriaDish);
+        dish.setAtrIdMenu(prmIdMenu);
 
         rta = jersey.edit_JSON(dish, prmIdDish);
         return true;
