@@ -249,13 +249,14 @@ public class GUICrearPlato extends javax.swing.JInternalFrame {
             } catch (Exception ex) {
                 Logger.getLogger(GUICrearPlato.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (restaurant.getAtrAdmiRest().equals(Admin.getAtrUserName())) {
+//            if (restaurant.getAtrAdmiRest().equals(Admin.getAtrUserName())) {
                 botones(true);
-
+                 
+                btnGuardarCambios.setVisible(false);
                 atrMenu = menu;
-            } else {
-                warningMessage("No es el administrador del Restaurante que tiene este menu", "Atención");
-            }
+//            } else {
+//                warningMessage("No es el administrador del Restaurante que tiene este menu", "Atención");
+//            }
         } else {
             warningMessage("No hay un menu registrado con ese nit", "Atención");
         }
@@ -328,13 +329,14 @@ public class GUICrearPlato extends javax.swing.JInternalFrame {
 
                 if (platoService.createDish(plato)) {
                     successMessage("Plato agregada con éxito.", "Atención");
+                    limpiarCampos();
                 } else {
                     Messages.warningMessage("El plato no pudo ser agregado", "Warning");
                 }
 
-                IMenuAccess serviceM = Factory.getInstance().getMenuService();
-                MenuService menuService = new MenuService(serviceM);
-                menuService.addDish(atrMenu, plato);
+//                IMenuAccess serviceM = Factory.getInstance().getMenuService();
+//                MenuService menuService = new MenuService(serviceM);
+//                menuService.addDish(atrMenu, plato);
 
             } catch (Exception ex) {
                 Logger.getLogger(GUICrearMenu.class.getName()).log(Level.SEVERE, null, ex);

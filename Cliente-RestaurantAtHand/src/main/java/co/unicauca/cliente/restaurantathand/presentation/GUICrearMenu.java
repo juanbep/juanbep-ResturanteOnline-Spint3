@@ -256,14 +256,16 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
         }
 
         if (restaurant != null) {
-            if (restaurant.getAtrAdmiRest().equals(restaurante.getAtrNameRest())) {
-                panel(true);
-                txtIdMenu.setEnabled(true);
-                txtNameMenu.setEnabled(true);
-                //restaurante = restaurant;
-            } else {
-                warningMessage("No es el administrador del Restaurante", "Atención");
-            }
+//            if (restaurant.getAtrNitRest().equals(restaurante.getAtrNitRest())) {
+            panel(true);
+            txtIdMenu.setEnabled(true);
+            txtNameMenu.setEnabled(true);
+            jButton1.setEnabled(true);
+            jButton2.setVisible(false);
+            //restaurante = restaurant;
+//            } else {
+//                warningMessage("No es el administrador del Restaurante", "Atención");
+//            }
         } else {
             warningMessage("No hay un restaurante registrado con ese nit", "Atención");
         }
@@ -297,17 +299,21 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
                 menu.setAtrIdRest(idRest);
                 menu.setAtrIdMenu(idMenu);
                 menu.setAtrNomMenu(idNom);
-                List<String> dias = diasVisualizacion();
-                if (dias.size() != 0) {
-                    //menu.setDias(dias);
-                    if (menuService.createMenu(menu)) {
-                        successMessage("Menu agregada con éxito.", "Atención");
-                    } else {
-                        Messages.warningMessage("El Menu no pudo ser agregado", "Warning");
+                //  List<String> dias = diasVisualizacion();
+//                if (dias.size() != 0) {
+                //menu.setDias(dias);
+                if (menuService.createMenu(menu)) {
+                    for (int i = 0; i < diasVisualizacion().size(); i++) {
+                        menuService.createVisualizacion(menu, idMenu, diasVisualizacion().get(i));
                     }
+
+                    successMessage("Menu agregada con éxito.", "Atención");
                 } else {
-                    warningMessage("Se debe elegir al menos un dia para que este disponible el menu ", "Atención");
+                    Messages.warningMessage("El Menu no pudo ser agregado", "Warning");
                 }
+//                } else {
+//                    warningMessage("Se debe elegir al menos un dia para que este disponible el menu ", "Atención");
+//                }
             } catch (Exception ex) {
                 Logger.getLogger(GUICrearMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -338,7 +344,7 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
         try {
 
             if (menuService.updateMenu(idMenu, menuAux)) {
-                for(int i=0; i < diasVisualizacion().size(); i++){
+                for (int i = 0; i < diasVisualizacion().size(); i++) {
                     menuService.createVisualizacion(menuAux, idMenu, diasVisualizacion().get(i));
                 }
                 successMessage("Menu actualizado con éxito.", "Atención");
@@ -363,10 +369,9 @@ public class GUICrearMenu extends javax.swing.JInternalFrame {
         rbtMartes.setSelected(false);
         rbtLunes.setSelected(false);
         jButton2.setSelected(false);
-        
-        
+
     }
-    
+
     public List<String> diasVisualizacion() {
         List<String> dias = new ArrayList<String>();
 
