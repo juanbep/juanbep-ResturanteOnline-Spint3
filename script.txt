@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS users
 
 INSERT INTO public.users(
 	username, id, name, lastname, password, city, address, phone, type)
-	VALUES ('juanbep', '10', 'Juan', 'Beca', '123', 'Popayan', 'calle 5 #10-20', '310356588', 'admin');
+	VALUES ('juanbep', '10', 'Juan', 'Beca', '123', 'Popayan', 'calle 5 #10-20', '310354545', 'admin');
 INSERT INTO public.users(
 	username, id, name, lastname, password, city, address, phone, type)
 	VALUES ('elbananero', '20', 'Manuel', 'Gutierrez', '456', 'Popayan', 'calle 10N #70-20', '311547110', 'user');

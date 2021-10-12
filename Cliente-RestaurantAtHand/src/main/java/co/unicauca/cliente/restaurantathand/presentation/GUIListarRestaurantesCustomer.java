@@ -40,6 +40,10 @@ public final class GUIListarRestaurantesCustomer extends javax.swing.JInternalFr
     
     ImageIcon iconolbl = new ImageIcon("src/main/java/resource/bienvenido.png");
     
+    
+    /**
+     * Constructor por defecto 
+     */
     public GUIListarRestaurantesCustomer() {
         initComponents();
         lblLogo.setIcon(iconolbl);
@@ -51,6 +55,10 @@ public final class GUIListarRestaurantesCustomer extends javax.swing.JInternalFr
         btnVerMenu.setEnabled(false);
     }
 
+    /**
+     * Constructor parametrizado
+     * @param dskEscritorio 
+     */
     GUIListarRestaurantesCustomer(JDesktopPane dskEscritorio) {
         initComponents();
         lblLogo.setIcon(iconolbl);
@@ -96,6 +104,10 @@ public final class GUIListarRestaurantesCustomer extends javax.swing.JInternalFr
     }
 
     
+    /**
+     * 
+     * @param objTabla 
+     */
     public void limpiarTabla(DefaultTableModel objTabla) {
         while (objTabla.getRowCount()
                 > 0) {

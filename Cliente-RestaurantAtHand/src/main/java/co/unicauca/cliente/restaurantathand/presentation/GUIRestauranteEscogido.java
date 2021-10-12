@@ -182,7 +182,15 @@ public final class GUIRestauranteEscogido extends javax.swing.JInternalFrame {
             new String [] {
                 "Nombre Menu"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblMenu.setShowGrid(true);
         tblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -215,7 +223,15 @@ public final class GUIRestauranteEscogido extends javax.swing.JInternalFrame {
             new String [] {
                 "Nombre", "Precio", "Categoria", "Descripcion", "Tipo plato"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblListaPlato.setShowGrid(true);
         tblListaPlato.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
