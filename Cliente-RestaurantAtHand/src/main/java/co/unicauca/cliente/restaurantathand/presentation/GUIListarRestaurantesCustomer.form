@@ -155,9 +155,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblImagenRest">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel3"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblFiltrarPor">
           <Properties>
@@ -189,7 +186,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnVerMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ver Menu"/>
+            <Property name="text" type="java.lang.String" value="Ver Menus"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerMenuActionPerformed"/>

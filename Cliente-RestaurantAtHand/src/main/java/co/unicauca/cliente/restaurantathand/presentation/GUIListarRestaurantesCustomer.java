@@ -107,14 +107,14 @@ public final class GUIListarRestaurantesCustomer extends javax.swing.JInternalFr
         if (cbxFiltrar.getSelectedItem().toString().equals("Nombre Restaurante")){
             txtCiudad.setText("");
             txtCiudad.setEnabled(false);
-            txtNombreRest.setEnabled(true);
+            txtNombreRest.setEnabled(false);
             btnBuscar.setEnabled(true);
             
         }
         else if (cbxFiltrar.getSelectedItem().toString().equals("Ciudad Restaurante")){
             txtNombreRest.setText("");
             txtNombreRest.setEnabled(false);
-            txtCiudad.setEnabled(true);
+            txtCiudad.setEnabled(false);
             btnBuscar.setEnabled(true);
            
         }
@@ -161,8 +161,6 @@ public final class GUIListarRestaurantesCustomer extends javax.swing.JInternalFr
 
         pnlCentro.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblImagenRest.setText("jLabel3");
-
         lblFiltrarPor.setText("Filtrar por:");
 
         lblNombreRest.setText("Nombre:");
@@ -178,7 +176,7 @@ public final class GUIListarRestaurantesCustomer extends javax.swing.JInternalFr
             }
         });
 
-        btnVerMenu.setText("Ver Menu");
+        btnVerMenu.setText("Ver Menus");
         btnVerMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerMenuActionPerformed(evt);

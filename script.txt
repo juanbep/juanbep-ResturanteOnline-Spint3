@@ -1,4 +1,4 @@
---Creacion base de datos restaurante
+--------Creacion base de datos restaurante---------------------------------------
 CREATE DATABASE "restauranteBD"
     WITH 
     OWNER = postgres
@@ -8,7 +8,8 @@ CREATE DATABASE "restauranteBD"
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 
---Creacion de tabla usuario
+--------Creacion de tabla usuario------------------------------------------
+
 CREATE TABLE IF NOT EXISTS users
 (
 	USERNAME varchar(60) PRIMARY KEY,
@@ -21,7 +22,8 @@ CREATE TABLE IF NOT EXISTS users
 	PHONE varchar(60) NOT NULL,
 	TYPE varchar(60) NOT NULL);
 
---Insercion de datos usuario
+--------Insercion de datos usuario-----------------------------------------------------
+
 INSERT INTO public.users(
 	username, id, name, lastname, password, city, address, phone, type)
 	VALUES ('juanbep', '10', 'Juan', 'Beca', '123', 'Popayan', 'calle 5 #10-20', '310356588', 'admin');
@@ -39,7 +41,8 @@ INSERT INTO public.users(
 	VALUES ('elvergalarga', '50', 'Elver', 'Galarga', '110', 'Popayan', 'cra 10N #5-20', '3154896324', 'user');
 
 
---Creacion de tabla restaurante
+--------Creacion de tabla restaurante--------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS restaurante (
 
 	nit varchar(60) PRIMARY KEY,
@@ -50,7 +53,8 @@ CREATE TABLE IF NOT EXISTS restaurante (
 	city varchar(60) NOT NULL,
 	userNameAdmin varchar(60) NOT NULL);
 
---Insercion de datos restaurante
+--------Insercion de datos restaurante----------------------------------------------
+
 INSERT INTO public.restaurante(
 	nit, name, address, mobile, email, city, usernameadmin)
 	VALUES ('100', 'La Cosecha' , 'Cra 5A # 5-20', '8225469','lacosecha@gmail.com', 'Popayan', 'axquijano');
@@ -68,7 +72,7 @@ INSERT INTO public.restaurante(
 	VALUES ('500', 'Dominos' , 'Cra 17N # 20-35', '8231111','dominos@gmail.com', 'Popayan', 'axquijano');
 
 
---Creacion de tabla Plato
+---------Creacion de tabla Plato------------------------------------------
 CREATE TABLE IF NOT EXISTS plato
 (
 	id varchar(60) PRIMARY KEY,
@@ -80,7 +84,8 @@ CREATE TABLE IF NOT EXISTS plato
 	idmenu varchar(60) not null
 );
 
---Insercion de datos Plato
+--------Insercion de datos Plato----------------------------------------------
+
 INSERT INTO public.plato(
 	id, name, precio, categoria, descripcion, tipoplato, idmenu)
 	VALUES ('600','Chunchullo Asado' , '9400', 'Entradas', '500 gramos de chunchullo, manejados en termino completo', 'Del dia', '100');
@@ -218,7 +223,8 @@ INSERT INTO public.plato(
 
 
 
---Creacion de tabla menu, visualizacion
+--------Creacion de tabla menu, visualizacion-------------------------------------
+
 CREATE TABLE IF NOT EXISTS menu 
 (
 	idmenu varchar(60) PRIMARY KEY,
@@ -233,7 +239,8 @@ CREATE TABLE IF NOT EXISTS visualizacion
 );
 
 
---Insercion de datos menu
+------------Insercion de datos menu-----------------------------------
+
 INSERT INTO public.menu(
 	idmenu, namemenu, idrest)
 	VALUES ('11', 'Entrada', '100');
@@ -268,7 +275,8 @@ INSERT INTO public.menu(
 	idmenu, namemenu, idrest)
 	VALUES ('333', 'Bebidas', '500');
 
---Insercion de datos visualizacion
+--------Insercion de datos visualizacion----------------------------------
+
 INSERT INTO public.visualizacion(
 	idmenu, dia)
 	VALUES ('100', 'Lunes');
@@ -325,7 +333,8 @@ INSERT INTO public.visualizacion(
 	VALUES ('99', 'Martes');
 
 
---Creacion de tabla pedido, factura, tiene
+--------Creacion de tabla pedido, factura, tiene------------------------------------
+
 CREATE TABLE IF NOT EXISTS pedido
 (
 	idpedido serial PRIMARY KEY,
@@ -350,7 +359,8 @@ CREATE TABLE IF NOT EXISTS tiene
 	PRIMARY KEY (idpedido,idplato)
 );
 
---Insercion de datos pedido
+---------Insercion de datos pedido---------------------------------------------
+
 INSERT INTO public.pedido(
 	 idrest, username)
 	VALUES ('100', 'nruizm');

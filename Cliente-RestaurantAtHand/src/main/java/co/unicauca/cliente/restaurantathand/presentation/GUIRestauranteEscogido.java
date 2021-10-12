@@ -104,13 +104,9 @@ public final class GUIRestauranteEscogido extends javax.swing.JInternalFrame {
         IPlatoAccess service = Factory.getInstance().getPlatoService();
         // Inyecta la dependencia
         PlatoService plato = new PlatoService(service);
-        Dish platito;
-//        for (String platos : menuSeleccionado.getAtrIdPlatos()) {
-//            platito = plato.findDish(platos);
-//            listPlato.add(platito);
-//            
-//        }
-        
+  
+         listPlato = plato.findDishIdMenu(menuSeleccionado.getAtrIdMenu());
+            
     }
     
     private void cargarDatosTablaPlatos(){
@@ -119,15 +115,14 @@ public final class GUIRestauranteEscogido extends javax.swing.JInternalFrame {
         limpiarTabla(model);
         JButton btnAgregarCarrito = new JButton("Agregar");
         btnAgregarCarrito.setName("btnAgregarCarrito");
-        Object rowData[] = new Object[6];
+        Object rowData[] = new Object[5];
         for (Dish platito : listPlato) {
             rowData[0] = platito.getAtrNameDish();
             rowData[1] = platito.getAtrPriceDish();
             rowData[2] = platito.getAtrCategoriaDish();
             rowData[3] = platito.getAtrDescriptionDish();
             rowData[4] = platito.getAtrTypeDish();
-            rowData[5] = platito.getAtrTypeDish();
-            rowData[6] = btnAgregarCarrito;
+            //rowData[6] = btnAgregarCarrito;
             model.addRow(rowData);
         }
         
@@ -177,7 +172,7 @@ public final class GUIRestauranteEscogido extends javax.swing.JInternalFrame {
         pnlNorte.add(jLabel6);
 
         pnlCenter.setBackground(new java.awt.Color(255, 255, 255));
-        pnlCenter.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Menu"));
+        pnlCenter.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista Menus", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
         pnlCenter.setLayout(new java.awt.GridBagLayout());
 
         tblMenu.setModel(new javax.swing.table.DefaultTableModel(
@@ -188,6 +183,7 @@ public final class GUIRestauranteEscogido extends javax.swing.JInternalFrame {
                 "Nombre Menu"
             }
         ));
+        tblMenu.setShowGrid(true);
         tblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblMenuMouseClicked(evt);
@@ -208,7 +204,7 @@ public final class GUIRestauranteEscogido extends javax.swing.JInternalFrame {
         pnlCenter.add(jScrollPane3, gridBagConstraints);
 
         pnlSur.setBackground(new java.awt.Color(255, 255, 255));
-        pnlSur.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Plato"));
+        pnlSur.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista Platos\n", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
         pnlSur.setLayout(new java.awt.GridBagLayout());
 
         tblListaPlato.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Plato"));
@@ -220,6 +216,7 @@ public final class GUIRestauranteEscogido extends javax.swing.JInternalFrame {
                 "Nombre", "Precio", "Categoria", "Descripcion", "Tipo plato"
             }
         ));
+        tblListaPlato.setShowGrid(true);
         tblListaPlato.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblListaPlatoMouseClicked(evt);
@@ -252,9 +249,9 @@ public final class GUIRestauranteEscogido extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlNorte, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlCenter, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlSur, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
+                .addComponent(pnlCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlSur, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
