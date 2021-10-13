@@ -22,4 +22,4 @@ En el documento de manual de usuario se encuentra los pasos de una manera más d
 - Juan David Beca Pillimue 
 - Nelly Johana Bambague 
 
-##### 4. Video de Funcionamiento[ ver video](https://youtu.be/Tth8D8LWges)
+##### 6. Video de Funcionamiento[ ver video](https://youtu.be/Tth8D8LWges)
